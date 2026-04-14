@@ -756,7 +756,7 @@
 <!-- STATS -->
 <div id="stats">
   <div class="stat-item reveal">
-    <div class="stat-num"><span class="count" data-target="13">0</span><span class="stat-suffix">+</span></div>
+    <div class="stat-num"><span class="count" data-target="15">0</span><span class="stat-suffix">+</span></div>
     <div class="stat-label">Anos de Mercado</div>
   </div>
   <div class="stat-item reveal">
@@ -772,6 +772,261 @@
     <div class="stat-label">Foco em Qualidade</div>
   </div>
 </div>
+
+<!-- 15 ANOS -->
+<section id="quinze-anos">
+  <style>
+    #quinze-anos {
+      padding: 0;
+      overflow: hidden;
+      position: relative;
+      background: #0a0a08;
+    }
+    .qa-inner {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 420px;
+      align-items: stretch;
+    }
+    /* Coluna esquerda — o número */
+    .qa-left {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 64px 80px 80px;
+      background: var(--yellow);
+      overflow: hidden;
+      z-index: 1;
+    }
+    .qa-left::after {
+      content: '';
+      position: absolute;
+      right: -60px;
+      top: 0; bottom: 0;
+      width: 120px;
+      background: var(--yellow);
+      clip-path: polygon(0 0, 0% 100%, 100% 50%);
+    }
+    .qa-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: rgba(0,0,0,0.65);
+      margin-bottom: 8px;
+    }
+    .qa-number {
+      font-family: var(--font-cond);
+      font-size: clamp(110px, 14vw, 160px);
+      font-weight: 700;
+      line-height: 0.85;
+      color: #0a0a08;
+      letter-spacing: -2px;
+    }
+    .qa-anos-label {
+      font-family: var(--font-cond);
+      font-size: clamp(28px, 3.5vw, 44px);
+      font-weight: 600;
+      color: #0a0a08;
+      letter-spacing: 8px;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+    .qa-years {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 3px;
+      color: rgba(0,0,0,0.6);
+      margin-top: 18px;
+    }
+    /* Coluna direita — o copy */
+    .qa-right {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 80px 80px 100px;
+      background: #0a0a08;
+      z-index: 0;
+    }
+    .qa-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 24px;
+    }
+    .qa-tag::before {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 1px;
+      background: var(--yellow);
+    }
+    .qa-headline {
+      font-family: var(--font-cond);
+      font-size: clamp(24px, 3vw, 40px);
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 20px;
+      letter-spacing: 0.5px;
+    }
+    .qa-headline span {
+      color: var(--yellow);
+    }
+    .qa-body {
+      font-family: var(--font-body);
+      font-size: 15px;
+      color: rgba(245,245,240,0.78);
+      line-height: 1.85;
+      max-width: 460px;
+      margin-bottom: 36px;
+    }
+    .qa-milestones {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .qa-milestone {
+      border-left: 2px solid rgba(245,194,0,0.55);
+      padding-left: 14px;
+    }
+    .qa-milestone-val {
+      font-family: var(--font-cond);
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--yellow);
+      letter-spacing: 1px;
+    }
+    .qa-milestone-desc {
+      font-family: var(--font-body);
+      font-size: 12px;
+      color: rgba(245,245,240,0.65);
+      letter-spacing: 0.5px;
+      margin-top: 2px;
+    }
+    /* Partículas decorativas */
+    .qa-particles {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .qa-dot {
+      position: absolute;
+      border-radius: 50%;
+      background: var(--yellow);
+      opacity: 0.06;
+      animation: qa-float linear infinite;
+    }
+    @keyframes qa-float {
+      0%   { transform: translateY(0) scale(1); opacity: 0.06; }
+      50%  { opacity: 0.11; }
+      100% { transform: translateY(-120px) scale(0.6); opacity: 0; }
+    }
+    .qa-deco-ring {
+      position: absolute;
+      right: 60px;
+      bottom: -60px;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      border: 1px solid rgba(245,194,0,0.1);
+      pointer-events: none;
+    }
+    .qa-deco-ring-2 {
+      position: absolute;
+      right: 20px;
+      bottom: -100px;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      border: 1px solid rgba(245,194,0,0.06);
+      pointer-events: none;
+    }
+    @media (max-width: 768px) {
+      .qa-inner { grid-template-columns: 1fr; }
+      .qa-left { padding: 60px 30px 50px; }
+      .qa-left::after { display: none; }
+      .qa-right { padding: 50px 30px 60px; }
+      .qa-milestones { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+
+  <div class="qa-inner">
+
+    <!-- Esquerda: o número bruto -->
+    <div class="qa-left">
+      <div class="qa-eyebrow">Edição Especial</div>
+      <div class="qa-number">15</div>
+      <div class="qa-anos-label">Anos</div>
+      <div class="qa-years">2011 &mdash; 2026</div>
+    </div>
+
+    <!-- Direita: copy + marcos -->
+    <div class="qa-right">
+      <div class="qa-particles" id="qa-particles"></div>
+      <div class="qa-deco-ring"></div>
+      <div class="qa-deco-ring-2"></div>
+
+      <div class="qa-tag">Marco histórico</div>
+      <h2 class="qa-headline">
+        Uma década e meia<br>
+        construindo a <span>Bahia</span><br>
+        que nos orgulha.
+      </h2>
+      <p class="qa-body">
+        Desde 2011, a SADL atravessou projetos, ciclos regulatórios e transformações tecnológicas sem abrir mão do que sempre nos definiu: rigor técnico, responsabilidade ambiental e comprometimento com cada cliente.
+      </p>
+      <div class="qa-milestones reveal">
+        <div class="qa-milestone">
+          <div class="qa-milestone-val">200+</div>
+          <div class="qa-milestone-desc">Projetos entregues</div>
+        </div>
+        <div class="qa-milestone">
+          <div class="qa-milestone-val">3</div>
+          <div class="qa-milestone-desc">Órgãos credenciados</div>
+        </div>
+        <div class="qa-milestone">
+          <div class="qa-milestone-val">100%</div>
+          <div class="qa-milestone-desc">Conformidade técnica</div>
+        </div>
+        <div class="qa-milestone">
+          <div class="qa-milestone-val">BA</div>
+          <div class="qa-milestone-desc">Atuação em todo o estado</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      const container = document.getElementById('qa-particles');
+      if (!container) return;
+      for (let i = 0; i < 18; i++) {
+        const d = document.createElement('div');
+        d.className = 'qa-dot';
+        const size = Math.random() * 60 + 20;
+        d.style.cssText = `
+          width:${size}px; height:${size}px;
+          left:${Math.random()*100}%;
+          top:${Math.random()*100}%;
+          animation-duration:${Math.random()*12+8}s;
+          animation-delay:${Math.random()*8}s;
+        `;
+        container.appendChild(d);
+      }
+    })();
+  </script>
+</section>
 
 <!-- SOBRE -->
 <section id="sobre">
