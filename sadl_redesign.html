@@ -1,0 +1,1350 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SADL – Soluções de Engenharia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@300;400;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="favicon-sadl.png">
+<style>
+  :root {
+    --yellow: #F5C200;
+    --yellow-dark: #C49B00;
+    --yellow-glow: rgba(245,194,0,0.18);
+    --black: #080808;
+    --dark: #0f0f0f;
+    --dark2: #161616;
+    --dark3: #1e1e1e;
+    --white: #f5f5f0;
+    --gray: #888;
+    --light-gray: #ccc;
+    --font-display: 'Bebas Neue', sans-serif;
+    --font-cond: 'Barlow Condensed', sans-serif;
+    --font-body: 'Barlow', sans-serif;
+    --font-mono: 'Fira Code', monospace;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: var(--font-body);
+    font-weight: 300;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+  a { color: inherit; text-decoration: none; }
+
+  /* ── SCROLLBAR ── */
+  ::-webkit-scrollbar { width: 3px; }
+  ::-webkit-scrollbar-track { background: var(--dark); }
+  ::-webkit-scrollbar-thumb { background: var(--yellow); }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 22px 60px;
+    transition: background 0.4s, padding 0.4s, backdrop-filter 0.4s;
+  }
+  nav.scrolled {
+    background: rgba(8,8,8,0.92);
+    backdrop-filter: blur(12px);
+    padding: 14px 60px;
+    border-bottom: 1px solid rgba(245,194,0,0.15);
+  }
+  .nav-logo img { height: 42px; }
+  .nav-links { display: flex; gap: 38px; list-style: none; }
+  .nav-links a {
+    font-family: var(--font-cond);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--gray);
+    transition: color 0.2s;
+    position: relative;
+  }
+  .nav-links a::after {
+    content:''; position:absolute; bottom:-4px; left:0; right:100%;
+    height:1px; background:var(--yellow); transition: right 0.3s;
+  }
+  .nav-links a:hover { color: var(--yellow); }
+  .nav-links a:hover::after { right: 0; }
+  .nav-cta {
+    font-family: var(--font-cond);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border: 1px solid var(--yellow);
+    color: var(--yellow);
+    padding: 9px 22px;
+    transition: background 0.25s, color 0.25s;
+  }
+  .nav-cta:hover { background: var(--yellow); color: var(--black); }
+
+  /* ── HERO ── */
+  #hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+    padding: 120px 60px 80px;
+  }
+  .hero-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(245,194,0,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(245,194,0,0.04) 1px, transparent 1px);
+    background-size: 80px 80px;
+    animation: gridDrift 20s linear infinite;
+  }
+  @keyframes gridDrift { from { transform: translate(0,0); } to { transform: translate(80px,80px); } }
+
+  .hero-scan {
+    position: absolute; left: 0; right: 0;
+    height: 1px; background: linear-gradient(90deg, transparent, var(--yellow), transparent);
+    opacity: 0.5;
+    animation: scanLine 6s ease-in-out infinite;
+  }
+  @keyframes scanLine {
+    0%   { top: 0%; opacity:0; }
+    10%  { opacity: 0.5; }
+    90%  { opacity: 0.5; }
+    100% { top: 100%; opacity:0; }
+  }
+
+  /* SVG logo floating elements */
+  .hero-geo {
+    position: absolute; inset: 0; pointer-events: none;
+  }
+
+  .hero-content {
+    position: relative; z-index: 2;
+    max-width: 900px;
+  }
+  .hero-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: var(--yellow);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .hero-eyebrow::before {
+    content:''; display:inline-block; width:32px; height:1px; background:var(--yellow);
+  }
+  .hero-h1 {
+    font-family: var(--font-display);
+    font-size: clamp(72px, 9vw, 140px);
+    line-height: 0.92;
+    letter-spacing: 2px;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+  .hero-h1 span { color: var(--yellow); }
+  .hero-sub {
+    font-family: var(--font-cond);
+    font-size: clamp(22px, 3vw, 38px);
+    font-weight: 300;
+    color: var(--gray);
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    margin-bottom: 36px;
+  }
+  .hero-desc {
+    max-width: 520px;
+    font-size: 15px;
+    line-height: 1.8;
+    color: rgba(245,245,240,0.55);
+    margin-bottom: 48px;
+  }
+  .hero-actions { display: flex; gap: 16px; align-items: center; }
+  .btn-primary {
+    font-family: var(--font-cond);
+    font-size: 13px; font-weight: 600;
+    letter-spacing: 2.5px; text-transform: uppercase;
+    background: var(--yellow); color: var(--black);
+    padding: 15px 36px;
+    transition: background 0.2s, transform 0.2s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: #ffd426; transform: translateY(-2px); }
+  .btn-ghost {
+    font-family: var(--font-cond);
+    font-size: 13px; font-weight: 600;
+    letter-spacing: 2.5px; text-transform: uppercase;
+    border: 1px solid rgba(245,245,240,0.2);
+    color: rgba(245,245,240,0.55);
+    padding: 15px 36px;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-ghost:hover { border-color: var(--yellow); color: var(--yellow); }
+  .hero-logo-area {
+    position: absolute; right: 60px; top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+  }
+  .hero-logo-area img {
+    width: clamp(220px, 20vw, 320px);
+    opacity: 0.12;
+    filter: grayscale(1) brightness(3);
+    mix-blend-mode: screen;
+  }
+  .hero-scroll-hint {
+    position: absolute; bottom: 40px; left: 60px;
+    display: flex; align-items: center; gap: 12px;
+    font-family: var(--font-mono); font-size: 10px;
+    letter-spacing: 2px; color: var(--gray);
+  }
+  .scroll-line {
+    width: 1px; height: 60px; background: var(--yellow);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+  @keyframes scrollPulse {
+    0%,100% { transform: scaleY(1); opacity:1; }
+    50% { transform: scaleY(0.4); opacity:0.3; }
+  }
+
+  /* ── STATS STRIP ── */
+  #stats {
+    background: var(--yellow);
+    padding: 50px 60px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    position: relative;
+    z-index: 2;
+  }
+  .stat-item {
+    text-align: center;
+    padding: 0 20px;
+    border-right: 1px solid rgba(0,0,0,0.12);
+  }
+  .stat-item:last-child { border-right: none; }
+  .stat-num {
+    font-family: var(--font-display);
+    font-size: 72px;
+    color: var(--black);
+    line-height: 1;
+  }
+  .stat-suffix { font-family: var(--font-display); font-size: 42px; color: var(--black); }
+  .stat-label {
+    font-family: var(--font-cond);
+    font-size: 13px; font-weight: 600;
+    letter-spacing: 2.5px; text-transform: uppercase;
+    color: rgba(0,0,0,0.55);
+    margin-top: 6px;
+  }
+
+  /* ── SECTION BASE ── */
+  section { padding: 110px 60px; }
+  .section-label {
+    font-family: var(--font-mono);
+    font-size: 10px; letter-spacing: 4px;
+    color: var(--yellow); text-transform: uppercase;
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 16px;
+  }
+  .section-label::before {
+    content:''; display:inline-block; width:24px; height:1px; background:var(--yellow);
+  }
+  .section-h2 {
+    font-family: var(--font-display);
+    font-size: clamp(44px, 5vw, 72px);
+    line-height: 1;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+  }
+  .section-divider {
+    width: 60px; height: 2px; background: var(--yellow);
+    margin-bottom: 40px;
+  }
+
+  /* ── SOBRE ── */
+  #sobre { background: var(--dark); position: relative; overflow: hidden; }
+  .sobre-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  .sobre-text p {
+    font-size: 15px; line-height: 1.9;
+    color: rgba(245,245,240,0.6);
+    margin-bottom: 20px;
+  }
+  .sobre-highlight {
+    font-family: var(--font-cond);
+    font-size: 22px; font-weight: 400;
+    color: var(--white); line-height: 1.4;
+    border-left: 3px solid var(--yellow);
+    padding-left: 24px;
+    margin: 36px 0;
+  }
+  .sobre-logos {
+    display: flex; flex-direction: column; gap: 24px;
+  }
+  .credential-card {
+    background: var(--dark2);
+    border: 1px solid rgba(245,194,0,0.1);
+    padding: 20px 28px;
+    display: flex; align-items: center; gap: 20px;
+    transition: border-color 0.3s, transform 0.3s;
+    position: relative; overflow: hidden;
+  }
+  .credential-card::before {
+    content:''; position:absolute; left:0; top:0; bottom:0;
+    width:3px; background:var(--yellow);
+    transform: scaleY(0);
+    transition: transform 0.3s;
+  }
+  .credential-card:hover::before { transform: scaleY(1); }
+  .credential-card:hover { border-color: rgba(245,194,0,0.3); transform: translateX(6px); }
+  .cred-icon {
+    width: 48px; height: 48px; flex-shrink: 0;
+    background: var(--yellow-glow);
+    border: 1px solid rgba(245,194,0,0.2);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-display);
+    font-size: 16px; color: var(--yellow);
+  }
+  .cred-name {
+    font-family: var(--font-cond);
+    font-size: 16px; font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 2px;
+  }
+  .cred-full {
+    font-size: 12px; color: var(--gray); line-height: 1.4;
+  }
+
+  /* ── SERVIÇOS ── */
+  #servicos { background: var(--black); position: relative; }
+  .servicos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(245,194,0,0.08);
+    border: 1px solid rgba(245,194,0,0.08);
+    margin-top: 60px;
+  }
+  .service-card {
+    background: var(--dark);
+    padding: 52px 40px;
+    position: relative; overflow: hidden;
+    transition: background 0.4s;
+    cursor: default;
+  }
+  .service-card::after {
+    content:''; position:absolute;
+    bottom:0; left:0; right:100%;
+    height:2px; background:var(--yellow);
+    transition: right 0.5s ease;
+  }
+  .service-card:hover::after { right:0; }
+  .service-card:hover { background: var(--dark2); }
+  .service-num {
+    font-family: var(--font-display);
+    font-size: 80px; line-height:1;
+    color: rgba(245,194,0,0.07);
+    position: absolute; top: 28px; right: 32px;
+    transition: color 0.4s;
+  }
+  .service-card:hover .service-num { color: rgba(245,194,0,0.12); }
+  .service-icon {
+    width: 52px; height: 52px;
+    margin-bottom: 28px;
+  }
+  .service-title {
+    font-family: var(--font-cond);
+    font-size: 26px; font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+  }
+  .service-desc {
+    font-size: 14px; line-height: 1.8;
+    color: rgba(245,245,240,0.5);
+    margin-bottom: 28px;
+  }
+  .service-tags {
+    display: flex; flex-wrap: wrap; gap: 8px;
+  }
+  .tag {
+    font-family: var(--font-mono);
+    font-size: 10px; letter-spacing: 1.5px;
+    text-transform: uppercase;
+    border: 1px solid rgba(245,194,0,0.2);
+    color: rgba(245,194,0,0.6);
+    padding: 4px 10px;
+  }
+
+  /* ── DIFERENCIAIS ── */
+  #diferenciais { background: var(--dark); }
+  .diff-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    margin-top: 60px;
+  }
+  .diff-item { position: relative; }
+  .diff-item::before {
+    content: attr(data-n);
+    font-family: var(--font-display);
+    font-size: 100px; line-height:1;
+    color: rgba(245,194,0,0.05);
+    position: absolute; top:-20px; left:-8px;
+    transition: color 0.4s;
+  }
+  .diff-item:hover::before { color: rgba(245,194,0,0.1); }
+  .diff-icon-wrap {
+    width: 44px; height: 44px;
+    border: 1px solid rgba(245,194,0,0.2);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 20px;
+    position: relative; z-index:1;
+  }
+  .diff-title {
+    font-family: var(--font-cond);
+    font-size: 19px; font-weight: 600;
+    margin-bottom: 10px;
+    position: relative; z-index:1;
+  }
+  .diff-text {
+    font-size: 13px; line-height:1.8;
+    color: rgba(245,245,240,0.45);
+    position: relative; z-index:1;
+  }
+
+  /* ── PORTFOLIO ── */
+  #portfolio { background: var(--black); padding-bottom: 60px; }
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3px;
+    margin-top: 60px;
+  }
+  .portfolio-item {
+    position: relative; overflow: hidden;
+    aspect-ratio: 1/1;
+    background: var(--dark2);
+    cursor: pointer;
+  }
+  .portfolio-item img {
+    width:100%; height:100%; object-fit:cover;
+    transition: transform 0.6s, filter 0.6s;
+    filter: grayscale(0.4) brightness(0.7);
+  }
+  .portfolio-item:hover img { transform: scale(1.08); filter: grayscale(0) brightness(0.9); }
+  .portfolio-overlay {
+    position: absolute; inset:0;
+    background: linear-gradient(transparent 40%, rgba(8,8,8,0.9));
+    opacity:0; transition: opacity 0.4s;
+    display:flex; flex-direction:column;
+    justify-content:flex-end; padding:20px;
+  }
+  .portfolio-item:hover .portfolio-overlay { opacity:1; }
+  .portfolio-overlay-title {
+    font-family: var(--font-cond);
+    font-size: 16px; font-weight:600;
+    color: var(--white);
+  }
+  .portfolio-overlay-tag {
+    font-family: var(--font-mono);
+    font-size: 10px; color: var(--yellow);
+    letter-spacing: 1.5px; margin-bottom: 4px;
+  }
+  .port-placeholder {
+    width:100%; height:100%;
+    display:flex; align-items:center; justify-content:center;
+  }
+
+  /* ── PROCESSO ── */
+  #processo {
+    background: var(--yellow);
+    padding: 80px 60px;
+    position: relative; overflow: hidden;
+  }
+  #processo .section-h2 { color: var(--black); }
+  #processo .section-label { color: rgba(0,0,0,0.4); }
+  #processo .section-label::before { background: rgba(0,0,0,0.4); }
+  #processo .section-divider { background: var(--black); }
+  .processo-steps {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+    margin-top: 60px;
+    position: relative;
+  }
+  .processo-steps::before {
+    content:'';
+    position:absolute; top:28px; left:10%; right:10%;
+    height:1px; background:rgba(0,0,0,0.2);
+  }
+  .step {
+    text-align:center; padding: 0 16px;
+    position: relative;
+  }
+  .step-dot {
+    width: 56px; height: 56px;
+    background: var(--black);
+    border-radius: 50%;
+    display: flex; align-items:center; justify-content:center;
+    margin: 0 auto 20px;
+    position: relative; z-index:1;
+    transition: transform 0.3s;
+  }
+  .step:hover .step-dot { transform: scale(1.1); }
+  .step-num {
+    font-family: var(--font-display);
+    font-size: 22px; color: var(--yellow);
+  }
+  .step-title {
+    font-family: var(--font-cond);
+    font-size: 15px; font-weight:700;
+    color: var(--black); letter-spacing:1px;
+    margin-bottom: 8px;
+  }
+  .step-desc {
+    font-size: 12px; color: rgba(0,0,0,0.5);
+    line-height:1.6;
+  }
+
+  /* ── CONTATO ── */
+  #contato { background: var(--dark); padding: 110px 60px; }
+  .contato-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .contato-info .section-h2 { margin-bottom: 10px; }
+  .contato-info p {
+    font-size: 15px; color: rgba(245,245,240,0.5);
+    line-height:1.8; margin-bottom: 40px;
+  }
+  .contact-item {
+    display: flex; align-items:flex-start; gap:16px;
+    margin-bottom: 28px;
+  }
+  .contact-icon {
+    width: 40px; height: 40px; flex-shrink:0;
+    background: var(--yellow-glow);
+    border: 1px solid rgba(245,194,0,0.2);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .contact-label {
+    font-family: var(--font-mono);
+    font-size: 10px; color: var(--yellow);
+    letter-spacing: 2px; text-transform:uppercase;
+    margin-bottom: 4px;
+  }
+  .contact-value {
+    font-family: var(--font-cond);
+    font-size: 17px; font-weight:400;
+    color: var(--white);
+  }
+  /* Form */
+  .form-group { margin-bottom: 20px; }
+  .form-label {
+    font-family: var(--font-mono);
+    font-size: 10px; letter-spacing: 2.5px;
+    color: var(--yellow); text-transform:uppercase;
+    display:block; margin-bottom: 8px;
+  }
+  .form-input, .form-textarea {
+    width:100%;
+    background: rgba(245,194,0,0.03);
+    border: 1px solid rgba(245,194,0,0.12);
+    color: var(--white);
+    font-family: var(--font-body);
+    font-size: 15px;
+    padding: 14px 18px;
+    outline: none;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .form-input:focus, .form-textarea:focus {
+    border-color: var(--yellow);
+    background: rgba(245,194,0,0.06);
+  }
+  .form-textarea { height: 130px; resize: vertical; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .form-submit {
+    width:100%;
+    background: var(--yellow);
+    color: var(--black);
+    border: none;
+    font-family: var(--font-cond);
+    font-size: 14px; font-weight:700;
+    letter-spacing: 3px; text-transform:uppercase;
+    padding: 18px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+    margin-top: 8px;
+  }
+  .form-submit:hover { background: #ffd426; transform: translateY(-2px); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--black);
+    border-top: 1px solid rgba(245,194,0,0.1);
+    padding: 40px 60px;
+    display: flex; align-items:center; justify-content: space-between;
+  }
+  .footer-logo img { height: 36px; opacity:0.7; }
+  .footer-copy {
+    font-family: var(--font-mono);
+    font-size: 11px; color: rgba(245,245,240,0.2);
+    letter-spacing: 1px;
+  }
+  .footer-links {
+    display: flex; gap: 28px; list-style:none;
+  }
+  .footer-links a {
+    font-family: var(--font-cond);
+    font-size: 12px; font-weight:600;
+    letter-spacing: 2px; text-transform:uppercase;
+    color: rgba(245,245,240,0.3);
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--yellow); }
+
+  /* ── ANIMATIONS ── */
+  .reveal {
+    opacity: 0; transform: translateY(40px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity:1; transform: translateY(0); }
+  .reveal-left {
+    opacity:0; transform: translateX(-40px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal-left.visible { opacity:1; transform: translateX(0); }
+  .reveal-right {
+    opacity:0; transform: translateX(40px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal-right.visible { opacity:1; transform: translateX(0); }
+
+  /* Logo scroll animation overlay */
+  #logo-particles {
+    position: fixed; inset:0; pointer-events:none; z-index:0;
+    overflow:hidden;
+  }
+  .geo-particle {
+    position:absolute;
+    opacity: 0.04;
+    transition: opacity 0.5s;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    nav { padding: 20px 30px; }
+    nav.scrolled { padding: 12px 30px; }
+    #hero { padding: 110px 30px 70px; }
+    .hero-logo-area { display:none; }
+    section { padding: 80px 30px; }
+    #stats { grid-template-columns: repeat(2, 1fr); padding: 40px 30px; gap: 1px; background: rgba(0,0,0,0.1); }
+    .stat-item { border: none; padding: 30px 20px; }
+    .sobre-wrap { grid-template-columns: 1fr; gap: 50px; }
+    .servicos-grid { grid-template-columns: 1fr; }
+    .diff-grid { grid-template-columns: repeat(2, 1fr); }
+    .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+    .processo-steps { grid-template-columns: repeat(3, 1fr); gap: 30px; }
+    .processo-steps::before { display:none; }
+    .contato-wrap { grid-template-columns: 1fr; gap: 50px; }
+    footer { flex-direction:column; gap: 24px; text-align:center; }
+    .nav-links { display:none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Logo particles overlay -->
+<div id="logo-particles">
+  <svg id="geo-svg" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;"></svg>
+</div>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <a href="#hero" class="nav-logo">
+    <img src="https://www.sadl.com.br/wp-content/themes/SADL_2015_new/img/logo.png" alt="SADL">
+  </a>
+  <ul class="nav-links">
+    <li><a href="#sobre">A Empresa</a></li>
+    <li><a href="#servicos">Serviços</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#processo">Processo</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+  <a href="#contato" class="nav-cta">Solicitar Orçamento</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-scan"></div>
+
+  <div class="hero-logo-area">
+    <img src="https://www.sadl.com.br/wp-content/themes/SADL_2015_new/img/logo.png" alt="SADL">
+  </div>
+
+  <!-- Geometric SVG elements inspired by logo -->
+  <svg class="hero-geo" xmlns="http://www.w3.org/2000/svg">
+    <!-- Crosshair top-right -->
+    <g id="ch1" transform="translate(75%, 20%)" opacity="0.18">
+      <line x1="0" y1="-40" x2="0" y2="-12" stroke="#F5C200" stroke-width="1"/>
+      <line x1="0" y1="12" x2="0" y2="40" stroke="#F5C200" stroke-width="1"/>
+      <line x1="-40" y1="0" x2="-12" y2="0" stroke="#F5C200" stroke-width="1"/>
+      <line x1="12" y1="0" x2="40" y2="0" stroke="#F5C200" stroke-width="1"/>
+      <circle cx="0" cy="0" r="10" fill="none" stroke="#F5C200" stroke-width="0.8"/>
+      <circle cx="0" cy="0" r="2" fill="#F5C200"/>
+    </g>
+    <!-- Triangle bottom-left -->
+    <g id="tri1" transform="translate(8%, 78%)" opacity="0.12">
+      <polygon points="0,-50 43,25 -43,25" fill="none" stroke="#F5C200" stroke-width="1"/>
+      <polygon points="0,-28 24,14 -24,14" fill="none" stroke="#F5C200" stroke-width="0.5"/>
+    </g>
+    <!-- Corner bracket top-left -->
+    <g id="brk1" transform="translate(5%, 12%)" opacity="0.14">
+      <path d="M-20,20 L-20,-20 L20,-20" fill="none" stroke="#F5C200" stroke-width="1.2"/>
+    </g>
+    <!-- Corner bracket bottom-right -->
+    <g id="brk2" transform="translate(92%, 88%)" opacity="0.14">
+      <path d="M20,-20 L20,20 L-20,20" fill="none" stroke="#F5C200" stroke-width="1.2"/>
+    </g>
+    <!-- Dashed circle center-right -->
+    <g id="circ1" transform="translate(88%, 50%)" opacity="0.08">
+      <circle cx="0" cy="0" r="80" fill="none" stroke="#F5C200" stroke-width="0.8" stroke-dasharray="4,8"/>
+      <circle cx="0" cy="0" r="40" fill="none" stroke="#F5C200" stroke-width="0.5" stroke-dasharray="2,6"/>
+    </g>
+    <!-- Tick marks vertical -->
+    <g id="ticks1" transform="translate(3%, 50%)" opacity="0.15">
+      <line x1="0" y1="-120" x2="0" y2="120" stroke="#F5C200" stroke-width="0.5"/>
+      <line x1="-6" y1="-80" x2="6" y2="-80" stroke="#F5C200" stroke-width="1"/>
+      <line x1="-4" y1="-40" x2="4" y2="-40" stroke="#F5C200" stroke-width="0.8"/>
+      <line x1="-6" y1="0" x2="6" y2="0" stroke="#F5C200" stroke-width="1"/>
+      <line x1="-4" y1="40" x2="4" y2="40" stroke="#F5C200" stroke-width="0.8"/>
+      <line x1="-6" y1="80" x2="6" y2="80" stroke="#F5C200" stroke-width="1"/>
+    </g>
+    <!-- Diamond -->
+    <g id="dmd1" transform="translate(60%, 85%)" opacity="0.1">
+      <polygon points="0,-30 30,0 0,30 -30,0" fill="none" stroke="#F5C200" stroke-width="0.8"/>
+      <polygon points="0,-14 14,0 0,14 -14,0" fill="none" stroke="#F5C200" stroke-width="0.5"/>
+    </g>
+  </svg>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">Fundada em 2011 · Simões Filho – BA</div>
+    <h1 class="hero-h1">SADL<br><span>ENGENHARIA</span></h1>
+    <p class="hero-sub">Precisão · Eficiência · Resultado</p>
+    <p class="hero-desc">
+      Soluções completas em geomensura, estudos ambientais e consultoria técnica.
+      Comprometidos com a qualidade e o desenvolvimento sustentável da Bahia.
+    </p>
+    <div class="hero-actions">
+      <a href="#servicos" class="btn-primary">Nossos Serviços</a>
+      <a href="#contato" class="btn-ghost">Fale Conosco</a>
+    </div>
+  </div>
+
+  <div class="hero-scroll-hint">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- STATS -->
+<div id="stats">
+  <div class="stat-item reveal">
+    <div class="stat-num"><span class="count" data-target="13">0</span><span class="stat-suffix">+</span></div>
+    <div class="stat-label">Anos de Mercado</div>
+  </div>
+  <div class="stat-item reveal">
+    <div class="stat-num"><span class="count" data-target="200">0</span><span class="stat-suffix">+</span></div>
+    <div class="stat-label">Projetos Concluídos</div>
+  </div>
+  <div class="stat-item reveal">
+    <div class="stat-num"><span class="count" data-target="3">0</span></div>
+    <div class="stat-label">Órgãos Reguladores</div>
+  </div>
+  <div class="stat-item reveal">
+    <div class="stat-num"><span class="count" data-target="100">0</span><span class="stat-suffix">%</span></div>
+    <div class="stat-label">Foco em Qualidade</div>
+  </div>
+</div>
+
+<!-- SOBRE -->
+<section id="sobre">
+  <div class="sobre-wrap">
+    <div class="sobre-text reveal-left">
+      <div class="section-label">A Empresa</div>
+      <h2 class="section-h2">Quem Somos</h2>
+      <div class="section-divider"></div>
+      <p>
+        Criada em 2011, a SADL Soluções de Engenharia nasceu com o objetivo de prestar serviços de excelência voltados à geomensura, estudos ambientais e consultoria técnica, focando no desenvolvimento sustentável da Bahia.
+      </p>
+      <div class="sobre-highlight">
+        Nossa equipe é formada por profissionais qualificados que buscam o aprimoramento constante, adotando as melhores práticas do mercado.
+      </div>
+      <p>
+        O propósito da empresa é oferecer serviços com qualidade para o mercado baiano, satisfazendo o cliente interno e externo, buscando alcançar a liderança do mercado nesse segmento.
+      </p>
+      <br>
+      <a href="#contato" class="btn-primary" style="display:inline-block">Conheça Nosso Trabalho</a>
+    </div>
+    <div class="sobre-logos reveal-right">
+      <div class="section-label" style="margin-bottom:28px;">Credenciamentos</div>
+      <div class="credential-card">
+        <div class="cred-icon">INEMA</div>
+        <div>
+          <div class="cred-name">INEMA</div>
+          <div class="cred-full">Instituto do Meio Ambiente e Recursos Hídricos</div>
+        </div>
+      </div>
+      <div class="credential-card">
+        <div class="cred-icon">IBAMA</div>
+        <div>
+          <div class="cred-name">IBAMA</div>
+          <div class="cred-full">Instituto Brasileiro do Meio Ambiente e dos Recursos Naturais Renováveis</div>
+        </div>
+      </div>
+      <div class="credential-card">
+        <div class="cred-icon">CREA</div>
+        <div>
+          <div class="cred-name">CREA</div>
+          <div class="cred-full">Conselho Regional de Engenharia e Arquitetura</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVIÇOS -->
+<section id="servicos">
+  <div class="section-label reveal">Soluções</div>
+  <h2 class="section-h2 reveal">Nossos Serviços</h2>
+  <div class="section-divider reveal"></div>
+
+  <div class="servicos-grid">
+    <div class="service-card reveal">
+      <div class="service-num">01</div>
+      <svg class="service-icon" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="52" height="52" fill="rgba(245,194,0,0.06)"/>
+        <circle cx="26" cy="26" r="14" stroke="#F5C200" stroke-width="1"/>
+        <circle cx="26" cy="26" r="3" fill="#F5C200"/>
+        <line x1="26" y1="4" x2="26" y2="12" stroke="#F5C200" stroke-width="1"/>
+        <line x1="26" y1="40" x2="26" y2="48" stroke="#F5C200" stroke-width="1"/>
+        <line x1="4" y1="26" x2="12" y2="26" stroke="#F5C200" stroke-width="1"/>
+        <line x1="40" y1="26" x2="48" y2="26" stroke="#F5C200" stroke-width="1"/>
+        <circle cx="26" cy="26" r="8" stroke="#F5C200" stroke-width="0.5" stroke-dasharray="2,3"/>
+      </svg>
+      <h3 class="service-title">Geomensura</h3>
+      <p class="service-desc">Levantamentos topográficos, georreferenciamentos rurais e urbanos, medição de volumes e CEFIR com alta precisão técnica.</p>
+      <div class="service-tags">
+        <span class="tag">Levantamentos</span>
+        <span class="tag">Georreferenciamento</span>
+        <span class="tag">Volumes</span>
+        <span class="tag">CEFIR</span>
+      </div>
+    </div>
+
+    <div class="service-card reveal">
+      <div class="service-num">02</div>
+      <svg class="service-icon" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="52" height="52" fill="rgba(245,194,0,0.06)"/>
+        <path d="M8 36 Q18 20 26 28 Q34 36 44 16" stroke="#F5C200" stroke-width="1" fill="none"/>
+        <circle cx="8" cy="36" r="2" fill="#F5C200"/>
+        <circle cx="44" cy="16" r="2" fill="#F5C200"/>
+        <rect x="20" y="32" width="12" height="10" stroke="#F5C200" stroke-width="0.8" rx="1"/>
+        <line x1="26" y1="32" x2="26" y2="26" stroke="#F5C200" stroke-width="0.8"/>
+      </svg>
+      <h3 class="service-title">Estudos Ambientais</h3>
+      <p class="service-desc">Licenciamentos, RCE, PEA, PGR, PRAD, PGRS e PGRCC. Suporte completo em gestão ambiental para seu empreendimento.</p>
+      <div class="service-tags">
+        <span class="tag">Licenciamento</span>
+        <span class="tag">PRAD</span>
+        <span class="tag">PGR</span>
+        <span class="tag">PGRS</span>
+      </div>
+    </div>
+
+    <div class="service-card reveal">
+      <div class="service-num">03</div>
+      <svg class="service-icon" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="52" height="52" fill="rgba(245,194,0,0.06)"/>
+        <rect x="10" y="28" width="8" height="14" stroke="#F5C200" stroke-width="1"/>
+        <rect x="22" y="20" width="8" height="22" stroke="#F5C200" stroke-width="1"/>
+        <rect x="34" y="12" width="8" height="30" stroke="#F5C200" stroke-width="1"/>
+        <line x1="8" y1="42" x2="44" y2="42" stroke="#F5C200" stroke-width="1"/>
+        <polyline points="10,28 22,20 34,12" stroke="#F5C200" stroke-width="0.8" stroke-dasharray="2,3"/>
+      </svg>
+      <h3 class="service-title">Consultoria Técnica</h3>
+      <p class="service-desc">Consultoria em eficiência energética, estudos de viabilidade técnica e econômica, projetos geométricos, agrários e geológicos.</p>
+      <div class="service-tags">
+        <span class="tag">Eficiência Energética</span>
+        <span class="tag">Viabilidade</span>
+        <span class="tag">Projetos</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIFERENCIAIS -->
+<section id="diferenciais">
+  <div class="section-label reveal">Por que SADL</div>
+  <h2 class="section-h2 reveal">Nossos Diferenciais</h2>
+  <div class="section-divider reveal"></div>
+  <div class="diff-grid">
+    <div class="diff-item reveal" data-n="01">
+      <div class="diff-icon-wrap">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <circle cx="10" cy="10" r="8" stroke="#F5C200" stroke-width="1"/>
+          <path d="M6 10l3 3 5-5" stroke="#F5C200" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <h4 class="diff-title">Credenciamento Nacional</h4>
+      <p class="diff-text">Registrados no INEMA, IBAMA e CREA, garantindo conformidade legal total em todos os projetos.</p>
+    </div>
+    <div class="diff-item reveal" data-n="02">
+      <div class="diff-icon-wrap">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <polygon points="10,2 12,8 18,8 13,12 15,18 10,14 5,18 7,12 2,8 8,8" stroke="#F5C200" stroke-width="1" fill="none"/>
+        </svg>
+      </div>
+      <h4 class="diff-title">Tecnologia de Ponta</h4>
+      <p class="diff-text">Cobertura aérea com drones e equipamentos RTK para levantamentos com precisão milimétrica.</p>
+    </div>
+    <div class="diff-item reveal" data-n="03">
+      <div class="diff-icon-wrap">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <rect x="3" y="3" width="14" height="14" rx="1" stroke="#F5C200" stroke-width="1"/>
+          <line x1="3" y1="8" x2="17" y2="8" stroke="#F5C200" stroke-width="0.8"/>
+          <line x1="8" y1="8" x2="8" y2="17" stroke="#F5C200" stroke-width="0.8"/>
+        </svg>
+      </div>
+      <h4 class="diff-title">Equipe Especializada</h4>
+      <p class="diff-text">Profissionais qualificados em aprimoramento constante, adotando as melhores práticas de engenharia do mercado.</p>
+    </div>
+    <div class="diff-item reveal" data-n="04">
+      <div class="diff-icon-wrap">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M10 2L18 6v8l-8 4L2 14V6z" stroke="#F5C200" stroke-width="1" fill="none"/>
+          <line x1="10" y1="2" x2="10" y2="18" stroke="#F5C200" stroke-width="0.5" stroke-dasharray="2,2"/>
+          <line x1="2" y1="6" x2="18" y2="6" stroke="#F5C200" stroke-width="0.5" stroke-dasharray="2,2"/>
+        </svg>
+      </div>
+      <h4 class="diff-title">Foco Sustentável</h4>
+      <p class="diff-text">Comprometidos com o desenvolvimento sustentável, integrando responsabilidade ambiental em cada projeto.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <div class="section-label reveal">Trabalhos</div>
+  <h2 class="section-h2 reveal">Portfólio</h2>
+  <div class="section-divider reveal"></div>
+  <div class="portfolio-grid">
+    <div class="portfolio-item reveal">
+      <img src="https://www.sadl.com.br/wp-content/uploads/2018/11/imagem_vant-320x320.jpg" alt="Imagem com VANT" loading="lazy">
+      <div class="portfolio-overlay">
+        <div class="portfolio-overlay-tag">Geomensura</div>
+        <div class="portfolio-overlay-title">Imagem com VANT</div>
+      </div>
+    </div>
+    <div class="portfolio-item reveal">
+      <img src="https://www.sadl.com.br/wp-content/uploads/2018/11/imagem_comdrone-320x320.jpg" alt="Imagem com Drone" loading="lazy">
+      <div class="portfolio-overlay">
+        <div class="portfolio-overlay-tag">Geomensura</div>
+        <div class="portfolio-overlay-title">Cobertura Aérea com Drone</div>
+      </div>
+    </div>
+    <div class="portfolio-item reveal">
+      <img src="https://www.sadl.com.br/wp-content/uploads/2018/11/topografia1-320x320.jpg" alt="Topografia" loading="lazy">
+      <div class="portfolio-overlay">
+        <div class="portfolio-overlay-tag">Topografia</div>
+        <div class="portfolio-overlay-title">Topografia e Cartografia</div>
+      </div>
+    </div>
+    <div class="portfolio-item reveal">
+      <img src="https://www.sadl.com.br/wp-content/uploads/2018/11/topografia2-320x320.jpg" alt="Topografia 2" loading="lazy">
+      <div class="portfolio-overlay">
+        <div class="portfolio-overlay-tag">Topografia</div>
+        <div class="portfolio-overlay-title">Levantamento Topográfico</div>
+      </div>
+    </div>
+    <div class="portfolio-item reveal">
+      <img src="https://www.sadl.com.br/wp-content/uploads/2018/11/ragularizacao_fundiaria-320x320.jpg" alt="Regularização" loading="lazy">
+      <div class="portfolio-overlay">
+        <div class="portfolio-overlay-tag">Regularização</div>
+        <div class="portfolio-overlay-title">Regularização Fundiária</div>
+      </div>
+    </div>
+    <div class="portfolio-item reveal">
+      <img src="https://www.sadl.com.br/wp-content/uploads/2018/11/ragularizacao_fundiaria2-320x320.jpg" alt="Regularização 2" loading="lazy">
+      <div class="portfolio-overlay">
+        <div class="portfolio-overlay-tag">Regularização</div>
+        <div class="portfolio-overlay-title">Regularização Fundiária</div>
+      </div>
+    </div>
+    <div class="portfolio-item reveal">
+      <img src="https://www.sadl.com.br/wp-content/uploads/2018/11/topografia5-320x320.jpg" alt="Topografia 5" loading="lazy">
+      <div class="portfolio-overlay">
+        <div class="portfolio-overlay-tag">Topografia</div>
+        <div class="portfolio-overlay-title">Topografia e Cartografia</div>
+      </div>
+    </div>
+    <div class="portfolio-item reveal">
+      <img src="https://www.sadl.com.br/wp-content/uploads/2018/11/topografia4-320x320.jpg" alt="Topografia 4" loading="lazy">
+      <div class="portfolio-overlay">
+        <div class="portfolio-overlay-tag">Topografia</div>
+        <div class="portfolio-overlay-title">Levantamento Detalhado</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESSO -->
+<section id="processo">
+  <div class="section-label reveal">Como Trabalhamos</div>
+  <h2 class="section-h2 reveal" style="color:var(--black)">Nosso Processo</h2>
+  <div class="section-divider reveal" style="background:var(--black)"></div>
+  <div class="processo-steps">
+    <div class="step reveal">
+      <div class="step-dot"><span class="step-num">01</span></div>
+      <h4 class="step-title">Diagnóstico</h4>
+      <p class="step-desc">Análise completa das necessidades e escopo do projeto</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-dot"><span class="step-num">02</span></div>
+      <h4 class="step-title">Planejamento</h4>
+      <p class="step-desc">Definição de metodologia e cronograma detalhado</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-dot"><span class="step-num">03</span></div>
+      <h4 class="step-title">Execução</h4>
+      <p class="step-desc">Trabalho de campo com equipamentos de alta precisão</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-dot"><span class="step-num">04</span></div>
+      <h4 class="step-title">Análise</h4>
+      <p class="step-desc">Processamento e validação rigorosa dos dados coletados</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-dot"><span class="step-num">05</span></div>
+      <h4 class="step-title">Entrega</h4>
+      <p class="step-desc">Relatório técnico completo e suporte pós-entrega</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section id="contato">
+  <div class="contato-wrap">
+    <div class="contato-info reveal-left">
+      <div class="section-label">Fale Conosco</div>
+      <h2 class="section-h2">Vamos<br><span style="color:var(--yellow)">Trabalhar</span><br>Juntos</h2>
+      <div class="section-divider"></div>
+      <p>Pronto para iniciar seu projeto? Entre em contato conosco e nossa equipe técnica irá apresentar as melhores soluções para sua necessidade.</p>
+      <div class="contact-item">
+        <div class="contact-icon">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path d="M3 3h12v12H3z" stroke="#F5C200" stroke-width="1" fill="none"/>
+            <path d="M3 3l6 6 6-6" stroke="#F5C200" stroke-width="1"/>
+          </svg>
+        </div>
+        <div>
+          <div class="contact-label">E-mail</div>
+          <a href="mailto:contato@sadl.com.br" class="contact-value">contato@sadl.com.br</a>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <rect x="3" y="2" width="12" height="14" rx="2" stroke="#F5C200" stroke-width="1" fill="none"/>
+            <line x1="6" y1="6" x2="12" y2="6" stroke="#F5C200" stroke-width="0.8"/>
+            <line x1="6" y1="9" x2="12" y2="9" stroke="#F5C200" stroke-width="0.8"/>
+            <line x1="6" y1="12" x2="9" y2="12" stroke="#F5C200" stroke-width="0.8"/>
+          </svg>
+        </div>
+        <div>
+          <div class="contact-label">WhatsApp</div>
+          <a href="https://wa.me/5571996783783" target="_blank" class="contact-value">(71) 99678-3783</a>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <circle cx="9" cy="8" r="4" stroke="#F5C200" stroke-width="1" fill="none"/>
+            <path d="M4 16c0-3 10-3 10 0" stroke="#F5C200" stroke-width="1"/>
+          </svg>
+        </div>
+        <div>
+          <div class="contact-label">Endereço</div>
+          <div class="contact-value" style="font-size:14px;line-height:1.5">Rua Santa Rita, nº 22, Eng. Novo<br>43700-000, Simões Filho – BA</div>
+        </div>
+      </div>
+    </div>
+    <div class="reveal-right">
+      <form id="contactForm" onsubmit="enviarWhatsApp(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Nome</label>
+            <input type="text" id="f-nome" class="form-input" placeholder="Seu nome completo" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Empresa</label>
+            <input type="text" id="f-empresa" class="form-input" placeholder="Nome da empresa">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">E-mail</label>
+            <input type="email" id="f-email" class="form-input" placeholder="seu@email.com">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Telefone</label>
+            <input type="tel" id="f-telefone" class="form-input" placeholder="(XX) XXXXX-XXXX">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Serviço de Interesse</label>
+          <select id="f-servico" class="form-input" style="appearance:none;cursor:pointer;" required>
+            <option value="" disabled selected>Selecione um serviço</option>
+            <option>Geomensura / Topografia</option>
+            <option>Regularização Fundiária</option>
+            <option>Estudos Ambientais</option>
+            <option>Consultoria Técnica</option>
+            <option>Eficiência Energética</option>
+            <option>Outro</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Mensagem</label>
+          <textarea id="f-mensagem" class="form-textarea" placeholder="Descreva seu projeto ou necessidade..."></textarea>
+        </div>
+        <button type="submit" class="form-submit">Enviar pelo WhatsApp →</button>
+      </form>
+
+      <script>
+        function enviarWhatsApp(e) {
+          e.preventDefault();
+          const nome     = document.getElementById('f-nome').value.trim();
+          const empresa  = document.getElementById('f-empresa').value.trim();
+          const email    = document.getElementById('f-email').value.trim();
+          const telefone = document.getElementById('f-telefone').value.trim();
+          const servico  = document.getElementById('f-servico').value;
+          const mensagem = document.getElementById('f-mensagem').value.trim();
+
+          let texto = `*Nova solicitação via site – SADL*\n\n`;
+          texto += `*Nome:* ${nome}\n`;
+          if (empresa)  texto += `*Empresa:* ${empresa}\n`;
+          if (email)    texto += `*E-mail:* ${email}\n`;
+          if (telefone) texto += `*Telefone:* ${telefone}\n`;
+          texto += `*Serviço:* ${servico}\n`;
+          if (mensagem) texto += `\n*Mensagem:*\n${mensagem}`;
+
+          const url = `https://wa.me/5571996783783?text=${encodeURIComponent(texto)}`;
+          window.open(url, '_blank');
+        }
+      </script>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <img src="https://www.sadl.com.br/wp-content/themes/SADL_2015_new/img/logo.png" alt="SADL">
+  </div>
+  <ul class="footer-links">
+    <li><a href="#sobre">Empresa</a></li>
+    <li><a href="#servicos">Serviços</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+  <div class="footer-copy">© 2024 SADL Soluções de Engenharia · Simões Filho – BA</div>
+</footer>
+
+<script>
+// ── NAV scroll ──
+const nav = document.getElementById('main-nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// ── Intersection Observer reveal ──
+const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      // stagger siblings
+      const siblings = [...entry.target.parentElement.children].filter(c =>
+        c.classList.contains('reveal') || c.classList.contains('reveal-left') || c.classList.contains('reveal-right')
+      );
+      const idx = siblings.indexOf(entry.target);
+      setTimeout(() => {
+        entry.target.classList.add('visible');
+      }, idx * 80);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15 });
+revealEls.forEach(el => observer.observe(el));
+
+// ── Counter animation ──
+const counters = document.querySelectorAll('.count');
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const target = parseInt(entry.target.dataset.target);
+      let current = 0;
+      const duration = 1400;
+      const step = target / (duration / 16);
+      const timer = setInterval(() => {
+        current = Math.min(current + step, target);
+        entry.target.textContent = Math.floor(current);
+        if (current >= target) clearInterval(timer);
+      }, 16);
+      counterObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.5 });
+counters.forEach(c => counterObserver.observe(c));
+
+// ── Geometric logo particles on scroll ──
+(function() {
+  const svg = document.getElementById('geo-svg');
+  const W = window.innerWidth;
+  const H = window.innerHeight;
+
+  // Build floating geometric shapes from logo elements
+  const shapes = [
+    // Crosshair shapes
+    { type: 'crosshair', x: 0.12, y: 0.35, size: 60, speed: 0.15, phase: 0 },
+    { type: 'crosshair', x: 0.85, y: 0.65, size: 45, speed: 0.10, phase: Math.PI },
+    { type: 'triangle', x: 0.05, y: 0.75, size: 70, speed: 0.20, phase: 0.5 },
+    { type: 'triangle', x: 0.92, y: 0.20, size: 50, speed: 0.12, phase: 1.2 },
+    { type: 'diamond', x: 0.45, y: 0.90, size: 40, speed: 0.18, phase: 2.1 },
+    { type: 'diamond', x: 0.70, y: 0.08, size: 35, speed: 0.08, phase: 0.3 },
+    { type: 'circle', x: 0.22, y: 0.08, size: 55, speed: 0.14, phase: 1.8 },
+    { type: 'circle', x: 0.78, y: 0.82, size: 65, speed: 0.11, phase: 0.9 },
+  ];
+
+  function makeCrosshair(x, y, s, op) {
+    const g = document.createElementNS('http://www.w3.org/2000/svg','g');
+    g.setAttribute('transform', `translate(${x},${y})`);
+    g.setAttribute('opacity', op);
+    const lines = [
+      [0, -s, 0, -s*0.3],
+      [0, s*0.3, 0, s],
+      [-s, 0, -s*0.3, 0],
+      [s*0.3, 0, s, 0],
+    ];
+    lines.forEach(([x1,y1,x2,y2]) => {
+      const l = document.createElementNS('http://www.w3.org/2000/svg','line');
+      l.setAttribute('x1',x1); l.setAttribute('y1',y1);
+      l.setAttribute('x2',x2); l.setAttribute('y2',y2);
+      l.setAttribute('stroke','#F5C200'); l.setAttribute('stroke-width','0.8');
+      g.appendChild(l);
+    });
+    const c = document.createElementNS('http://www.w3.org/2000/svg','circle');
+    c.setAttribute('cx','0'); c.setAttribute('cy','0');
+    c.setAttribute('r', s*0.22); c.setAttribute('fill','none');
+    c.setAttribute('stroke','#F5C200'); c.setAttribute('stroke-width','0.6');
+    g.appendChild(c);
+    const dot = document.createElementNS('http://www.w3.org/2000/svg','circle');
+    dot.setAttribute('cx','0'); dot.setAttribute('cy','0');
+    dot.setAttribute('r','2'); dot.setAttribute('fill','#F5C200');
+    g.appendChild(dot);
+    return g;
+  }
+  function makeTriangle(x, y, s, op) {
+    const g = document.createElementNS('http://www.w3.org/2000/svg','g');
+    g.setAttribute('transform', `translate(${x},${y})`);
+    g.setAttribute('opacity', op);
+    const p = document.createElementNS('http://www.w3.org/2000/svg','polygon');
+    p.setAttribute('points', `0,${-s} ${s*0.866},${s*0.5} ${-s*0.866},${s*0.5}`);
+    p.setAttribute('fill','none'); p.setAttribute('stroke','#F5C200'); p.setAttribute('stroke-width','0.8');
+    g.appendChild(p);
+    const p2 = document.createElementNS('http://www.w3.org/2000/svg','polygon');
+    p2.setAttribute('points', `0,${-s*0.5} ${s*0.433},${s*0.25} ${-s*0.433},${s*0.25}`);
+    p2.setAttribute('fill','none'); p2.setAttribute('stroke','#F5C200'); p2.setAttribute('stroke-width','0.4');
+    g.appendChild(p2);
+    return g;
+  }
+  function makeDiamond(x, y, s, op) {
+    const g = document.createElementNS('http://www.w3.org/2000/svg','g');
+    g.setAttribute('transform', `translate(${x},${y})`);
+    g.setAttribute('opacity', op);
+    const p = document.createElementNS('http://www.w3.org/2000/svg','polygon');
+    p.setAttribute('points', `0,${-s} ${s},0 0,${s} ${-s},0`);
+    p.setAttribute('fill','none'); p.setAttribute('stroke','#F5C200'); p.setAttribute('stroke-width','0.8');
+    g.appendChild(p);
+    return g;
+  }
+  function makeCircle(x, y, s, op) {
+    const g = document.createElementNS('http://www.w3.org/2000/svg','g');
+    g.setAttribute('transform', `translate(${x},${y})`);
+    g.setAttribute('opacity', op);
+    const c = document.createElementNS('http://www.w3.org/2000/svg','circle');
+    c.setAttribute('cx','0'); c.setAttribute('cy','0'); c.setAttribute('r', s);
+    c.setAttribute('fill','none'); c.setAttribute('stroke','#F5C200');
+    c.setAttribute('stroke-width','0.6'); c.setAttribute('stroke-dasharray','3,6');
+    g.appendChild(c);
+    const c2 = document.createElementNS('http://www.w3.org/2000/svg','circle');
+    c2.setAttribute('cx','0'); c2.setAttribute('cy','0'); c2.setAttribute('r', s*0.5);
+    c2.setAttribute('fill','none'); c2.setAttribute('stroke','#F5C200');
+    c2.setAttribute('stroke-width','0.4');
+    g.appendChild(c2);
+    return g;
+  }
+
+  const svgW = window.innerWidth;
+  const svgH = document.body.scrollHeight || window.innerHeight * 5;
+  svg.setAttribute('viewBox', `0 0 ${svgW} ${svgH}`);
+
+  const shapeEls = shapes.map(s => {
+    const px = s.x * svgW;
+    const py = s.y * (document.body.scrollHeight || svgH);
+    let el;
+    if (s.type === 'crosshair') el = makeCrosshair(px, py, s.size, 0.06);
+    else if (s.type === 'triangle') el = makeTriangle(px, py, s.size, 0.06);
+    else if (s.type === 'diamond') el = makeDiamond(px, py, s.size, 0.06);
+    else el = makeCircle(px, py, s.size, 0.06);
+    svg.appendChild(el);
+    return el;
+  });
+
+  // Animate on scroll – shapes subtly shift based on scroll position
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        const scrollY = window.scrollY;
+        const maxScroll = document.body.scrollHeight - window.innerHeight;
+        const progress = scrollY / Math.max(maxScroll, 1);
+
+        shapes.forEach((s, i) => {
+          const el = shapeEls[i];
+          const svgW = window.innerWidth;
+          const svgH = document.body.scrollHeight;
+          const baseX = s.x * svgW;
+          const baseY = s.y * svgH;
+          // Subtle parallax: different elements move at different rates
+          const drift = Math.sin(progress * Math.PI * 2 + s.phase) * 30 * s.speed * 10;
+          const driftX = Math.cos(progress * Math.PI + s.phase * 0.7) * 20 * s.speed * 8;
+          // Opacity pulses with scroll
+          const op = 0.04 + Math.abs(Math.sin(progress * Math.PI * 3 + s.phase)) * 0.08;
+          el.setAttribute('transform', `translate(${baseX + driftX}, ${baseY + drift})`);
+          el.setAttribute('opacity', op);
+        });
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
+})();
+</script>
+</body>
+</html>
