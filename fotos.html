@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SADL Engenharia | Topografia RTK, Titulação de Terras e Licenciamento Ambiental</title>
+<meta name="description" content="SADL Soluções de Engenharia em Feira de Santana, Bahia. Especialistas em georreferenciamento de alta precisão (RTK), ortofotos com drone, titulação de terras e licenciamento ambiental desde 2011.">
+<meta name="keywords" content="topografia Feira de Santana, georreferenciamento Bahia, titulação de terras Bahia, licenciamento ambiental FSA, CEFIR Bahia, GPS RTK, Ortofotos Drone, SADL engenharia">
+<meta property="og:title" content="SADL Engenharia — Alta Precisão Geodésica e Ambiental">
+<meta property="og:description" content="15 anos de excelência em georreferenciamento RTK, titulação de terras e engenharia ambiental na Bahia.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="favicon.png">
+<style>
+/* ─── RESET & ROOT ─── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --y:#F5C500;
+  --y2:#e6b800;
+  --k:#080808;
+  --k2:#111010;
+  --k3:#1a1918;
+  --g:#F2F0EC;
+  --g2:#E8E5DF;
+  --muted:#8e8982;
+  --line:rgba(255,255,255,0.08);
+  --line-light:rgba(0,0,0,0.09);
+  --r:2px;
+  --trans:.25s ease;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--k);color:#fff;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+img{max-width:100%;display:block}
+::selection{background:var(--y);color:var(--k)}
+
+/* ─── SCROLLBAR ─── */
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:var(--k)}
+::-webkit-scrollbar-thumb{background:var(--y)}
+
+/* ─── SHARED ─── */
+.wrap{max-width:1160px;margin:0 auto;padding:0 2rem}
+.section-num{font-size:11px;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--y);margin-bottom:.75rem;display:block}
+.section-title{font-family:'Fraunces',serif;font-size:clamp(28px,4vw,48px);font-weight:300;line-height:1.1;margin-bottom:1rem}
+.section-sub{font-size:15px;color:var(--muted);max-width:550px;line-height:1.7}
+.divider{width:40px;height:1.5px;background:var(--y);margin:1.25rem 0}
+
+/* ─── ICONS ─── */
+.tech-icon{width:24px;height:24px;stroke:var(--y);stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
+
+/* ─── PHOTO PLACEHOLDER SYSTEM ─── */
+/* Used throughout for all image slots — swap src and remove .ph-overlay */
+.photo-slot{
+  position:relative;overflow:hidden;background:var(--k3);
+  border:1px solid var(--line);
+}
+.photo-slot img{
+  width:100%;height:100%;object-fit:cover;display:block;
+  transition:transform .5s ease;
+}
+.photo-slot:hover img{transform:scale(1.03)}
+/* overlay shown when image is missing / placeholder */
+.ph-overlay{
+  position:absolute;inset:0;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
+  background:var(--k3);pointer-events:none;
+}
+.ph-overlay.hide{display:none} /* add class="hide" once real photo is placed */
+.ph-tag{
+  font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--y);background:rgba(245,197,0,.08);
+  padding:4px 10px;border-radius:2px;margin-bottom:4px;
+}
+.ph-label{font-size:11px;color:rgba(255,255,255,.3);text-align:center;max-width:200px;line-height:1.5}
+.ph-dim{font-size:10px;color:rgba(245,197,0,.25);margin-top:2px}
+.ph-icon{font-size:22px;opacity:.2}
+
+/* ─── HEADER ─── */
+header{
+  position:fixed;top:0;left:0;width:100%;z-index:900;
+  padding:1.25rem 2rem;
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(8,8,8,0.85);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+  transition:all .3s;
+}
+.header-logo{display:flex;align-items:center;gap:12px}
+.logo-img{height:100px;width:auto;object-fit:contain;transition:height 0.4s ease}
+header.scrolled{padding:.4rem 2rem !important;background:rgba(8,8,8,0.98);box-shadow:0 4px 30px rgba(0,0,0,.5)}
+header.scrolled .logo-img{height:45px}
+nav{display:flex;gap:2.5rem;align-items:center}
+nav a{font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.6);transition:color var(--trans)}
+nav a:hover{color:#fff}
+.nav-cta{background:var(--y);color:var(--k);padding:.6rem 1.4rem;border-radius:var(--r);font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;transition:all var(--trans);white-space:nowrap}
+.nav-cta:hover{background:var(--y2);transform:translateY(-1px)}
+.menu-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.menu-toggle span{width:24px;height:1.5px;background:#fff;transition:all .3s}
+@media(max-width:768px){
+  nav.links{display:none;position:fixed;inset:0;background:var(--k);flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;z-index:800}
+  nav.links.open{display:flex}
+  nav.links a{font-size:20px}
+  .menu-toggle{display:flex;z-index:900;position:relative}
+}
+
+/* ─── HERO ─── */
+.hero{min-height:100vh;display:flex;align-items:center;padding:8rem 2rem 5rem;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:var(--k)}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(245,197,0,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(245,197,0,.03) 1px,transparent 1px);background-size:50px 50px}
+.hero-glow{position:absolute;top:-20%;right:-10%;width:600px;height:600px;background:radial-gradient(circle,rgba(245,197,0,.06) 0%,transparent 70%);pointer-events:none}
+.hero-content{position:relative;z-index:1;max-width:1160px;margin:0 auto;width:100%}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--y);margin-bottom:2rem}
+.hero-eyebrow::before{content:'';width:32px;height:1px;background:var(--y)}
+.hero h1{font-family:'Fraunces',serif;font-size:clamp(42px,6.5vw,84px);font-weight:300;line-height:.95;letter-spacing:-.02em;margin-bottom:2rem;max-width:900px}
+.hero h1 em{font-style:italic;color:var(--y)}
+.hero-sub{font-size:clamp(14px,1.5vw,16px);color:rgba(255,255,255,.6);max-width:540px;line-height:1.75;margin-bottom:2.5rem}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:4rem}
+.btn-primary{background:var(--y);color:var(--k);padding:.875rem 2rem;border-radius:var(--r);font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;transition:all var(--trans)}
+.btn-primary:hover{background:var(--y2);transform:translateY(-2px)}
+.btn-ghost{border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.8);padding:.875rem 2rem;border-radius:var(--r);font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;transition:all var(--trans)}
+.btn-ghost:hover{border-color:var(--y);color:var(--y)}
+.hero-badges{display:flex;gap:2rem;flex-wrap:wrap}
+.badge-item{display:flex;align-items:center;gap:8px;font-size:12px;color:rgba(255,255,255,.5);letter-spacing:.05em}
+.badge-item::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--y);flex-shrink:0}
+
+/* Hero photo — full-bleed right column */
+.hero-photo-slot{
+  position:absolute;right:0;top:0;bottom:0;width:38%;
+  border-left:1px solid var(--line);
+  overflow:hidden;
+}
+.hero-photo-slot img{width:100%;height:100%;object-fit:cover}
+.hero-photo-slot .ph-overlay{background:var(--k3)}
+@media(max-width:900px){.hero-photo-slot{display:none}.hero h1{font-size:clamp(38px,9vw,62px)}}
+
+/* ─── NUMBERS BAR ─── */
+.numbers{background:var(--y);color:var(--k);padding:2rem 2rem}
+.numbers-inner{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.num-item{padding:1rem 2rem;border-right:1px solid rgba(0,0,0,.1);display:flex;flex-direction:column;align-items:flex-start}
+.num-item:last-child{border-right:none}
+.num-val{font-family:'Fraunces',serif;font-size:clamp(28px,3vw,40px);font-weight:700;line-height:1;margin-bottom:4px}
+.num-label{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.7}
+@media(max-width:640px){.numbers-inner{grid-template-columns:repeat(2,1fr)}.num-item:nth-child(2){border-right:none}.num-item:nth-child(3){border-right:1px solid rgba(0,0,0,.1)}}
+
+/* ─── FOTO STRIP — horizontal panorâmica após numbers ─── */
+.foto-strip{
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr;
+  height:380px;
+  gap:2px;
+  background:#000;
+}
+.foto-strip .photo-slot{border:none;border-radius:0}
+.foto-strip .photo-slot:first-child{/* wide left */}
+@media(max-width:768px){.foto-strip{grid-template-columns:1fr 1fr;height:260px}.foto-strip .photo-slot:last-child{display:none}}
+@media(max-width:480px){.foto-strip{grid-template-columns:1fr;height:220px}.foto-strip .photo-slot:not(:first-child){display:none}}
+
+/* ─── SERVICES ─── */
+.services{padding:7rem 2rem;background:var(--k)}
+.services-header{margin-bottom:4rem}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:4px;overflow:hidden}
+.srv-card{padding:2.5rem 2rem;border-right:1px solid var(--line);border-bottom:1px solid var(--line);transition:background var(--trans);position:relative;display:flex;flex-direction:column;gap:1.25rem}
+.srv-card:nth-child(3n){border-right:none}
+.srv-card:nth-child(n+4){border-bottom:none}
+.srv-card:hover{background:var(--k3)}
+.srv-num{font-size:11px;font-weight:600;letter-spacing:.1em;color:rgba(255,255,255,.3)}
+.srv-title{font-family:'Fraunces',serif;font-size:22px;font-weight:300;line-height:1.2;color:#fff}
+.srv-desc{font-size:13px;color:var(--muted);line-height:1.7;flex-grow:1}
+.srv-urgency{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#e85c3a;background:rgba(232,92,58,.08);padding:4px 8px;border-radius:2px;align-self:flex-start}
+.srv-cta{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--y);margin-top:auto;transition:gap var(--trans)}
+.srv-cta:hover{gap:10px}
+@media(max-width:900px){.services-grid{grid-template-columns:repeat(2,1fr)}.srv-card:nth-child(3n){border-right:1px solid var(--line)}.srv-card:nth-child(2n){border-right:none}}
+@media(max-width:580px){.services-grid{grid-template-columns:1fr}.srv-card{border-right:none}.srv-card:nth-child(n+4){border-bottom:1px solid var(--line)}.srv-card:last-child{border-bottom:none}}
+
+/* ─── GALLERY MOSAIC — portfólio de campo ─── */
+.gallery{padding:0;background:var(--k)}
+.gallery-header{padding:5rem 2rem 3rem;max-width:1160px;margin:0 auto}
+.gallery-header .section-sub{max-width:620px}
+
+/* Mosaic layout: 3 rows different heights */
+.mosaic{display:grid;gap:3px;background:#000;
+  grid-template-columns:repeat(12,1fr);
+  grid-template-rows:280px 200px 320px;
+}
+.mosaic .photo-slot{border:none;border-radius:0}
+/* Row 1 */
+.m1{grid-column:1/6;grid-row:1}   /* landscape wide */
+.m2{grid-column:6/9;grid-row:1}   /* portrait */
+.m3{grid-column:9/13;grid-row:1}  /* square-ish */
+/* Row 2 */
+.m4{grid-column:1/4;grid-row:2}   /* small square */
+.m5{grid-column:4/8;grid-row:2}   /* landscape */
+.m6{grid-column:8/10;grid-row:2}  /* tiny portrait */
+.m7{grid-column:10/13;grid-row:2} /* small landscape */
+/* Row 3 */
+.m8{grid-column:1/5;grid-row:3}   /* tall portrait */
+.m9{grid-column:5/9;grid-row:3}   /* landscape */
+.m10{grid-column:9/13;grid-row:3} /* landscape */
+
+@media(max-width:900px){
+  .mosaic{grid-template-columns:repeat(6,1fr);grid-template-rows:220px 160px 260px}
+  .m1{grid-column:1/4}.m2{grid-column:4/7}.m3{display:none}
+  .m4{grid-column:1/3}.m5{grid-column:3/7}.m6{display:none}.m7{display:none}
+  .m8{grid-column:1/4}.m9{grid-column:4/7}.m10{display:none}
+}
+@media(max-width:580px){
+  .mosaic{grid-template-columns:1fr 1fr;grid-template-rows:180px 180px 180px}
+  .m1{grid-column:1/3}.m2{grid-column:1/2}.m3{grid-column:2/3;display:block}
+  .m4{grid-column:1/2}.m5{grid-column:2/3}.m6{display:none}.m7{display:none}
+  .m8{grid-column:1/2}.m9{grid-column:2/3}.m10{display:none}
+}
+
+/* ─── WHY / SOBRE ─── */
+.why{padding:7rem 2rem;background:var(--k2);position:relative;overflow:hidden}
+.why-inner{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
+.why-points{margin-top:2rem;display:flex;flex-direction:column;gap:0}
+.why-item{padding:1.75rem 0;border-bottom:1px solid var(--line);display:flex;gap:1.5rem;align-items:flex-start}
+.why-item:last-child{border-bottom:none}
+.why-marker{width:36px;height:36px;border-radius:2px;background:var(--k3);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.why-marker .tech-icon{width:18px;height:18px}
+.why-item-title{font-size:16px;font-weight:600;margin-bottom:6px;color:#fff}
+.why-item-desc{font-size:13px;color:var(--muted);line-height:1.7}
+
+/* Sobre: vertical stack de fotos */
+.why-photos{display:flex;flex-direction:column;gap:3px}
+.why-photos .photo-slot:first-child{height:340px}
+.why-photos .photo-slot:nth-child(2){height:200px}
+.why-photos .photo-slot:last-child{height:180px}
+@media(max-width:768px){.why-inner{grid-template-columns:1fr;gap:3rem}.why-photos{flex-direction:row}.why-photos .photo-slot{height:200px!important;flex:1}}
+
+/* ─── EQUIPE STRIP ─── */
+.team-strip{background:var(--k);padding:5rem 0 0}
+.team-strip-header{padding:0 2rem 2.5rem;max-width:1160px;margin:0 auto}
+.team-photos{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  height:420px;
+  gap:3px;
+  background:#000;
+}
+.team-photos .photo-slot{border:none;border-radius:0}
+/* first card is taller / featured */
+.team-photos .photo-slot.featured{grid-row:1/2}
+@media(max-width:768px){.team-photos{grid-template-columns:repeat(2,1fr);height:320px}}
+@media(max-width:480px){.team-photos{grid-template-columns:1fr 1fr;height:240px}}
+
+/* ─── CLIENTS ─── */
+.clients{padding:7rem 2rem;background:var(--k)}
+.clients-inner{max-width:1160px;margin:0 auto}
+.clients-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:4px;overflow:hidden;margin-top:3rem}
+.client-card{background:var(--k);padding:2.5rem 2rem;display:flex;flex-direction:column;gap:1rem;transition:background var(--trans)}
+.client-card:hover{background:var(--k3)}
+.client-name{font-size:15px;font-weight:600;color:#fff}
+.client-desc{font-size:12px;color:var(--muted);line-height:1.6}
+.coverage{margin-top:3rem;padding:1.5rem 2rem;background:rgba(245,197,0,.04);border:1px solid rgba(245,197,0,.1);border-radius:4px;text-align:center;font-size:13px;color:rgba(255,255,255,.6);letter-spacing:.05em}
+.coverage strong{color:var(--y);font-weight:600}
+@media(max-width:768px){.clients-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.clients-grid{grid-template-columns:1fr}}
+
+/* ─── FOTO DUPLEX — full bleed antes do contato ─── */
+.foto-duplex{
+  display:grid;
+  grid-template-columns:3fr 2fr;
+  height:500px;
+  gap:3px;
+  background:#000;
+}
+.foto-duplex .photo-slot{border:none;border-radius:0}
+/* right side split vertical */
+.foto-duplex-right{display:flex;flex-direction:column;gap:3px}
+.foto-duplex-right .photo-slot{flex:1}
+@media(max-width:768px){.foto-duplex{grid-template-columns:1fr;height:340px}.foto-duplex-right{display:none}}
+
+/* ─── CONTACT ─── */
+.contact{padding:7rem 2rem;background:var(--k2)}
+.contact-inner{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+.contact-left .section-sub{margin-bottom:2.5rem}
+.contact-direct{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2rem}
+.contact-item{display:flex;flex-direction:column;gap:4px;padding:1.25rem;background:var(--k3);border:1px solid var(--line);border-radius:4px}
+.contact-item-label{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.contact-item-val{font-size:13px;color:#fff;font-weight:500}
+.btn-wa{display:flex;align-items:center;justify-content:center;gap:.75rem;background:var(--y);color:var(--k);padding:1.25rem 2rem;border-radius:var(--r);font-size:14px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;transition:all var(--trans);margin-top:1.5rem}
+.btn-wa:hover{background:var(--y2);transform:translateY(-2px)}
+.btn-wa svg{width:20px;height:20px;flex-shrink:0}
+.contact-form{background:var(--k3);border:1px solid var(--line);border-radius:4px;padding:2.5rem}
+.form-title{font-family:'Fraunces',serif;font-size:24px;font-weight:300;margin-bottom:1.75rem;color:#fff}
+.form-row{margin-bottom:1.25rem}
+.form-row label{display:block;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem}
+.form-row input,.form-row select,.form-row textarea{width:100%;background:var(--k2);border:1px solid var(--line);color:#fff;padding:.875rem 1rem;font-family:'Inter',sans-serif;font-size:14px;border-radius:var(--r);transition:border-color var(--trans);appearance:none}
+.form-row select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23F5C500' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center}
+.form-row textarea{min-height:110px;resize:vertical}
+.form-row input:focus,.form-row select:focus,.form-row textarea:focus{outline:none;border-color:var(--y)}
+.form-row input::placeholder,.form-row textarea::placeholder{color:rgba(255,255,255,.2)}
+.btn-submit{width:100%;background:var(--y);color:var(--k);padding:1rem;border:none;border-radius:var(--r);cursor:pointer;font-family:'Inter',sans-serif;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;transition:all var(--trans)}
+.btn-submit:hover{background:var(--y2);transform:translateY(-1px)}
+@media(max-width:768px){.contact-inner{grid-template-columns:1fr;gap:3rem}.contact-direct{grid-template-columns:1fr}}
+
+/* ─── FOOTER ─── */
+footer{background:var(--k);border-top:1px solid var(--line);padding:4rem 2rem 2rem}
+.footer-inner{max-width:1160px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:2rem}
+.footer-brand p{font-size:12px;color:var(--muted);margin-top:.75rem;max-width:280px;line-height:1.6}
+.footer-links-col h4{font-size:11px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:1.25rem}
+.footer-links-col a{display:block;font-size:13px;color:rgba(255,255,255,.5);margin-bottom:.6rem;transition:color var(--trans)}
+.footer-links-col a:hover{color:#fff}
+.footer-bottom{max-width:1160px;margin:3rem auto 0;padding-top:1.5rem;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.footer-bottom p{font-size:11px;color:rgba(255,255,255,.3);letter-spacing:.05em}
+.footer-tags{display:flex;gap:1rem;flex-wrap:wrap}
+.footer-tags span{font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.2)}
+
+/* ─── FLOATING WA ─── */
+.wa-float{position:fixed;bottom:2rem;right:2rem;z-index:800;background:var(--y);color:var(--k);width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(245,197,0,.25);transition:all var(--trans)}
+.wa-float:hover{transform:scale(1.05);box-shadow:0 6px 32px rgba(245,197,0,.4)}
+.wa-float svg{width:24px;height:24px}
+@keyframes pulse-ring{0%{transform:scale(1);opacity:.4}100%{transform:scale(1.4);opacity:0}}
+.wa-float::before{content:'';position:absolute;inset:0;border-radius:50%;background:var(--y);animation:pulse-ring 2.5s ease-out infinite}
+
+/* ─── FADE IN ─── */
+.fade-in{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+.fade-in.visible{opacity:1;transform:none}
+
+/* ─── PROGRESS ─── */
+#progress{position:fixed;top:0;left:0;height:2px;background:var(--y);z-index:999;width:0%;transition:width .1s}
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<!-- ════════════════════════════ HEADER ════════════════════════════ -->
+<header id="hdr">
+  <a href="#" class="header-logo">
+    <img src="logo.png" alt="SADL Engenharia" class="logo-img">
+  </a>
+  <nav class="links" id="nav-links">
+    <a href="#servicos">Serviços</a>
+    <a href="#portifolio">Portfólio</a>
+    <a href="#sobre">Sobre</a>
+    <a href="#contato">Contato</a>
+    <a href="https://wa.me/55557196783783?text=Olá%2C+vim+pelo+site+da+SADL+e+gostaria+de+um+orçamento." class="nav-cta" target="_blank" rel="noopener">WhatsApp →</a>
+  </nav>
+  <div class="menu-toggle" id="menu-btn" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </div>
+</header>
+
+<!-- ════════════════════════════ HERO ════════════════════════════ -->
+<section class="hero" id="inicio">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+
+  <!-- FOTO HERO — coluna direita full-height -->
+  <div class="hero-photo-slot" aria-hidden="true">
+    <img src="foto_hero.jpg" alt="Equipe SADL em campo" onerror="this.style.display='none'">
+    <div class="ph-overlay">
+      <div class="ph-tag">foto_hero.jpg</div>
+      <div class="ph-icon">📷</div>
+      <div class="ph-label">Equipe com receptor GNSS RTK ou drone em operação</div>
+      <div class="ph-dim">1200 × 1600 px · vertical</div>
+    </div>
+  </div>
+
+  <div class="hero-content">
+    <span class="hero-eyebrow">SADL Soluções de Engenharia · Feira de Santana, BA</span>
+    <h1>Regularize.<br>Licencie.<br><em>Resolva.</em></h1>
+    <p class="hero-sub">Georreferenciamento de alta precisão (RTK), ortofotos com drone, titulação fundiária e licenciamento ambiental com rigor técnico desde 2011.</p>
+    <div class="hero-actions">
+      <a href="https://wa.me/55557196783783?text=Olá%2C+vim+pelo+site+e+quero+solicitar+um+orçamento+técnico." class="btn-primary" target="_blank" rel="noopener">Solicitar orçamento</a>
+      <a href="#servicos" class="btn-ghost">Ver serviços técnicos</a>
+    </div>
+    <div class="hero-badges">
+      <span class="badge-item">Registrada no CREA-BA</span>
+      <span class="badge-item">Credenciada no INEMA e IBAMA</span>
+      <span class="badge-item">Precisão Geodésica Centimétrica</span>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════ NUMBERS ════════════════════════════ -->
+<div class="numbers fade-in">
+  <div class="numbers-inner">
+    <div class="num-item"><span class="num-val">15</span><span class="num-label">Anos de experiência</span></div>
+    <div class="num-item"><span class="num-val">Bahia</span><span class="num-label">Inteira atendida</span></div>
+    <div class="num-item"><span class="num-val">GNSS RTK</span><span class="num-label">Tecnologia de ponta</span></div>
+    <div class="num-item"><span class="num-val">INEMA</span><span class="num-label">+ IBAMA credenciada</span></div>
+  </div>
+</div>
+
+<!-- ════════════════════════════ FOTO STRIP (horizontal panorâmica) ════════════════════════════ -->
+<div class="foto-strip fade-in" aria-label="Fotos de campo">
+
+  <!-- FOTO 1 — wide landscape (aerial / panorama) -->
+  <div class="photo-slot">
+    <img src="foto_strip_01.jpg" alt="Aerofoto de área rural" onerror="this.style.display='none'">
+    <div class="ph-overlay">
+      <div class="ph-tag">foto_strip_01.jpg</div>
+      <div class="ph-icon">🛸</div>
+      <div class="ph-label">Aerofoto / ortofoto de grande área rural</div>
+      <div class="ph-dim">1600 × 800 px · paisagem</div>
+    </div>
+  </div>
+
+  <!-- FOTO 2 — portrait -->
+  <div class="photo-slot">
+    <img src="foto_strip_02.jpg" alt="Engenheiro com receptor RTK" onerror="this.style.display='none'">
+    <div class="ph-overlay">
+      <div class="ph-tag">foto_strip_02.jpg</div>
+      <div class="ph-icon">📡</div>
+      <div class="ph-label">Engenheiro operando receptor GNSS RTK em campo</div>
+      <div class="ph-dim">700 × 800 px · retrato</div>
+    </div>
+  </div>
+
+  <!-- FOTO 3 — landscape -->
+  <div class="photo-slot">
+    <img src="foto_strip_03.jpg" alt="Equipamento de topografia" onerror="this.style.display='none'">
+    <div class="ph-overlay">
+      <div class="ph-tag">foto_strip_03.jpg</div>
+      <div class="ph-icon">🌿</div>
+      <div class="ph-label">Estação total / paisagem de lavoura demarcada</div>
+      <div class="ph-dim">900 × 800 px · paisagem</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ════════════════════════════ SERVIÇOS ════════════════════════════ -->
+<section class="services" id="servicos">
+  <div class="wrap">
+    <div class="services-header fade-in">
+      <span class="section-num">01 — Serviços</span>
+      <h2 class="section-title">Soluções de Engenharia<br>e Alta Precisão</h2>
+      <div class="divider"></div>
+      <p class="section-sub">Geomensura, regularização fundiária e estudos ambientais complexos — do processamento de dados geodésicos à entrega documental.</p>
+    </div>
+    <div class="services-grid fade-in">
+      <div class="srv-card">
+        <span class="srv-num">01</span>
+        <svg class="tech-icon" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 11 2 2 4-4"/></svg>
+        <h3 class="srv-title">Titulação e Regularização de Terras</h3>
+        <p class="srv-desc">Georreferenciamento de imóveis rurais certificado pelo INCRA utilizando receptores GNSS RTK de dupla frequência. Emissão de CCIR, CAR ativo e suporte ao programa SDA.</p>
+        <span class="srv-urgency">Prazo INCRA: outubro de 2029</span>
+        <a href="https://wa.me/55557196783783?text=Olá%2C+quero+saber+sobre+titulação+e+regularização+de+terras." class="srv-cta" target="_blank" rel="noopener">Regularizar terra →</a>
+      </div>
+      <div class="srv-card">
+        <span class="srv-num">02</span>
+        <svg class="tech-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16.2 7.8-8.4 8.4M12 2v20M2 12h20"/></svg>
+        <h3 class="srv-title">Levantamentos Topográficos</h3>
+        <p class="srv-desc">Levantamentos planialtimétricos cadastrais, locação de obras estruturais, cálculo de volumes e mapeamento aéreo com Drones para geração de ortofotos e modelos digitais de terreno (MDT).</p>
+        <a href="https://wa.me/55557196783783?text=Olá%2C+preciso+de+um+levantamento+topográfico." class="srv-cta" target="_blank" rel="noopener">Solicitar levantamento →</a>
+      </div>
+      <div class="srv-card">
+        <span class="srv-num">03</span>
+        <svg class="tech-icon" viewBox="0 0 24 24"><path d="M2 22h20M12 2v20M12 2a15 15 0 0 1 4.5 10.5c0 3.3-1.5 6.2-4.5 7.5M12 2A15 15 0 0 0 7.5 12.5c0 3.3 1.5 6.2 4.5 7.5"/></svg>
+        <h3 class="srv-title">Licenciamento Ambiental</h3>
+        <p class="srv-desc">Estudos e licenças ambientais (LAS, LAP, LAO, RCE, PEA). Projetos estruturados de gerenciamento de resíduos (PGRS, PGRCC) e recuperação de áreas degradadas (PRAD) junto ao INEMA e IBAMA.</p>
+        <a href="https://wa.me/55557196783783?text=Olá%2C+preciso+de+licenciamento+ambiental." class="srv-cta" target="_blank" rel="noopener">Solicitar licença →</a>
+      </div>
+      <div class="srv-card">
+        <span class="srv-num">04</span>
+        <svg class="tech-icon" viewBox="0 0 24 24"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M12 6v6l4 2"/></svg>
+        <h3 class="srv-title">CEFIR e CAR</h3>
+        <p class="srv-desc">Inscrição e retificação no Cadastro Ambiental Rural e CEFIR. Processo obrigatório para garantir a conformidade da propriedade, segurança jurídica, transferências e acesso ao crédito agrícola.</p>
+        <a href="https://wa.me/55557196783783?text=Olá%2C+preciso+fazer+o+CEFIR+e+CAR." class="srv-cta" target="_blank" rel="noopener">Regularizar CEFIR →</a>
+      </div>
+      <div class="srv-card">
+        <span class="srv-num">05</span>
+        <svg class="tech-icon" viewBox="0 0 24 24"><path d="M3 3h18v18H3zM21 3 3 21M3 12h18M12 3v18"/></svg>
+        <h3 class="srv-title">Projetos Agrários e Geométricos</h3>
+        <p class="srv-desc">Desenho e modelagem de projetos geométricos, divisões de condomínios rurais, partilhas amigáveis ou judiciais, desmembramentos e projetos de Regularização Fundiária Urbana (REURB).</p>
+        <a href="https://wa.me/55557196783783?text=Olá%2C+preciso+de+um+projeto+agrário+ou+geométrico." class="srv-cta" target="_blank" rel="noopener">Consultar projeto →</a>
+      </div>
+      <div class="srv-card">
+        <span class="srv-num">06</span>
+        <svg class="tech-icon" viewBox="0 0 24 24"><path d="M21.21 15.89A10 10 0 1 1 8 2.83M22 12A10 10 0 0 0 12 2v10z"/></svg>
+        <h3 class="srv-title">Estudos e Relatórios Ambientais</h3>
+        <p class="srv-desc">Laudos de cobertura vegetal, relatórios de impacto e consultoria técnica especializada. Defesas e acompanhamento de processos junto a secretarias municipais e estaduais.</p>
+        <a href="https://wa.me/55557196783783?text=Olá%2C+preciso+de+um+estudo+ou+relatório+ambiental." class="srv-cta" target="_blank" rel="noopener">Solicitar estudo →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════ GALERIA MOSAICO ════════════════════════════ -->
+<section class="gallery fade-in" id="portifolio">
+  <div class="gallery-header">
+    <span class="section-num">02 — Portfólio de Campo</span>
+    <h2 class="section-title">Trabalho real,<br>resultado técnico</h2>
+    <div class="divider"></div>
+    <p class="section-sub">Registros de campo de levantamentos topográficos, mapeamentos com drone, demarcações de divisas e vistorias ambientais em toda a Bahia.</p>
+  </div>
+
+  <div class="mosaic" aria-label="Galeria de portfólio">
+
+    <!-- m1 — paisagem wide -->
+    <div class="photo-slot m1">
+      <img src="gal_01.jpg" alt="Levantamento topográfico" onerror="this.style.display='none'">
+      <div class="ph-overlay">
+        <div class="ph-tag">gal_01.jpg</div>
+        <div class="ph-icon">🗺️</div>
+        <div class="ph-label">Levantamento planialtimétrico em área rural</div>
+        <div class="ph-dim">1400 × 800 px · paisagem wide</div>
+      </div>
+    </div>
+
+    <!-- m2 — retrato -->
+    <div class="photo-slot m2">
+      <img src="gal_02.jpg" alt="Receptor GNSS em campo" onerror="this.style.display='none'">
+      <div class="ph-overlay">
+        <div class="ph-tag">gal_02.jpg</div>
+        <div class="ph-icon">📡</div>
+        <div class="ph-label">Base RTK fixada em vértice geodésico</div>
+        <div class="ph-dim">700 × 700 px · retrato/quadrado</div>
+      </div>
+    </div>
+
+    <!-- m3 — quadrado -->
+    <div class="photo-slot m3">
+      <img src="gal_03.jpg" alt="Ortofoto drone" onerror="this.style.display='none'">
+      <div class="ph-overlay">
+        <div class="ph-tag">gal_03.jpg</div>
+        <div class="ph-icon">🛸</div>
+        <div class="ph-label">Drone em voo sobre área de mapeamento</div>
+        <div class="ph-dim">800 × 700 px · quadrado</div>
+      </div>
+    </div>
+
+    <!-- m4 — pequeno -->
+    <div class="photo-slot m4">
+      <img src="gal_04.jpg" alt="Documentação técnica" onerror="this.style.display='none'">
+      <div class="ph-overlay">
+        <div class="ph-tag">gal_04.jpg</div>
+        <div class="ph-icon">📋</div>
+        <div class="ph-label">Memorial descritivo ou planta georreferenciada</div>
+        <div class="ph-dim">600 × 400 px</div>
+      </div>
+    </div>
+
+    <!-- m5 — paisagem -->
+    <div class="photo-slot m5">
+      <img src="gal_05.jpg" alt="Vista aérea de fazenda" onerror="this.style.display='none'">
+      <div class="ph-overlay">
+        <div class="ph-tag">gal_05.jpg</div>
+        <div class="ph-icon">🌾</div>
+        <div class="ph-label">Vista aérea de fazenda / demarcação de divisas</div>
+        <div class="ph-dim">1000 × 400 px · panorâmica</div>
+      </div>
+    </div>
+
+    <!-- m6 — pequeno retrato -->
+    <div class="photo-slot m6">
+      <img src="gal_06.jpg" alt="Vértice demarcado" onerror="this.style.display='none'">
+      <div class="ph-overlay">
+        <div class="ph-tag">gal_06.jpg</div>
+        <div class="ph-icon">📌</div>
+        <div class="ph-label">Marco / vértice de limite demarcado</div>
+        <div class="ph-dim">500 × 400 px</div>
+      </div>
+    </div>
+
+    <!-- m7 — paisagem pequena -->
+    <div class="photo-slot m7">
+      <img src="gal_07.jpg" alt="Área de licenciamento ambiental" onerror="this.style.display='none'">
+      <div class="ph-overlay">
+        <div class="ph-tag">gal_07.jpg</div>
+        <div class="ph-icon">🌿</div>
+        <div class="ph-label">Área de vistoria / laudo de cobertura vegetal</div>
+        <div class="ph-dim">700 × 400 px · paisagem</div>
+      </div>
+    </div>
+
+    <!-- m8 — retrato tall -->
+    <div class="photo-slot m8">
+      <img src="gal_08.jpg" alt="Engenheiro em campo" onerror="this.style.display='none'">
+      <div class="ph-overlay">
+        <div class="ph-tag">gal_08.jpg</div>
+        <div class="ph-icon">👷</div>
+        <div class="ph-label">Engenheiro operando rover RTK em campo aberto</div>
+        <div class="ph-dim">700 × 900 px · retrato tall</div>
+      </div>
+    </div>
+
+    <!-- m9 — paisagem -->
+    <div class="photo-slot m9">
+      <img src="gal_09.jpg" alt="Ortofoto gerada" onerror="this.style.display='none'">
+      <div class="ph-overlay">
+        <div class="ph-tag">gal_09.jpg</div>
+        <div class="ph-icon">🗺️</div>
+        <div class="ph-label">Ortomosaico gerado — nuvem de pontos / MDT</div>
+        <div class="ph-dim">1000 × 900 px · paisagem</div>
+      </div>
+    </div>
+
+    <!-- m10 — paisagem -->
+    <div class="photo-slot m10">
+      <img src="gal_10.jpg" alt="Área rural Bahia" onerror="this.style.display='none'">
+      <div class="ph-overlay">
+        <div class="ph-tag">gal_10.jpg</div>
+        <div class="ph-icon">🌅</div>
+        <div class="ph-label">Paisagem rural / área de projeto no interior da Bahia</div>
+        <div class="ph-dim">1000 × 900 px · paisagem</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════════════ SOBRE / WHY ════════════════════════════ -->
+<section class="why" id="sobre">
+  <div class="wrap">
+    <div class="why-inner">
+      <div>
+        <span class="section-num fade-in">03 — Infraestrutura e Rigor</span>
+        <h2 class="section-title fade-in">15 anos de<br>tecnologia aplicada<br>ao campo</h2>
+        <div class="divider fade-in"></div>
+        <p class="section-sub fade-in">Fundada em 2011, a SADL une o conhecimento jurídico-cartorial à tecnologia geodésica avançada para garantir aprovações rápidas e sem falhas.</p>
+        <div class="why-points">
+          <div class="why-item fade-in">
+            <div class="why-marker">
+              <svg class="tech-icon" viewBox="0 0 24 24"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m9 12 2 2 4-4"/></svg>
+            </div>
+            <div>
+              <div class="why-item-title">Equipamentos Geodésicos GNSS RTK</div>
+              <div class="why-item-desc">Rastreamento via satélite GPS de dupla frequência para medições georreferenciadas com precisão milimétrica. Dados puros e homologados sem margem para sobreposição de áreas.</div>
+            </div>
+          </div>
+          <div class="why-item fade-in">
+            <div class="why-marker">
+              <svg class="tech-icon" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l-7 4a2 2 0 0 0 2 0l-7-4A2 2 0 0 0 21 16z"/></svg>
+            </div>
+            <div>
+              <div class="why-item-title">Mapeamento com Drones e Ortofotos</div>
+              <div class="why-item-desc">Aerofotogrametria moderna. Geramos ortomosaicos de alta resolução, curvas de nível e modelos tridimensionais que agilizam vistorias de grandes extensões rurais.</div>
+            </div>
+          </div>
+          <div class="why-item fade-in">
+            <div class="why-marker">
+              <svg class="tech-icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>
+            </div>
+            <div>
+              <div class="why-item-title">Conhecimento Cartorial Local</div>
+              <div class="why-item-desc">Atuação ativa em Feira de Santana e comarcas do interior da Bahia. Entendemos as exigências específicas dos cartórios de registro de imóveis da região, reduzindo prazos de tramitação.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stack vertical de 3 fotos -->
+      <div class="why-photos fade-in" aria-label="Fotos de infraestrutura">
+
+        <div class="photo-slot">
+          <img src="sobre_01.jpg" alt="Equipamento RTK em base" onerror="this.style.display='none'">
+          <div class="ph-overlay">
+            <div class="ph-tag">sobre_01.jpg</div>
+            <div class="ph-icon">📡</div>
+            <div class="ph-label">Base RTK / receptor GNSS em tripé</div>
+            <div class="ph-dim">900 × 680 px · paisagem</div>
+          </div>
+        </div>
+
+        <div class="photo-slot">
+          <img src="sobre_02.jpg" alt="Drone em voo de mapeamento" onerror="this.style.display='none'">
+          <div class="ph-overlay">
+            <div class="ph-tag">sobre_02.jpg</div>
+            <div class="ph-icon">🛸</div>
+            <div class="ph-label">Drone decolando para missão de mapeamento</div>
+            <div class="ph-dim">900 × 400 px · paisagem</div>
+          </div>
+        </div>
+
+        <div class="photo-slot">
+          <img src="sobre_03.jpg" alt="Escritório técnico SADL" onerror="this.style.display='none'">
+          <div class="ph-overlay">
+            <div class="ph-tag">sobre_03.jpg</div>
+            <div class="ph-icon">🖥️</div>
+            <div class="ph-label">Escritório técnico — processamento de dados</div>
+            <div class="ph-dim">900 × 360 px · paisagem wide</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════ EQUIPE STRIP ════════════════════════════ -->
+<section class="team-strip fade-in" id="equipe">
+  <div class="team-strip-header wrap">
+    <span class="section-num">04 — Nossa Equipe</span>
+    <h2 class="section-title">Profissionais<br>habilitados em campo</h2>
+    <div class="divider"></div>
+    <p class="section-sub">Engenheiros, técnicos e pilotos de drone com registro ativo no CREA-BA e certificações ANAC, atuando em toda a Bahia.</p>
+  </div>
+
+  <div class="team-photos" aria-label="Fotos da equipe em campo">
+
+    <div class="photo-slot featured">
+      <img src="equipe_01.jpg" alt="Equipe SADL em campo" onerror="this.style.display='none'">
+      <div class="ph-overlay">
+        <div class="ph-tag">equipe_01.jpg</div>
+        <div class="ph-icon">👥</div>
+        <div class="ph-label">Foto da equipe completa em campo ou em obra</div>
+        <div class="ph-dim">800 × 840 px · retrato/quadrado</div>
+      </div>
+    </div>
+
+    <div class="photo-slot">
+      <img src="equipe_02.jpg" alt="Engenheiro responsável técnico" onerror="this.style.display='none'">
+      <div class="ph-overlay">
+        <div class="ph-tag">equipe_02.jpg</div>
+        <div class="ph-icon">👷</div>
+        <div class="ph-label">Engenheiro responsável técnico (RT)</div>
+        <div class="ph-dim">600 × 840 px · retrato</div>
+      </div>
+    </div>
+
+    <div class="photo-slot">
+      <img src="equipe_03.jpg" alt="Técnico de topografia" onerror="this.style.display='none'">
+      <div class="ph-overlay">
+        <div class="ph-tag">equipe_03.jpg</div>
+        <div class="ph-icon">🔭</div>
+        <div class="ph-label">Técnico operando estação total ou nível óptico</div>
+        <div class="ph-dim">600 × 840 px · retrato</div>
+      </div>
+    </div>
+
+    <div class="photo-slot">
+      <img src="equipe_04.jpg" alt="Piloto de drone" onerror="this.style.display='none'">
+      <div class="ph-overlay">
+        <div class="ph-tag">equipe_04.jpg</div>
+        <div class="ph-icon">🛸</div>
+        <div class="ph-label">Piloto de drone certificado ANAC com equipamento</div>
+        <div class="ph-dim">600 × 840 px · retrato</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════════════ CLIENTES ════════════════════════════ -->
+<section class="clients" id="clientes">
+  <div class="clients-inner">
+    <span class="section-num fade-in">05 — Setores</span>
+    <h2 class="section-title fade-in">Segmentos de<br>Atuação</h2>
+    <div class="divider fade-in"></div>
+    <div class="clients-grid fade-in">
+      <div class="client-card">
+        <svg class="tech-icon" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        <div class="client-name">Produtores Rurais</div>
+        <div class="client-desc">Certificação INCRA, retificação de áreas rurais complexas e blindagem jurídica ambiental da propriedade.</div>
+      </div>
+      <div class="client-card">
+        <svg class="tech-icon" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <div class="client-name">Incorporadoras e Construtoras</div>
+        <div class="client-desc">Demarcações precisas de divisas, modelagem de curvas de nível e conformidade em licenciamento imobiliário.</div>
+      </div>
+      <div class="client-card">
+        <svg class="tech-icon" viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+        <div class="client-name">Indústrias e Logística</div>
+        <div class="client-desc">Laudos de efluentes, resíduos industriais e planos ambientais para operação legal perante órgãos fiscalizadores.</div>
+      </div>
+      <div class="client-card">
+        <svg class="tech-icon" viewBox="0 0 24 24"><path d="M12 22V2M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        <div class="client-name">Investidores e Advogados</div>
+        <div class="client-desc">Perícias técnicas para disputas territoriais, inventários fundiários e due diligence imobiliária.</div>
+      </div>
+    </div>
+    <div class="coverage fade-in">
+      Base Operacional: <strong>Feira de Santana</strong> · Logística Integrada para todo o <strong>Interior da Bahia</strong> e Recôncavo.
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════ FOTO DUPLEX (full-bleed) ════════════════════════════ -->
+<div class="foto-duplex fade-in" aria-label="Fotos de projetos concluídos">
+
+  <!-- wide left — landscape aéreo -->
+  <div class="photo-slot">
+    <img src="proj_01.jpg" alt="Projeto concluído" onerror="this.style.display='none'">
+    <div class="ph-overlay">
+      <div class="ph-tag">proj_01.jpg</div>
+      <div class="ph-icon">🏞️</div>
+      <div class="ph-label">Aerofoto de projeto concluído — fazenda demarcada ou obra licenciada</div>
+      <div class="ph-dim">1200 × 1000 px · paisagem wide</div>
+    </div>
+  </div>
+
+  <!-- right side split em dois -->
+  <div class="foto-duplex-right">
+    <div class="photo-slot">
+      <img src="proj_02.jpg" alt="Detalhe de vértice" onerror="this.style.display='none'">
+      <div class="ph-overlay">
+        <div class="ph-tag">proj_02.jpg</div>
+        <div class="ph-icon">📌</div>
+        <div class="ph-label">Detalhe de vértice / marco demarcatório instalado</div>
+        <div class="ph-dim">700 × 500 px</div>
+      </div>
+    </div>
+    <div class="photo-slot">
+      <img src="proj_03.jpg" alt="Reunião técnica ou entrega" onerror="this.style.display='none'">
+      <div class="ph-overlay">
+        <div class="ph-tag">proj_03.jpg</div>
+        <div class="ph-icon">🤝</div>
+        <div class="ph-label">Entrega de documentação / reunião técnica com cliente</div>
+        <div class="ph-dim">700 × 500 px</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ════════════════════════════ CONTATO ════════════════════════════ -->
+<section class="contact" id="contato">
+  <div class="wrap">
+    <div class="contact-inner">
+      <div class="contact-left fade-in">
+        <span class="section-num">06 — Engenharia Diagnóstica</span>
+        <h2 class="section-title">Inicie sua<br>Análise Técnica</h2>
+        <div class="divider"></div>
+        <p class="section-sub">Atendimento direto por engenheiros habilitados. Retorno corporativo ágil e encaminhamento de propostas técnicas estruturadas.</p>
+        <div class="contact-direct">
+          <div class="contact-item"><span class="contact-item-label">Sede Técnica</span><span class="contact-item-val">Feira de Santana, Bahia</span></div>
+          <div class="contact-item"><span class="contact-item-label">Comunicação</span><span class="contact-item-val">@sadl_engenharia</span></div>
+          <div class="contact-item"><span class="contact-item-label">Corporativo</span><span class="contact-item-val">[EMAIL_SADL]</span></div>
+          <div class="contact-item"><span class="contact-item-label">Credenciamento</span><span class="contact-item-val">CREA-BA · INEMA · IBAMA</span></div>
+        </div>
+        <a href="https://wa.me/55557196783783?text=Olá%2C+gostaria+de+enviar+uma+demanda+técnica+para+a+SADL." class="btn-wa" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Conectar via WhatsApp Técnico
+        </a>
+      </div>
+      <div class="contact-form fade-in">
+        <div class="form-title">Painel de Atendimento</div>
+        <div class="form-row"><label for="nome">Nome completo / Razão Social</label><input type="text" id="nome" placeholder="Nome ou Empresa"></div>
+        <div class="form-row"><label for="tel">Telefone institucional</label><input type="tel" id="tel" placeholder="(75) 9 0000-0000"></div>
+        <div class="form-row">
+          <label for="srv">Demanda de interesse</label>
+          <select id="srv">
+            <option value="">Selecione a área técnica</option>
+            <option value="titulação">Titulação e Georreferenciamento INCRA</option>
+            <option value="topografia">Levantamentos Planialtimétricos / Drone</option>
+            <option value="licenciamento">Licenciamento Ambiental / PGRS</option>
+            <option value="cefir">CEFIR e CAR Rural</option>
+            <option value="projetos">Projetos Agrários e Loteamentos</option>
+            <option value="estudos">Perícias e Relatórios Ambientais</option>
+          </select>
+        </div>
+        <div class="form-row"><label for="msg">Memorial descritivo da demanda (opcional)</label><textarea id="msg" placeholder="Informe a localização da área ou resumo do problema fundiário/ambiental..."></textarea></div>
+        <button class="btn-submit" id="form-submit">Enviar Demanda via WhatsApp →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════ FOOTER ════════════════════════════ -->
+<footer>
+  <div class="footer-inner wrap">
+    <div class="footer-brand">
+      <img src="logo.png" alt="SADL Engenharia" class="logo-img">
+      <p>SADL Soluções de Engenharia. Alta tecnologia em posicionamento geodésico, topografia computadorizada e regularização legal corporativa e ambiental na Bahia.</p>
+    </div>
+    <div class="footer-links-col">
+      <h4>Serviços</h4>
+      <a href="#servicos">Mapeamento Geodésico</a>
+      <a href="#servicos">Topografia Engenharia</a>
+      <a href="#servicos">Licenças Ambientais</a>
+      <a href="#servicos">CEFIR / CAR</a>
+      <a href="#servicos">Divisões Agrárias</a>
+    </div>
+    <div class="footer-links-col">
+      <h4>Institucional</h4>
+      <a href="#sobre">Infraestrutura</a>
+      <a href="#clientes">Quem atendemos</a>
+      <a href="#portifolio">Portfólio</a>
+      <a href="#contato">Contato Direto</a>
+      <a href="https://www.instagram.com/sadl_engenharia" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </div>
+  <div class="footer-bottom wrap">
+    <p>© 2026 SADL Soluções de Engenharia — CREA-BA — Feira de Santana, Bahia</p>
+    <div class="footer-tags">
+      <span>GNSS RTK</span><span>Topografia Computacional</span><span>Licenciamento Inema</span><span>Regularização INCRA</span>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/55557196783783?text=Olá%2C+vim+pelo+site+da+SADL." class="wa-float" target="_blank" rel="noopener" aria-label="WhatsApp SADL">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+// progress bar
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement,b=document.body;
+  const st=h.scrollTop||b.scrollTop;
+  const sh=(h.scrollHeight||b.scrollHeight)-h.clientHeight;
+  document.getElementById('progress').style.width=(st/sh*100)+'%';
+});
+
+// fade-in on scroll
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible')}});
+},{threshold:.08});
+document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+
+// mobile menu
+const btn=document.getElementById('menu-btn');
+const nav=document.getElementById('nav-links');
+btn.addEventListener('click',()=>{nav.classList.toggle('open')});
+nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
+
+// header scroll
+window.addEventListener('scroll',()=>{
+  const header=document.getElementById('hdr');
+  if(window.scrollY>80){header.classList.add('scrolled')}
+  else{header.classList.remove('scrolled')}
+});
+
+// form → whatsapp
+document.getElementById('form-submit').addEventListener('click',()=>{
+  const n=document.getElementById('nome').value.trim();
+  const t=document.getElementById('tel').value.trim();
+  const s=document.getElementById('srv').value;
+  const m=document.getElementById('msg').value.trim();
+  if(!n||!t){alert('Por favor, preencha o nome e o telefone.');return;}
+  const srv=s||'não especificado';
+  const txt=`Olá, meu nome é ${n} (${t}). Gostaria de uma análise técnica sobre: ${srv}.${m?' Mensagem descritiva: '+m:''}`;
+  window.open('https://wa.me/557196783783?text='+encodeURIComponent(txt),'_blank');
+});
+</script>
+</body>
+</html>
