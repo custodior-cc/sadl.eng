@@ -3,54 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SADL Engenharia | Topografia RTK, Titulação de Terras e Licenciamento Ambiental</title>
-<meta name="description" content="SADL Soluções de Engenharia em Feira de Santana, Bahia. Especialistas em georreferenciamento de alta precisão (RTK), ortofotos com drone, titulação de terras e licenciamento ambiental desde 2011.">
-<meta name="keywords" content="topografia Feira de Santana, georreferenciamento Bahia, titulação de terras Bahia, licenciamento ambiental FSA, CEFIR Bahia, GPS RTK, Ortofotos Drone, SADL engenharia">
-<meta property="og:title" content="SADL Engenharia — Alta Precisão Geodésica e Ambiental">
-<meta property="og:description" content="15 anos de excelência em georreferenciamento RTK, titulação de terras e engenharia ambiental na Bahia.">
+<title>SADL Engenharia | Geomensura, Titulacao de Terras e Licenciamento — Feira de Santana, BA</title>
+<meta name="description" content="SADL Solucoes de Engenharia em Feira de Santana, Bahia. 15 anos em geomensura, topografia, titulacao de imoveis rurais via SDA, licenciamento ambiental. CREA, INCRA, INEMA, IBAMA, CFT, SDA.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300&display=swap" rel="stylesheet">
 <style>
-/* ─── RESET & ROOT ─── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --y:#F5C500;
-  --y2:#e6b800;
-  --k:#080808;
-  --k2:#111010;
-  --k3:#1a1918;
-  --g:#F2F0EC;
-  --g2:#E8E5DF;
-  --muted:#8e8982;
-  --line:rgba(255,255,255,0.08);
-  --line-light:rgba(0,0,0,0.09);
-  --r:2px;
-  --trans:.25s ease;
-}
+:root{--y:#F5C500;--y2:#e6b800;--k:#080808;--k2:#111010;--k3:#1a1918;--muted:#8e8982;--line:rgba(255,255,255,0.08);--r:2px;--trans:.25s ease}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',sans-serif;background:var(--k);color:#fff;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
-a{text-decoration:none;color:inherit}
-ul{list-style:none}
-img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}ul{list-style:none}img{max-width:100%;display:block}
 ::selection{background:var(--y);color:var(--k)}
-
-/* ─── SCROLLBAR ─── */
-::-webkit-scrollbar{width:3px}
-::-webkit-scrollbar-track{background:var(--k)}
-::-webkit-scrollbar-thumb{background:var(--y)}
-
-/* ─── SHARED ─── */
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:var(--k)}::-webkit-scrollbar-thumb{background:var(--y)}
 .wrap{max-width:1160px;margin:0 auto;padding:0 2rem}
 .section-num{font-size:11px;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--y);margin-bottom:.75rem;display:block}
 .section-title{font-family:'Fraunces',serif;font-size:clamp(28px,4vw,48px);font-weight:300;line-height:1.1;margin-bottom:1rem}
 .section-sub{font-size:15px;color:var(--muted);max-width:550px;line-height:1.7}
 .divider{width:40px;height:1.5px;background:var(--y);margin:1.25rem 0}
-
-/* ─── ICONS ─── */
-.tech-icon{width:24px;height:24px;stroke:var(--y);stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
-
-/* ─── HEADER ─── */
+.ti{width:22px;height:22px;stroke:var(--y);stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
+/* HEADER */
 header{
   position:fixed;top:0;left:0;width:100%;z-index:900;
   padding:1.25rem 2rem;
@@ -77,417 +49,278 @@ header.scrolled {
 header.scrolled .logo-img {
   height: 45px; /* Diminui a logo de 100px para 45px */
 }
-nav{display:flex;gap:2.5rem;align-items:center}
+nav{display:flex;gap:1.75rem;align-items:center}
 nav a{font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.6);transition:color var(--trans)}
 nav a:hover{color:#fff}
-.nav-cta{
-  background:var(--y);color:var(--k);
-  padding:.6rem 1.4rem;border-radius:var(--r);
-  font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
-  transition:all var(--trans);white-space:nowrap;
-}
+.nav-cta{background:var(--y);color:var(--k);padding:.5rem 1.2rem;border-radius:var(--r);font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;transition:all var(--trans);white-space:nowrap}
 .nav-cta:hover{background:var(--y2);transform:translateY(-1px)}
 .menu-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
-.menu-toggle span{width:24px;height:1.5px;background:#fff;transition:all .3s}
-@media(max-width:768px){
-  nav.links{display:none;position:fixed;inset:0;background:var(--k);flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;z-index:800}
-  nav.links.open{display:flex}
-  nav.links a{font-size:20px}
-  .menu-toggle{display:flex;z-index:900;position:relative}
-}
-
-/* ─── HERO ─── */
-.hero{
-  min-height:100vh;display:flex;align-items:center;
-  padding:8rem 2rem 5rem;position:relative;overflow:hidden;
-}
+.menu-toggle span{width:22px;height:1.5px;background:#fff}
+@media(max-width:900px){nav.links{display:none;position:fixed;inset:0;background:var(--k);flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;z-index:800}nav.links.open{display:flex}nav.links a{font-size:22px}.menu-toggle{display:flex;z-index:900;position:relative}}
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;padding:8rem 2rem 5rem;position:relative;overflow:hidden}
 .hero-bg{position:absolute;inset:0;background:var(--k)}
-.hero-grid{
-  position:absolute;inset:0;
-  background-image:
-    linear-gradient(rgba(245,197,0,.03) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(245,197,0,.03) 1px,transparent 1px);
-  background-size:50px 50px;
-}
-.hero-glow{
-  position:absolute;top:-20%;right:-10%;
-  width:600px;height:600px;
-  background:radial-gradient(circle,rgba(245,197,0,.06) 0%,transparent 70%);
-  pointer-events:none;
-}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(245,197,0,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(245,197,0,.025) 1px,transparent 1px);background-size:50px 50px}
+.hero-glow{position:absolute;top:-20%;right:-10%;width:600px;height:600px;background:radial-gradient(circle,rgba(245,197,0,.055) 0%,transparent 70%);pointer-events:none}
 .hero-content{position:relative;z-index:1;max-width:1160px;margin:0 auto;width:100%}
-.hero-eyebrow{
-  display:inline-flex;align-items:center;gap:10px;
-  font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;
-  color:var(--y);margin-bottom:2rem;
-}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--y);margin-bottom:2rem}
 .hero-eyebrow::before{content:'';width:32px;height:1px;background:var(--y)}
-.hero h1{
-  font-family:'Fraunces',serif;
-  font-size:clamp(42px,6.5vw,84px);
-  font-weight:300;line-height:.95;
-  letter-spacing:-.02em;
-  margin-bottom:2rem;
-  max-width:900px;
-}
+.hero h1{font-family:'Fraunces',serif;font-size:clamp(42px,6.5vw,84px);font-weight:300;line-height:.95;letter-spacing:-.02em;margin-bottom:2rem;max-width:860px}
 .hero h1 em{font-style:italic;color:var(--y)}
-.hero-sub{
-  font-size:clamp(14px,1.5vw,16px);
-  color:rgba(255,255,255,.6);
-  max-width:540px;
-  line-height:1.75;
-  margin-bottom:2.5rem;
-}
-.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:4rem}
-.btn-primary{
-  background:var(--y);color:var(--k);
-  padding:.875rem 2rem;border-radius:var(--r);
-  font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
-  transition:all var(--trans);
-}
+.hero-sub{font-size:clamp(14px,1.5vw,16px);color:rgba(255,255,255,.55);max-width:520px;line-height:1.8;margin-bottom:2.5rem}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:3.5rem}
+.btn-primary{background:var(--y);color:var(--k);padding:.875rem 2rem;border-radius:var(--r);font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;transition:all var(--trans)}
 .btn-primary:hover{background:var(--y2);transform:translateY(-2px)}
-.btn-ghost{
-  border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.8);
-  padding:.875rem 2rem;border-radius:var(--r);
-  font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
-  transition:all var(--trans);
-}
+.btn-ghost{border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.8);padding:.875rem 2rem;border-radius:var(--r);font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;transition:all var(--trans)}
 .btn-ghost:hover{border-color:var(--y);color:var(--y)}
 .hero-badges{display:flex;gap:2rem;flex-wrap:wrap}
-.badge-item{
-  display:flex;align-items:center;gap:8px;
-  font-size:12px;color:rgba(255,255,255,.5);letter-spacing:.05em;
-}
+.badge-item{display:flex;align-items:center;gap:8px;font-size:12px;color:rgba(255,255,255,.45);letter-spacing:.04em}
 .badge-item::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--y);flex-shrink:0}
-
-/* hero photo placeholder */
-.hero-photo-slot{
-  position:absolute;right:0;top:0;bottom:0;width:38%;
-  background:var(--k3);
-  border-left:1px solid var(--line);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;
-}
-.hero-photo-slot .ph-icon{font-size:24px;opacity:.2}
-.hero-photo-slot .ph-label{font-size:11px;color:rgba(255,255,255,.2);text-align:center;max-width:180px;line-height:1.5;letter-spacing:.05em}
-.hero-photo-slot .ph-dim{font-size:10px;color:rgba(245,197,0,.3);margin-top:4px}
+.hero-photo-slot{position:absolute;right:0;top:0;bottom:0;width:38%;background:var(--k3);border-left:1px solid var(--line);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem}
+.hero-photo-slot .ph-icon{font-size:22px;opacity:.15}
+.hero-photo-slot .ph-label{font-size:11px;color:rgba(255,255,255,.18);text-align:center;max-width:180px;line-height:1.5;letter-spacing:.04em}
+.hero-photo-slot .ph-dim{font-size:10px;color:rgba(245,197,0,.25);margin-top:4px}
 @media(max-width:900px){.hero-photo-slot{display:none}.hero h1{font-size:clamp(38px,9vw,62px)}}
-
-/* ─── NUMBERS BAR ─── */
-.numbers{background:var(--y);color:var(--k);padding:2rem 2rem}
-.numbers-inner{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:0}
-.num-item{padding:1rem 2rem;border-right:1px solid rgba(0,0,0,.1);display:flex;flex-direction:column;align-items:flex-start}
+/* CRED BAR */
+.cred-bar{background:var(--k2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:.875rem 2rem}
+.cred-inner{max-width:1160px;margin:0 auto;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:.5rem 2rem}
+.cred-label{font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.3);white-space:nowrap}
+.cred-items{display:flex;flex-wrap:wrap;gap:.5rem 1.5rem;align-items:center}
+.cred-item{font-size:12px;font-weight:700;letter-spacing:.1em;color:var(--y);opacity:.85}
+.cred-sep{width:1px;height:14px;background:var(--line)}
+/* NUMBERS */
+.numbers{background:var(--y);color:var(--k);padding:1.75rem 2rem}
+.numbers-inner{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr)}
+.num-item{padding:.875rem 1.75rem;border-right:1px solid rgba(0,0,0,.1);display:flex;flex-direction:column}
 .num-item:last-child{border-right:none}
-.num-val{font-family:'Fraunces',serif;font-size:clamp(28px,3vw,40px);font-weight:700;line-height:1;margin-bottom:4px}
-.num-label{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.7}
+.num-val{font-family:'Fraunces',serif;font-size:clamp(24px,2.5vw,36px);font-weight:700;line-height:1;margin-bottom:3px}
+.num-label{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.65}
 @media(max-width:640px){.numbers-inner{grid-template-columns:repeat(2,1fr)}.num-item:nth-child(2){border-right:none}.num-item:nth-child(3){border-right:1px solid rgba(0,0,0,.1)}}
-
-/* ─── SERVICES ─── */
+/* SERVICES */
 .services{padding:7rem 2rem;background:var(--k)}
 .services-header{margin-bottom:4rem}
-.services-grid{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:4px;overflow:hidden}
-.srv-card{
-  padding:2.5rem 2rem;
-  border-right:1px solid var(--line);
-  border-bottom:1px solid var(--line);
-  transition:background var(--trans);
-  position:relative;
-  display:flex;flex-direction:column;gap:1.25rem;
-}
-.srv-card:nth-child(3n){border-right:none}
-.srv-card:nth-child(n+4){border-bottom:none}
+.srv-grid{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:4px;overflow:hidden}
+.srv-card{padding:2.25rem 2rem;border-right:1px solid var(--line);border-bottom:1px solid var(--line);transition:background var(--trans);display:flex;flex-direction:column;gap:1rem}
+.srv-card:nth-child(3n){border-right:none}.srv-card:nth-child(n+4){border-bottom:none}
 .srv-card:hover{background:var(--k3)}
-.srv-num{font-size:11px;font-weight:600;letter-spacing:.1em;color:rgba(255,255,255,.3)}
-.srv-title{font-family:'Fraunces',serif;font-size:22px;font-weight:300;line-height:1.2;color:#fff}
-.srv-desc{font-size:13px;color:var(--muted);line-height:1.7;flex-grow:1}
-.srv-urgency{
-  display:inline-block;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
-  color:#e85c3a;background:rgba(232,92,58,.08);
-  padding:4px 8px;border-radius:2px;align-self:flex-start;
-}
-.srv-cta{
-  display:inline-flex;align-items:center;gap:6px;
-  font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
-  color:var(--y);margin-top:auto;
-  transition:gap var(--trans);
-}
+.srv-num{font-size:11px;font-weight:600;letter-spacing:.1em;color:rgba(255,255,255,.25)}
+.srv-title{font-family:'Fraunces',serif;font-size:20px;font-weight:300;line-height:1.2;color:#fff}
+.srv-desc{font-size:13px;color:var(--muted);line-height:1.75;flex-grow:1}
+.srv-list{display:flex;flex-direction:column;gap:5px;margin-top:2px}
+.srv-list li{font-size:12px;color:var(--muted);padding-left:14px;position:relative;line-height:1.5}
+.srv-list li::before{content:'—';position:absolute;left:0;color:rgba(245,197,0,.4);font-size:10px;top:1px}
+.srv-urgency{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#e85c3a;background:rgba(232,92,58,.08);padding:3px 8px;border-radius:2px;align-self:flex-start}
+.srv-cta{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--y);margin-top:auto;transition:gap var(--trans)}
 .srv-cta:hover{gap:10px}
-@media(max-width:900px){.services-grid{grid-template-columns:repeat(2,1fr)}.srv-card:nth-child(3n){border-right:1px solid var(--line)}.srv-card:nth-child(2n){border-right:none}}
-@media(max-width:580px){.services-grid{grid-template-columns:1fr}.srv-card{border-right:none}.srv-card:nth-child(n+4){border-bottom:1px solid var(--line)}.srv-card:last-child{border-bottom:none}}
-
-/* ─── WHY SECTION ─── */
-.why{padding:7rem 2rem;background:var(--k2);position:relative;overflow:hidden}
+@media(max-width:900px){.srv-grid{grid-template-columns:repeat(2,1fr)}.srv-card:nth-child(3n){border-right:1px solid var(--line)}.srv-card:nth-child(2n){border-right:none}}
+@media(max-width:560px){.srv-grid{grid-template-columns:1fr}.srv-card{border-right:none!important}.srv-card:last-child{border-bottom:none}}
+/* ABOUT */
+.why{padding:7rem 2rem;background:var(--k2)}
 .why-inner{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
-.why-points{margin-top:2rem;display:flex;flex-direction:column;gap:0}
-.why-item{padding:1.75rem 0;border-bottom:1px solid var(--line);display:flex;gap:1.5rem;align-items:flex-start}
+.why-points{margin-top:2rem}
+.why-item{padding:1.5rem 0;border-bottom:1px solid var(--line);display:flex;gap:1.5rem;align-items:flex-start}
 .why-item:last-child{border-bottom:none}
-.why-marker{
-  width:36px;height:36px;border-radius:2px;
-  background:var(--k3);border:1px solid var(--line);
-  display:flex;align-items:center;justify-content:center;
-  flex-shrink:0;
-}
-.why-marker .tech-icon{width:18px;height:18px}
-.why-item-title{font-size:16px;font-weight:600;margin-bottom:6px;color:#fff}
+.why-marker{width:34px;height:34px;border-radius:2px;background:var(--k3);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.why-marker .ti{width:16px;height:16px}
+.why-item-title{font-size:15px;font-weight:600;margin-bottom:5px;color:#fff}
 .why-item-desc{font-size:13px;color:var(--muted);line-height:1.7}
-.why-photo{
-  background:var(--k3);border:1px solid var(--line);border-radius:4px;
-  aspect-ratio:4/5;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;
-  position:relative;overflow:hidden;
-}
+.why-photo{background:var(--k3);border:1px solid var(--line);border-radius:4px;aspect-ratio:4/5;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;position:relative;overflow:hidden}
 .why-photo::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--y)}
-.ph-icon-lg{font-size:32px;opacity:.15}
-.ph-text{font-size:11px;color:rgba(255,255,255,.2);text-align:center;max-width:180px;line-height:1.6;letter-spacing:.05em}
+.ph-icon-lg{font-size:28px;opacity:.12}
+.ph-text{font-size:11px;color:rgba(255,255,255,.18);text-align:center;max-width:180px;line-height:1.6;letter-spacing:.04em}
 .ph-dim{font-size:10px;color:rgba(245,197,0,.2);margin-top:4px}
 @media(max-width:768px){.why-inner{grid-template-columns:1fr;gap:3rem}.why-photo{aspect-ratio:16/9}}
-
-/* ─── CLIENTS ─── */
-.clients{padding:7rem 2rem;background:var(--k)}
-.clients-inner{max-width:1160px;margin:0 auto}
-.clients-grid{
-  display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
-  background:var(--line);border:1px solid var(--line);border-radius:4px;overflow:hidden;
-  margin-top:3rem;
-}
-.client-card{
-  background:var(--k);padding:2.5rem 2rem;
-  display:flex;flex-direction:column;gap:1rem;
-  transition:background var(--trans);
-}
-.client-card:hover{background:var(--k3)}
-.client-name{font-size:15px;font-weight:600;color:#fff}
-.client-desc{font-size:12px;color:var(--muted);line-height:1.6}
-.coverage{
-  margin-top:3rem;padding:1.5rem 2rem;
-  background:rgba(245,197,0,.04);
-  border:1px solid rgba(245,197,0,.1);
-  border-radius:4px;text-align:center;
-  font-size:13px;color:rgba(255,255,255,.6);letter-spacing:.05em;
-}
-.coverage strong{color:var(--y);font-weight:600}
-@media(max-width:768px){.clients-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:480px){.clients-grid{grid-template-columns:1fr}}
-
-/* ─── CONTACT ─── */
+/* PARTNERS */
+.partners{padding:6rem 2rem;background:var(--k)}
+.partners-inner{max-width:1160px;margin:0 auto}
+.partners-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:4px;overflow:hidden;margin-top:3rem}
+.partner-item{background:var(--k);padding:1.75rem 1.25rem;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.6rem;text-align:center;transition:background var(--trans);min-height:108px}
+.partner-item:hover{background:var(--k3)}
+.partner-logo{width:100%;max-width:112px;height:38px;background:var(--k3);border:1px dashed rgba(245,197,0,.18);border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(245,197,0,.25)}
+.partner-name{font-size:12px;font-weight:600;color:rgba(255,255,255,.65);line-height:1.3;max-width:112px}
+.partner-sector{font-size:10px;color:rgba(255,255,255,.3);letter-spacing:.04em}
+@media(max-width:900px){.partners-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:560px){.partners-grid{grid-template-columns:repeat(2,1fr)}}
+/* CONTACT */
 .contact{padding:7rem 2rem;background:var(--k2)}
 .contact-inner{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
-.contact-left .section-sub{margin-bottom:2.5rem}
 .contact-direct{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2rem}
-.contact-item{
-  display:flex;flex-direction:column;gap:4px;
-  padding:1.25rem;background:var(--k3);
-  border:1px solid var(--line);border-radius:4px;
-}
+.contact-item{display:flex;flex-direction:column;gap:4px;padding:1.25rem;background:var(--k3);border:1px solid var(--line);border-radius:4px}
 .contact-item-label{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
 .contact-item-val{font-size:13px;color:#fff;font-weight:500}
-.btn-wa{
-  display:flex;align-items:center;justify-content:center;gap:.75rem;
-  background:var(--y);color:var(--k);
-  padding:1.25rem 2rem;border-radius:var(--r);
-  font-size:14px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
-  transition:all var(--trans);margin-top:1.5rem;
-}
+.contact-item-val a{color:#fff;transition:color var(--trans)}
+.contact-item-val a:hover{color:var(--y)}
+.social-row{display:flex;gap:.75rem;margin-top:1.25rem;flex-wrap:wrap}
+.social-btn{display:flex;align-items:center;gap:.5rem;padding:.6rem 1rem;border:1px solid var(--line);border-radius:var(--r);font-size:12px;font-weight:600;letter-spacing:.04em;color:rgba(255,255,255,.55);transition:all var(--trans)}
+.social-btn:hover{border-color:var(--y);color:var(--y)}
+.social-btn svg{width:16px;height:16px;flex-shrink:0;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.btn-wa{display:flex;align-items:center;justify-content:center;gap:.75rem;background:var(--y);color:var(--k);padding:1.125rem 2rem;border-radius:var(--r);font-size:14px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;transition:all var(--trans);margin-top:1.5rem}
 .btn-wa:hover{background:var(--y2);transform:translateY(-2px)}
 .btn-wa svg{width:20px;height:20px;flex-shrink:0}
-
-/* form */
 .contact-form{background:var(--k3);border:1px solid var(--line);border-radius:4px;padding:2.5rem}
 .form-title{font-family:'Fraunces',serif;font-size:24px;font-weight:300;margin-bottom:1.75rem;color:#fff}
 .form-row{margin-bottom:1.25rem}
 .form-row label{display:block;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem}
-.form-row input,.form-row select,.form-row textarea{
-  width:100%;background:var(--k2);
-  border:1px solid var(--line);
-  color:#fff;padding:.875rem 1rem;
-  font-family:'Inter',sans-serif;font-size:14px;
-  border-radius:var(--r);transition:border-color var(--trans);
-  appearance:none;
-}
-.form-row select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23F5C500' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center}
+.form-row input,.form-row select,.form-row textarea{width:100%;background:var(--k2);border:1px solid var(--line);color:#fff;padding:.875rem 1rem;font-family:'Inter',sans-serif;font-size:14px;border-radius:var(--r);transition:border-color var(--trans);appearance:none}
+.form-row select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23F5C500' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center}
 .form-row textarea{min-height:110px;resize:vertical}
 .form-row input:focus,.form-row select:focus,.form-row textarea:focus{outline:none;border-color:var(--y)}
 .form-row input::placeholder,.form-row textarea::placeholder{color:rgba(255,255,255,.2)}
-.btn-submit{
-  width:100%;background:var(--y);color:var(--k);
-  padding:1rem;border:none;border-radius:var(--r);cursor:pointer;
-  font-family:'Inter',sans-serif;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
-  transition:all var(--trans);
-}
+.btn-submit{width:100%;background:var(--y);color:var(--k);padding:1rem;border:none;border-radius:var(--r);cursor:pointer;font-family:'Inter',sans-serif;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;transition:all var(--trans)}
 .btn-submit:hover{background:var(--y2);transform:translateY(-1px)}
 @media(max-width:768px){.contact-inner{grid-template-columns:1fr;gap:3rem}.contact-direct{grid-template-columns:1fr}}
-
-/* ─── FOOTER ─── */
+/* FOOTER */
 footer{background:var(--k);border-top:1px solid var(--line);padding:4rem 2rem 2rem}
 .footer-inner{max-width:1160px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:2rem}
-.footer-brand p{font-size:12px;color:var(--muted);margin-top:.75rem;max-width:280px;line-height:1.6}
+.footer-brand p{font-size:12px;color:var(--muted);margin-top:.75rem;max-width:280px;line-height:1.65}
 .footer-links-col h4{font-size:11px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:1.25rem}
-.footer-links-col a{display:block;font-size:13px;color:rgba(255,255,255,.5);margin-bottom:.6rem;transition:color var(--trans)}
+.footer-links-col a{display:block;font-size:13px;color:rgba(255,255,255,.45);margin-bottom:.6rem;transition:color var(--trans)}
 .footer-links-col a:hover{color:#fff}
 .footer-bottom{max-width:1160px;margin:3rem auto 0;padding-top:1.5rem;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
-.footer-bottom p{font-size:11px;color:rgba(255,255,255,.3);letter-spacing:.05em}
+.footer-bottom p{font-size:11px;color:rgba(255,255,255,.25);letter-spacing:.04em}
 .footer-tags{display:flex;gap:1rem;flex-wrap:wrap}
-.footer-tags span{font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.2)}
-
-/* ─── FLOATING WA ─── */
-.wa-float{
-  position:fixed;bottom:2rem;right:2rem;z-index:800;
-  background:var(--y);color:var(--k);
-  width:56px;height:56px;border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  box-shadow:0 4px 24px rgba(245,197,0,.25);
-  transition:all var(--trans);
-}
-.wa-float:hover{transform:scale(1.05);box-shadow:0 6px 32px rgba(245,197,0,.4)}
+.footer-tags span{font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.18)}
+/* WA FLOAT */
+.wa-float{position:fixed;bottom:2rem;right:2rem;z-index:800;background:var(--y);color:var(--k);width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(245,197,0,.25);transition:all var(--trans)}
+.wa-float:hover{transform:scale(1.08)}
 .wa-float svg{width:24px;height:24px}
 @keyframes pulse-ring{0%{transform:scale(1);opacity:.4}100%{transform:scale(1.4);opacity:0}}
-.wa-float::before{
-  content:'';position:absolute;inset:0;border-radius:50%;background:var(--y);
-  animation:pulse-ring 2.5s ease-out infinite;
-}
-
-/* ─── FADE IN ON SCROLL ─── */
+.wa-float::before{content:'';position:absolute;inset:0;border-radius:50%;background:var(--y);animation:pulse-ring 2.5s ease-out infinite}
 .fade-in{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
 .fade-in.visible{opacity:1;transform:none}
-
-/* ─── REVEAL BAR ─── */
 #progress{position:fixed;top:0;left:0;height:2px;background:var(--y);z-index:999;width:0%;transition:width .1s}
 </style>
 </head>
 <body>
-
 <div id="progress"></div>
 
 <header id="hdr">
-  <a href="#" class="header-logo">
-    <img src="logo.png" alt="SADL Engenharia" class="logo-img">
+  <a href="index.html" class="header-logo">
+    <img src="logo.png" alt="SADL Solucoes de Engenharia" class="logo-img">
   </a>
-
   <nav class="links" id="nav-links">
-    <a href="#servicos">Serviços</a>
-    <a href="#sobre">Sobre</a>
+    <a href="servicos.html">Serviços</a>
+    <a href="galeria.html">Galeria</a>
+    <a href="noticias.html">Notícias</a>
     <a href="#contato">Contato</a>
-    <a href="https://wa.me/55557196783783?text=Olá%2C+vim+pelo+site+da+SADL+e+gostaria+de+um+orçamento." class="nav-cta" target="_blank" rel="noopener">WhatsApp →</a>
+    <a href="https://wa.me/5571996783783?text=Ola%2C+vim+pelo+site+da+SADL." class="nav-cta" target="_blank" rel="noopener">WhatsApp</a>
   </nav>
-
-  <div class="menu-toggle" id="menu-btn" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </div>
+  <div class="menu-toggle" id="menu-btn" aria-label="Menu"><span></span><span></span><span></span></div>
 </header>
 
 <section class="hero" id="inicio">
   <div class="hero-bg"></div>
   <div class="hero-grid"></div>
   <div class="hero-glow"></div>
-
   <div class="hero-photo-slot" aria-hidden="true">
-    <img src="foto1.png">
-    <div class="ph-icon">📷</div>
-    <div class="ph-label">FOTO_HERO<br>Equipe com Receptor GNSS RTK ou Drone em campo</div>
-    <div class="ph-dim">1200 × 800 px</div>
+    <!-- FOTO_HERO: trocar por <img src="foto-campo.jpg" alt="Equipe SADL em campo"> -->
+     <img src="foto1.png">
+    <div class="ph-icon">&#128247;</div>
+    <div class="ph-label"><br>Equipe com receptor GNSS RTK ou drone em campo</div>
+    <div class="ph-dim">1200 x 800 px</div>
   </div>
-
   <div class="hero-content">
-    <span class="hero-eyebrow">SADL Soluções de Engenharia · Feira de Santana, BA</span>
-    <h1>
-      Regularize.<br>
-      Licencie.<br>
-      <em>Resolva.</em>
-    </h1>
-    <p class="hero-sub">
-      Georreferenciamento de alta precisão (RTK), ortofotos com drone, titulação fundiária e licenciamento ambiental com rigor técnico desde 2011.
-    </p>
+    <span class="hero-eyebrow">SADL Soluções de Engenharia &middot; Feira de Santana, BA</span>
+    <h1>Regularize.<br>Licencie.<br><em>Resolva.</em></h1>
+    <p class="hero-sub">15 anos prestando serviços de geomensura, topografia, titulação de imóveis rurais e licenciamento ambiental para o mercado baiano &mdash; com qualidade, rigor técnico e compromisso de entrega.</p>
     <div class="hero-actions">
-      <a href="https://wa.me/55557196783783?text=Olá%2C+vim+pelo+site+e+quero+solicitar+um+orçamento+técnico." class="btn-primary" target="_blank" rel="noopener">Solicitar orçamento</a>
-      <a href="#servicos" class="btn-ghost">Ver serviços técnicos</a>
+      <a href="https://wa.me/5571996783783?text=Ola%2C+quero+um+orcamento." class="btn-primary" target="_blank" rel="noopener">Solicitar orçamento</a>
+      <a href="servicos.html" class="btn-ghost">Ver serviços técnicos</a>
     </div>
     <div class="hero-badges">
-      <span class="badge-item">Registrada no CREA-BA</span>
-      <span class="badge-item">Credenciada no INEMA e IBAMA</span>
-      <span class="badge-item">Precisão Geodésica e Centimétrica</span>
+      <span class="badge-item">CREA-BA</span>
+      <span class="badge-item">INCRA credenciada</span>
+      <span class="badge-item">INEMA &middot; IBAMA</span>
+      <span class="badge-item">CFT &middot; SDA</span>
     </div>
   </div>
 </section>
 
-<div class="numbers fade-in">
-  <div class="numbers-inner">
-    <div class="num-item">
-      <span class="num-val">15</span>
-      <span class="num-label">Anos de experiência</span>
-    </div>
-    <div class="num-item">
-      <span class="num-val">Bahia</span>
-      <span class="num-label">Inteira atendida</span>
-    </div>
-    <div class="num-item">
-      <span class="num-val">GNSS RTK</span>
-      <span class="num-label">Tecnologia de ponta</span>
-    </div>
-    <div class="num-item">
-      <span class="num-val">INEMA</span>
-      <span class="num-label">+ IBAMA credenciada</span>
+<div class="cred-bar fade-in">
+  <div class="cred-inner">
+    <span class="cred-label">Inscrita nos principais órgãos</span>
+    <div class="cred-items">
+      <span class="cred-item">INEMA</span><span class="cred-sep"></span>
+      <span class="cred-item">IBAMA</span><span class="cred-sep"></span>
+      <span class="cred-item">CREA-BA</span><span class="cred-sep"></span>
+      <span class="cred-item">CFT</span><span class="cred-sep"></span>
+      <span class="cred-item">SDA</span><span class="cred-sep"></span>
+      <span class="cred-item">INCRA</span>
     </div>
   </div>
 </div>
 
-<section class="services" id="servicos">
+<div class="numbers fade-in">
+  <div class="numbers-inner">
+    <div class="num-item"><span class="num-val">15</span><span class="num-label">Anos de mercado</span></div>
+    <div class="num-item"><span class="num-val">Bahia</span><span class="num-label">Inteira atendida</span></div>
+    <div class="num-item"><span class="num-val">GNSS RTK</span><span class="num-label">Tecnologia de campo</span></div>
+    <div class="num-item"><span class="num-val">6</span><span class="num-label">Órgãos credenciada</span></div>
+  </div>
+</div>
+
+<section class="services" id="servicos-home">
   <div class="wrap">
     <div class="services-header fade-in">
-      <span class="section-num">01 — Serviços</span>
-      <h2 class="section-title">Soluções de Engenharia<br>e Alta Precisão</h2>
+      <span class="section-num">01 &mdash; Serviços</span>
+      <h2 class="section-title">Engenharia aplicada<br>do campo ao cartório</h2>
       <div class="divider"></div>
-      <p class="section-sub">Geomensura, regularização fundiária e estudos ambientais complexos — do processamento de dados geodésicos à entrega documental.</p>
+      <p class="section-sub">Geomensura, regularização fundiária e estudos ambientais &mdash; do levantamento em campo a entrega documental nos órgãos competentes.</p>
     </div>
-
-    <div class="services-grid fade-in">
-
+    <div class="srv-grid fade-in">
       <div class="srv-card">
         <span class="srv-num">01</span>
-        <svg class="tech-icon" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 11 2 2 4-4"/></svg>
-        <h3 class="srv-title">Titulação e Regularização de Terras</h3>
-        <p class="srv-desc">Georreferenciamento de imóveis rurais certificado pelo INCRA utilizando receptores GNSS RTK de dupla frequência. Emissão de CCIR, CAR ativo e suporte ao programa SDA.</p>
-        <span class="srv-urgency">Prazo INCRA: outubro de 2029</span>
-        <a href="https://wa.me/55557196783783?text=Olá%2C+quero+saber+sobre+titulação+e+regularização+de+terras." class="srv-cta" target="_blank" rel="noopener">Regularizar terra →</a>
+        <svg class="ti" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        <h3 class="srv-title">Geomensura / Topografia</h3>
+        <ul class="srv-list">
+          <li>Levantamentos Planialtimétricos</li>
+          <li>Aerolevantamentos com Drone</li>
+          <li>Georreferenciamentos rurais e urbanos</li>
+          <li>Cadastro da poligonal no SIG-RI</li>
+          <li>Certificação de Imóveis Rurais (INCRA)</li>
+          <li>Mapeamento GNSS &ndash; RTK</li>
+        </ul>
+        <a href="servicos.html" class="srv-cta">Ver detalhes técnicos &rarr;</a>
       </div>
-
       <div class="srv-card">
         <span class="srv-num">02</span>
-        <svg class="tech-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16.2 7.8-8.4 8.4M12 2v20M2 12h20"/></svg>
-        <h3 class="srv-title">Levantamentos Topográficos</h3>
-        <p class="srv-desc">Levantamentos planialtimétricos cadastrais, locação de obras estruturais, cálculo de volumes e mapeamento aéreo com Drones para geração de ortofotos e modelos digitais de terreno (MDT).</p>
-        <a href="https://wa.me/55557196783783?text=Olá%2C+preciso+de+um+levantamento+topográfico." class="srv-cta" target="_blank" rel="noopener">Solicitar levantamento →</a>
+        <svg class="ti" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <h3 class="srv-title">Titulação de Imóveis Rurais</h3>
+        <p class="srv-desc">Titulação via SDA &mdash; Superintendência de Desenvolvimento Agrário da Bahia. Regularização fundiária completa para posses rurais sem documentação formal.</p>
+        <span class="srv-urgency">Prazo INCRA: outubro de 2029</span>
+        <a href="https://wa.me/5571996783783?text=Ola%2C+quero+saber+sobre+titulacao+via+SDA." class="srv-cta" target="_blank" rel="noopener">Regularizar minha terra &rarr;</a>
       </div>
-
       <div class="srv-card">
         <span class="srv-num">03</span>
-        <svg class="tech-icon" viewBox="0 0 24 24"><path d="M2 22h20M12 2v20M12 2a15 15 0 0 1 4.5 10.5c0 3.3-1.5 6.2-4.5 7.5M12 2A15 15 0 0 0 7.5 12.5c0 3.3 1.5 6.2 4.5 7.5"/></svg>
-        <h3 class="srv-title">Licenciamento Ambiental</h3>
-        <p class="srv-desc">Estudos e licenças ambientais (LAS, LAP, LAO, RCE, PEA). Projetos estruturados de gerenciamento de resíduos (PGRS, PGRCC) e recuperação de áreas degradadas (PRAD) junto ao INEMA e IBAMA.</p>
-        <a href="https://wa.me/55557196783783?text=Olá%2C+preciso+de+licenciamento+ambiental." class="srv-cta" target="_blank" rel="noopener">Solicitar licença →</a>
+        <svg class="ti" viewBox="0 0 24 24"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+        <h3 class="srv-title">Projetos Geométricos</h3>
+        <p class="srv-desc">Desenho e modelagem de projetos geométricos para loteamentos, desmembramentos, partilhas amigáveis ou judiciais e regularizações fundiárias (REURB).</p>
+        <a href="https://wa.me/5571996783783?text=Ola%2C+preciso+de+um+projeto+geometrico." class="srv-cta" target="_blank" rel="noopener">Consultar projeto &rarr;</a>
       </div>
-
       <div class="srv-card">
         <span class="srv-num">04</span>
-        <svg class="tech-icon" viewBox="0 0 24 24"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M12 6v6l4 2"/></svg>
-        <h3 class="srv-title">CEFIR e CAR</h3>
-        <p class="srv-desc">Inscrição e retificação no Cadastro Ambiental Rural e CEFIR. Processo obrigatório para garantir a conformidade da propriedade, segurança jurídica, transferências e acesso ao crédito agrícola.</p>
-        <a href="https://wa.me/55557196783783?text=Olá%2C+preciso+fazer+o+CEFIR+e+CAR." class="srv-cta" target="_blank" rel="noopener">Regularizar CEFIR →</a>
+        <svg class="ti" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+        <h3 class="srv-title">Medição de Volumes</h3>
+        <p class="srv-desc">Cálculo de volumes de corte e aterro, cubagem de material estocado e monitoramento volumétrico via levantamentos topográficos e ortomosaicos de drone.</p>
+        <a href="https://wa.me/5571996783783?text=Ola%2C+preciso+de+medicao+de+volumes." class="srv-cta" target="_blank" rel="noopener">Solicitar medicao &rarr;</a>
       </div>
-
       <div class="srv-card">
         <span class="srv-num">05</span>
-        <svg class="tech-icon" viewBox="0 0 24 24"><path d="M3 3h18v18H3zM21 3 3 21M3 12h18M12 3v18"/></svg>
-        <h3 class="srv-title">Projetos Agrários e Geométricos</h3>
-        <p class="srv-desc">Desenho e modelagem de projetos geométricos, divisões de condomínios rurais, partilhas amigáveis ou judiciais, desmembramentos e projetos de Regularização Fundiária Urbana (REURB).</p>
-        <a href="https://wa.me/55557196783783?text=Olá%2C+preciso+de+um+projeto+agrário+ou+geométrico." class="srv-cta" target="_blank" rel="noopener">Consultar projeto →</a>
+        <svg class="ti" viewBox="0 0 24 24"><path d="M2 22h20M12 2v20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg>
+        <h3 class="srv-title">Licenciamentos Ambientais</h3>
+        <p class="srv-desc">LAS, LAP, LAO, RCE, PEA, PGR, PRAD, PGRS e PGRCC junto ao INEMA e IBAMA para industrias, construtoras, postos de combustível e produtores rurais em toda a Bahia.</p>
+        <a href="https://wa.me/5571996783783?text=Ola%2C+preciso+de+licenciamento+ambiental." class="srv-cta" target="_blank" rel="noopener">Solicitar licenca &rarr;</a>
       </div>
-
       <div class="srv-card">
         <span class="srv-num">06</span>
-        <svg class="tech-icon" viewBox="0 0 24 24"><path d="M21.21 15.89A10 10 0 1 1 8 2.83M22 12A10 10 0 0 0 12 2v10z"/></svg>
-        <h3 class="srv-title">Estudos e Relatórios Ambientais</h3>
-        <p class="srv-desc">Laudos de cobertura vegetal, relatórios de impacto e consultoria técnica especializada. Defesas e acompanhamento de processos junto a secretarias municipais e estaduais.</p>
-        <a href="https://wa.me/55557196783783?text=Olá%2C+preciso+de+um+estudo+ou+relatório+ambiental." class="srv-cta" target="_blank" rel="noopener">Solicitar estudo →</a>
+        <svg class="ti" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        <h3 class="srv-title">Consultoria e Estudos de Viabilidade</h3>
+        <p class="srv-desc">Consultoria em projetos de engenharia e análise de viabilidade técnica e econômica para empreendimentos rurais e urbanos. Laudos, pareceres e relatórios técnicos.</p>
+        <a href="https://wa.me/5571996783783?text=Ola%2C+preciso+de+consultoria+ou+estudo+de+viabilidade." class="srv-cta" target="_blank" rel="noopener">Solicitar consultoria &rarr;</a>
       </div>
-
+    </div>
+    <div style="text-align:center;margin-top:2.5rem">
+      <a href="servicos.html" class="btn-ghost">Ver página completa de serviços técnicos &rarr;</a>
     </div>
   </div>
 </section>
@@ -496,83 +329,103 @@ footer{background:var(--k);border-top:1px solid var(--line);padding:4rem 2rem 2r
   <div class="wrap">
     <div class="why-inner">
       <div>
-        <span class="section-num fade-in">02 — Infraestrutura e Rigor</span>
-        <h2 class="section-title fade-in">15 anos de<br>tecnologia aplicada<br>ao campo</h2>
+        <span class="section-num fade-in">02 &mdash; Sobre a SADL</span>
+        <h2 class="section-title fade-in">15 anos resolvendo<br>o que o mercado<br>baiano precisa</h2>
         <div class="divider fade-in"></div>
-        <p class="section-sub fade-in">Fundada em 2011, a SADL une o conhecimento jurídico-cartorial à tecnologia geodésica avançada para garantir aprovações rápidas e sem falhas.</p>
-
+        <p class="section-sub fade-in">Com 15 anos de mercado, a SADL nasceu com o objetivo de prestar serviços de engenharia voltados a geomensura, regularizacao fundiaria e engenharia ambiental &mdash; satisfazendo o cliente (interno e externo) e buscando alcancar a lideranca do mercado nesse segmento.</p>
         <div class="why-points">
           <div class="why-item fade-in">
-            <div class="why-marker">
-              <svg class="tech-icon" viewBox="0 0 24 24"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m9 12 2 2 4-4"/></svg>
-            </div>
+            <div class="why-marker"><svg class="ti" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg></div>
             <div>
-              <div class="why-item-title">Equipamentos Geodésicos GNSS RTK</div>
-              <div class="why-item-desc">Rastreamento via satélite GPS de dupla frequência para medições georreferenciadas com precisão milimétrica. Dados puros e homologados sem margem para sobreposição de áreas.</div>
+              <div class="why-item-title">Equipamentos GNSS RTK de Alta Precisão</div>
+              <div class="why-item-desc">Receptores GPS de dupla frequência para medições georreferenciadas com precisao centimétrica. Dados homologados pelo INCRA sem risco de sobreposição de áreas.</div>
             </div>
           </div>
           <div class="why-item fade-in">
-            <div class="why-marker">
-              <svg class="tech-icon" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l-7 4a2 2 0 0 0 2 0l-7-4A2 2 0 0 0 21 16z"/></svg>
-            </div>
+            <div class="why-marker"><svg class="ti" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div>
             <div>
-              <div class="why-item-title">Mapeamento com Drones e Ortofotos</div>
-              <div class="why-item-desc">Aerofotogrametria moderna. Geramos ortomosaicos de alta resolução, curvas de nível e modelos tridimensionais que agilizam vistorias de grandes extensões rurais.</div>
+              <div class="why-item-title">Aerolevantamentos com Drone e Ortofotos</div>
+              <div class="why-item-desc">Geração de ortomosaicos, modelos digitais de terreno (MDT) e curvas de nível com alta resolução. Cobertura eficiente de grandes extensões rurais em tempo reduzido.</div>
             </div>
           </div>
           <div class="why-item fade-in">
-            <div class="why-marker">
-              <svg class="tech-icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>
-            </div>
+            <div class="why-marker"><svg class="ti" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
             <div>
-              <div class="why-item-title">Conhecimento Cartorial Local</div>
-              <div class="why-item-desc">Atuação ativa em Feira de Santana e comarcas do interior da Bahia. Entendemos as exigências específicas dos cartórios de registro de imóveis da região, reduzindo prazos de tramitação.</div>
+              <div class="why-item-title">Inscrita nos 6 Principais Órgaos do Setor</div>
+              <div class="why-item-desc">CREA, INCRA, INEMA, IBAMA, CFT e SDA &mdash; credenciamentos que garantem validade técnica e jurídica plena de todos os documentos emitidos.</div>
             </div>
           </div>
         </div>
       </div>
-
       <div class="why-photo fade-in" aria-hidden="true">
-        <img src="FOTO_CAMPO.png">
-        <div class="ph-icon-lg">📷</div>
-        <div class="ph-text">FOTO_EQUIPE<br>Foto técnica (Ortofotopeças, nuvem de pontos ou equipe operando Base/Rover RTK)</div>
-        <div class="ph-dim">900 × 1100 px recomendado</div>
+        <!-- FOTO_EQUIPE: trocar por <img src="equipe.jpg" alt="..."> | 900x1100px -->
+         <img src="FOTO_CAMPO.png">
+        <div class="ph-icon-lg">&#128247;</div>
+        <div class="ph-text">FOTO_EQUIPE<br>Equipe operando receptor RTK ou ortofoto aerea</div>
+        <div class="ph-dim">900 x 1100 px recomendado</div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="clients" id="clientes">
-  <div class="clients-inner">
-    <span class="section-num fade-in">03 — Setores</span>
-    <h2 class="section-title fade-in">Segmentos de<br>Atuação</h2>
+<section class="partners" id="parceiros">
+  <div class="partners-inner">
+    <span class="section-num fade-in">03 &mdash; Clientes atendidos</span>
+    <h2 class="section-title fade-in">Quem já confiou<br>na SADL</h2>
     <div class="divider fade-in"></div>
-
-    <div class="clients-grid fade-in">
-      <div class="client-card">
-        <svg class="tech-icon" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-        <div class="client-name">Produtores Rurais</div>
-        <div class="client-desc">Certificação INCRA, retificação de áreas rurais complexas e blindagem jurídica ambiental da propriedade.</div>
+    <p class="section-sub fade-in">Empresas, instituições públicas e consórcios de diferentes setores que contrataram nossos serviços em toda a Bahia.</p>
+    <div class="partners-grid fade-in">
+      <div class="partner-item">
+        <!-- LOGO: trocar por <img src="logos/dow.png" alt="DOW Quimica" style="max-height:38px"> -->
+        <div class="partner-logo">LOGO</div>
+        <div class="partner-name">DOW Química</div>
+        <div class="partner-sector">Industria Química</div>
       </div>
-      <div class="client-card">
-        <svg class="tech-icon" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-        <div class="client-name">Incorporadoras e Construtoras</div>
-        <div class="client-desc">Demarcações precisas de divisas, modelagem de curvas de nível e conformidade em licenciamento imobiliário.</div>
+      <div class="partner-item">
+        <div class="partner-logo">LOGO</div>
+        <div class="partner-name">Log Comercial Propite</div>
+        <div class="partner-sector">Logistica</div>
       </div>
-      <div class="client-card">
-        <svg class="tech-icon" viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
-        <div class="client-name">Indústrias e Logística</div>
-        <div class="client-desc">Laudos de efluentes, resíduos industriais e planos ambientais para operação legal perante órgãos fiscalizadores.</div>
+      <div class="partner-item">
+        <div class="partner-logo">LOGO</div>
+        <div class="partner-name">Cone Aratu S.A.</div>
+        <div class="partner-sector">Industria</div>
       </div>
-      <div class="client-card">
-        <svg class="tech-icon" viewBox="0 0 24 24"><path d="M12 22V2M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-        <div class="client-name">Investidores e Advogados</div>
-        <div class="client-desc">Perícias técnicas para disputas territoriais, inventários fundiários e due diligence imobiliária.</div>
+      <div class="partner-item">
+        <div class="partner-logo">LOGO</div>
+        <div class="partner-name">Prefeitura de Itagibá</div>
+        <div class="partner-sector">Poder Publico</div>
       </div>
-    </div>
-
-    <div class="coverage fade-in">
-      Base Operacional: <strong>Feira de Santana</strong> · Logística Integrada para todo o <strong>Interior da Bahia</strong> e Recôncavo.
+      <div class="partner-item">
+        <div class="partner-logo">LOGO</div>
+        <div class="partner-name">Consórcio Velho Chico</div>
+        <div class="partner-sector">Consórcio Público</div>
+      </div>
+      <div class="partner-item">
+        <div class="partner-logo">LOGO</div>
+        <div class="partner-name">SDA &mdash; Sup. Dev. Agrario</div>
+        <div class="partner-sector">Órgao Estadual</div>
+      </div>
+      <div class="partner-item">
+        <div class="partner-logo">LOGO</div>
+        <div class="partner-name">Solomaq</div>
+        <div class="partner-sector">Máquinas e Equipamentos</div>
+      </div>
+      <div class="partner-item">
+        <div class="partner-logo">LOGO</div>
+        <div class="partner-name">Patrus Transportes</div>
+        <div class="partner-sector">Transporte / Logística</div>
+      </div>
+      <div class="partner-item">
+        <div class="partner-logo">LOGO</div>
+        <div class="partner-name">Moura Dubett</div>
+        <div class="partner-sector">Incorporação</div>
+      </div>
+      <div class="partner-item">
+        <div class="partner-logo">LOGO</div>
+        <div class="partner-name">CTR Ilhéus</div>
+        <div class="partner-sector">Gestão de Resíduos</div>
+      </div>
     </div>
   </div>
 </section>
@@ -581,63 +434,72 @@ footer{background:var(--k);border-top:1px solid var(--line);padding:4rem 2rem 2r
   <div class="wrap">
     <div class="contact-inner">
       <div class="contact-left fade-in">
-        <span class="section-num">04 — Engenharia Diagnóstica</span>
-        <h2 class="section-title">Inicie sua<br>Análise Técnica</h2>
+        <span class="section-num">04 &mdash; Contato</span>
+        <h2 class="section-title">Fale<br>conosco</h2>
         <div class="divider"></div>
-        <p class="section-sub">Atendimento direto por engenheiros habilitados. Retorno corporativo ágil e encaminhamento de propostas técnicas estruturadas.</p>
-
+        <p class="section-sub">Orçamento gratuito. Atendimento direto por engenheiros habilitados. Respondemos no mesmo dia.</p>
         <div class="contact-direct">
           <div class="contact-item">
-            <span class="contact-item-label">Sede Técnica</span>
+            <span class="contact-item-label">Sede</span>
             <span class="contact-item-val">Feira de Santana, Bahia</span>
           </div>
           <div class="contact-item">
-            <span class="contact-item-label">Comunicação</span>
-            <span class="contact-item-val">@sadl_engenharia</span>
+            <span class="contact-item-label">E-mail</span>
+            <!-- SUBSTITUIR: e-mail real da SADL -->
+            <span class="contact-item-val"><a href="mailto:contato@sadl.com.br">contato@sadl.com.br</a></span>
           </div>
           <div class="contact-item">
-            <span class="contact-item-label">Corporativo</span>
-            <span class="contact-item-val">[EMAIL_SADL]</span>
+            <span class="contact-item-label">Registro</span>
+            <span class="contact-item-val">CREA-BA &middot; INCRA &middot; INEMA</span>
           </div>
           <div class="contact-item">
-            <span class="contact-item-label">Credenciamento</span>
-            <span class="contact-item-val">CREA-BA · INEMA · IBAMA</span>
+            <span class="contact-item-label">Também credenciada</span>
+            <span class="contact-item-val">IBAMA &middot; CFT &middot; SDA</span>
           </div>
         </div>
-
-        <a href="https://wa.me/55557196783783?text=Olá%2C+gostaria+de+enviar+uma+demanda+técnica+para+a+SADL." class="btn-wa" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          Conectar via WhatsApp Técnico
+        <div class="social-row">
+          <a href="https://www.instagram.com/sadl_engenharia" class="social-btn" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+            @sadl_engenharia
+          </a>
+          <a href="https://www.linkedin.com/company/[LINKEDIN_SADL]" class="social-btn" target="_blank" rel="noopener">
+            <!-- SUBSTITUIR: URL real do LinkedIn -->
+            <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            LinkedIn
+          </a>
+        </div>
+        <a href="https://wa.me/5571996783783?text=Ola%2C+vim+pelo+site+e+quero+um+orcamento." class="btn-wa" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Chamar no WhatsApp
         </a>
       </div>
-
       <div class="contact-form fade-in">
-        <div class="form-title">Painel de Atendimento</div>
+        <div class="form-title">Envie uma mensagem</div>
         <div class="form-row">
-          <label for="nome">Nome completo / Razão Social</label>
-          <input type="text" id="nome" placeholder="Nome ou Empresa">
+          <label for="nome">Nome completo / Razão social</label>
+          <input type="text" id="nome" placeholder="Seu nome ou empresa">
         </div>
         <div class="form-row">
-          <label for="tel">Telefone institucional</label>
+          <label for="tel">Telefone / WhatsApp</label>
           <input type="tel" id="tel" placeholder="(75) 9 0000-0000">
         </div>
         <div class="form-row">
-          <label for="srv">Demanda de interesse</label>
+          <label for="srv">Servico de interesse</label>
           <select id="srv">
-            <option value="">Selecione a área técnica</option>
-            <option value="titulação">Titulação e Georreferenciamento INCRA</option>
-            <option value="topografia">Levantamentos Planialtimétricos / Drone</option>
-            <option value="licenciamento">Licenciamento Ambiental / PGRS</option>
-            <option value="cefir">CEFIR e CAR Rural</option>
-            <option value="projetos">Projetos Agrários e Loteamentos</option>
-            <option value="estudos">Perícias e Relatórios Ambientais</option>
+            <option value="">Selecione um serviço</option>
+            <option value="geomensura">Geomensura / Topografia</option>
+            <option value="titulacao">Titulação de Imoveis Rurais (SDA)</option>
+            <option value="projetos">Projetos Geométricos</option>
+            <option value="volumes">Medição de Volumes</option>
+            <option value="licenciamento">Licenciamentos Ambientais</option>
+            <option value="consultoria">Consultoria / Estudos de Viabilidade</option>
           </select>
         </div>
         <div class="form-row">
-          <label for="msg">Memorial descritivo da demanda (opcional)</label>
-          <textarea id="msg" placeholder="Informe a localização da área ou resumo do problema fundiário/ambiental..."></textarea>
+          <label for="msg">Mensagem (opcional)</label>
+          <textarea id="msg" placeholder="Descreva brevemente o que precisa ou a localizacao da area..."></textarea>
         </div>
-        <button class="btn-submit" id="form-submit">Enviar Demanda via WhatsApp →</button>
+        <button class="btn-submit" id="form-submit">Enviar pelo WhatsApp</button>
       </div>
     </div>
   </div>
@@ -646,82 +508,62 @@ footer{background:var(--k);border-top:1px solid var(--line);padding:4rem 2rem 2r
 <footer>
   <div class="footer-inner wrap">
     <div class="footer-brand">
-      <img src="logo.png" alt="SADL Engenharia" class="logo-img">
-      <p>SADL Soluções de Engenharia. Alta tecnologia em posicionamento geodésico, topografia computadorizada e regularização legal corporativa e ambiental na Bahia.</p>
+      <img src="logo.png" alt="SADL Engenharia" class="logo-img" style="height:38px">
+      <p>SADL Soluções de Engenharia &mdash; 15 anos em geomensura, titulação de imóveis rurais e licenciamento ambiental para o mercado baiano.</p>
     </div>
     <div class="footer-links-col">
-      <h4>Serviços</h4>
-      <a href="#servicos">Mapeamento Geodésico</a>
-      <a href="#servicos">Topografia Engenharia</a>
-      <a href="#servicos">Licenças Ambientais</a>
-      <a href="#servicos">CEFIR / CAR</a>
-      <a href="#servicos">Divisões Agrárias</a>
+      <h4>Servicos</h4>
+      <a href="servicos.html">Geomensura / Topografia</a>
+      <a href="servicos.html">Titulação de Terras</a>
+      <a href="servicos.html">Licenciamentos</a>
+      <a href="servicos.html">Projetos Geométricos</a>
+      <a href="servicos.html">Consultoria</a>
     </div>
     <div class="footer-links-col">
-      <h4>Institucional</h4>
-      <a href="#sobre">Infraestrutura</a>
-      <a href="#clientes">Quem atendemos</a>
-      <a href="#contato">Contato Direto</a>
+      <h4>Conteúdo</h4>
+      <a href="galeria.html">Galeria de Projetos</a>
+      <a href="noticias.html">Notícias e Prazos</a>
+      <a href="#sobre">Sobre a SADL</a>
+      <a href="#parceiros">Clientes</a>
+    </div>
+    <div class="footer-links-col">
+      <h4>Redes</h4>
       <a href="https://www.instagram.com/sadl_engenharia" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.linkedin.com/company/sadl-solucoes-e-servicos" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://wa.me/5571996783783" target="_blank" rel="noopener">WhatsApp</a>
     </div>
   </div>
   <div class="footer-bottom wrap">
-    <p>© 2026 SADL Soluções de Engenharia — CREA-BA — Feira de Santana, Bahia</p>
+    <p>&copy; 2026 SADL Soluções de Engenharia &mdash; CREA-BA &mdash; Feira de Santana, Bahia</p>
     <div class="footer-tags">
-      <span>GNSS RTK</span>
-      <span>Topografia Computacional</span>
-      <span>Licenciamento Inema</span>
-      <span>Regularização INCRA</span>
+      <span>Geomensura</span><span>Topografia RTK</span><span>Titulação SDA</span><span>Licenciamento INEMA</span>
     </div>
   </div>
 </footer>
 
-<a href="https://wa.me/55557196783783?text=Olá%2C+vim+pelo+site+da+SADL." class="wa-float" target="_blank" rel="noopener" aria-label="WhatsApp SADL">
-  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+<a href="https://wa.me/5571996783783?text=Ola%2C+vim+pelo+site+da+SADL." class="wa-float" target="_blank" rel="noopener" aria-label="WhatsApp SADL">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
 
 <script>
-// progress bar
 window.addEventListener('scroll',()=>{
   const h=document.documentElement,b=document.body;
-  const st=h.scrollTop||b.scrollTop;
-  const sh=(h.scrollHeight||b.scrollHeight)-h.clientHeight;
+  const st=h.scrollTop||b.scrollTop,sh=(h.scrollHeight||b.scrollHeight)-h.clientHeight;
   document.getElementById('progress').style.width=(st/sh*100)+'%';
+  document.getElementById('hdr').classList.toggle('scrolled',window.scrollY>80);
 });
-
-// fade-in on scroll
-const obs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible')}});
-},{threshold:.12});
+new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')}),{threshold:.1})
+  .observe.bind(new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')}),{threshold:.1}));
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')}),{threshold:.08});
 document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
-
-// mobile menu
-const btn=document.getElementById('menu-btn');
-const nav=document.getElementById('nav-links');
-btn.addEventListener('click',()=>{nav.classList.toggle('open')});
-nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
-
-// header scroll
-window.addEventListener('scroll', () => {
-  const header = document.getElementById('hdr');
-  
-  // Se rolar mais de 80px, ativa o modo encolhido
-  if (window.scrollY > 80) {
-    header.classList.add('scrolled');
-  } else {
-    header.classList.remove('scrolled');
-  }
-});
-// form → whatsapp
+const mb=document.getElementById('menu-btn'),mn=document.getElementById('nav-links');
+mb.addEventListener('click',()=>mn.classList.toggle('open'));
+mn.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>mn.classList.remove('open')));
 document.getElementById('form-submit').addEventListener('click',()=>{
-  const n=document.getElementById('nome').value.trim();
-  const t=document.getElementById('tel').value.trim();
-  const s=document.getElementById('srv').value;
-  const m=document.getElementById('msg').value.trim();
+  const n=document.getElementById('nome').value.trim(),t=document.getElementById('tel').value.trim();
+  const s=document.getElementById('srv').value,m=document.getElementById('msg').value.trim();
   if(!n||!t){alert('Por favor, preencha o nome e o telefone.');return;}
-  const srv=s||'não especificado';
-  const txt=`Olá, meu nome é ${n} (${t}). Gostaria de uma análise técnica sobre: ${srv}.${m?' Mensagem descritiva: '+m:''}`;
-  window.open('https://wa.me/557196783783?text='+encodeURIComponent(txt),'_blank');
+  window.open('https://wa.me/5571996783783?text='+encodeURIComponent(`Ola, meu nome e ${n} (${t}). Interesse: ${s||'nao especificado'}.${m?' Obs: '+m:''}`),'_blank');
 });
 </script>
 </body>
