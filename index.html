@@ -3,1085 +3,726 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SADL — Discovery Digital</title>
+<title>SADL Engenharia | Topografia RTK, Titulação de Terras e Licenciamento Ambiental</title>
+<meta name="description" content="SADL Soluções de Engenharia em Feira de Santana, Bahia. Especialistas em georreferenciamento de alta precisão (RTK), ortofotos com drone, titulação de terras e licenciamento ambiental desde 2011.">
+<meta name="keywords" content="topografia Feira de Santana, georreferenciamento Bahia, titulação de terras Bahia, licenciamento ambiental FSA, CEFIR Bahia, GPS RTK, Ortofotos Drone, SADL engenharia">
+<meta property="og:title" content="SADL Engenharia — Alta Precisão Geodésica e Ambiental">
+<meta property="og:description" content="15 anos de excelência em georreferenciamento RTK, titulação de terras e engenharia ambiental na Bahia.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300&display=swap" rel="stylesheet">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap');
-
-  :root {
-    --amarelo:        #F5C800;
-    --amarelo-vivo:   #FFD600;
-    --amarelo-md:     #D4A900;
-    --amarelo-lt:     #FFF8D6;
-    --amarelo-pale:   #FFFAEB;
-    --preto:          #0D0D0D;
-    --preto-md:       #1A1A1A;
-    --preto-lt:       #252525;
-    --cinza-escuro:   #2A2A2A;
-    --cinza:          #4A4A4A;
-    --cinza-md:       #888;
-    --cinza-lt:       #F4F4F2;
-    --branco:         #FFFFFF;
-    --borda:          #E4E4E0;
-    --borda-escura:   #333333;
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    font-family: 'Inter', sans-serif;
-    background: var(--branco);
-    color: var(--cinza-escuro);
-    font-size: 14px;
-    line-height: 1.6;
-  }
-
-  /* ─── CAPA ─────────────────────────────────────── */
-  .capa {
-    background: var(--preto);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 60px;
-    page-break-after: always;
-    position: relative;
-    overflow: hidden;
-  }
-
-  /* faixa amarela diagonal decorativa */
-  .capa::before {
-    content: '';
-    position: absolute;
-    top: 0; right: 0;
-    width: 340px;
-    height: 100%;
-    background: var(--amarelo);
-    clip-path: polygon(18% 0, 100% 0, 100% 100%, 0% 100%);
-    opacity: 0.07;
-  }
-
-  /* círculo sutil */
-  .capa::after {
-    content: '';
-    position: absolute;
-    bottom: -100px; left: -100px;
-    width: 420px; height: 420px;
-    border-radius: 50%;
-    border: 1px solid rgba(245,200,0,0.12);
-  }
-
-  /* borda amarela superior */
-  .capa-topbar {
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 4px;
-    background: var(--amarelo);
-  }
-
-  .capa-tag {
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.35);
-  }
-
-  .capa-body { position: relative; z-index: 1; }
-
-  .capa-label {
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--amarelo);
-    opacity: 0.85;
-    margin-bottom: 24px;
-  }
-
-  .capa h1 {
-    font-family: 'Syne', sans-serif;
-    font-size: 72px;
-    font-weight: 800;
-    color: #ffffff;
-    line-height: 0.95;
-    margin-bottom: 20px;
-  }
-
-  .capa h1 span {
-    color: var(--amarelo);
-  }
-
-  .capa-sub {
-    font-size: 15px;
-    color: rgba(255,255,255,0.55);
-    font-weight: 300;
-    max-width: 480px;
-    margin-bottom: 48px;
-    line-height: 1.75;
-  }
-
-  .capa-chips { display: flex; gap: 10px; flex-wrap: wrap; }
-
-  .chip {
-    background: rgba(245,200,0,0.12);
-    border: 1px solid rgba(245,200,0,0.3);
-    color: var(--amarelo);
-    font-size: 12px;
-    font-weight: 500;
-    padding: 6px 14px;
-    border-radius: 20px;
-  }
-
-  .capa-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    position: relative;
-    z-index: 1;
-  }
-
-  .capa-footer-info {
-    color: rgba(255,255,255,0.35);
-    font-size: 12px;
-    line-height: 1.8;
-  }
-
-  .capa-footer-logo {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: 22px;
-    color: var(--amarelo);
-    letter-spacing: 0.04em;
-  }
-
-  /* ─── SEÇÕES ────────────────────────────────────── */
-  .secao {
-    padding: 80px 60px;
-    border-bottom: 1px solid var(--borda);
-    page-break-inside: avoid;
-  }
-
-  .secao-alt {
-    background: var(--cinza-lt);
-  }
-
-  /* seção escura alternativa */
-  .secao-dark {
-    background: var(--preto-md);
-  }
-
-  .secao-numero {
-    font-family: 'Syne', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--amarelo-md);
-    margin-bottom: 8px;
-  }
-
-  .secao-dark .secao-numero {
-    color: var(--amarelo);
-  }
-
-  .secao h2 {
-    font-family: 'Syne', sans-serif;
-    font-size: 36px;
-    font-weight: 700;
-    color: var(--cinza-escuro);
-    line-height: 1.15;
-    margin-bottom: 16px;
-  }
-
-  .secao-dark h2 {
-    color: #ffffff;
-  }
-
-  .secao-intro {
-    font-size: 15px;
-    color: var(--cinza);
-    max-width: 600px;
-    line-height: 1.75;
-    margin-bottom: 48px;
-  }
-
-  .secao-dark .secao-intro {
-    color: rgba(255,255,255,0.55);
-  }
-
-  /* ─── CONTEXTO ──────────────────────────────────── */
-  .contexto-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    margin-bottom: 28px;
-  }
-
-  .contexto-card {
-    background: var(--branco);
-    border: 1px solid var(--borda);
-    border-top: 3px solid var(--amarelo);
-    border-radius: 12px;
-    padding: 28px;
-  }
-
-  .contexto-card-icon {
-    font-size: 22px;
-    margin-bottom: 12px;
-  }
-
-  .contexto-card h4 {
-    font-family: 'Syne', sans-serif;
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--cinza-escuro);
-    margin-bottom: 8px;
-  }
-
-  .contexto-card p {
-    font-size: 13px;
-    color: var(--cinza);
-    line-height: 1.65;
-  }
-
-  .raio-box {
-    background: var(--preto);
-    border-radius: 12px;
-    padding: 32px 36px;
-    display: flex;
-    align-items: center;
-    gap: 28px;
-  }
-
-  .raio-numero {
-    font-family: 'Syne', sans-serif;
-    font-size: 56px;
-    font-weight: 800;
-    color: var(--amarelo);
-    line-height: 1;
-    white-space: nowrap;
-  }
-
-  .raio-numero span { font-size: 28px; }
-
-  .raio-texto h4 {
-    font-family: 'Syne', sans-serif;
-    font-size: 16px;
-    font-weight: 700;
-    color: #ffffff;
-    margin-bottom: 6px;
-  }
-
-  .raio-texto p {
-    font-size: 13px;
-    color: rgba(255,255,255,0.55);
-    line-height: 1.55;
-  }
-
-  /* ─── FUNIL ─────────────────────────────────────── */
-  .funil { display: flex; flex-direction: column; gap: 0; }
-
-  .funil-etapa {
-    display: flex;
-    align-items: stretch;
-    gap: 0;
-  }
-
-  .funil-left {
-    width: 48px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .funil-num {
-    width: 36px; height: 36px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Syne', sans-serif;
-    font-size: 13px;
-    font-weight: 700;
-    flex-shrink: 0;
-    background: var(--amarelo);
-    color: var(--preto);
-  }
-
-  .funil-line {
-    width: 1.5px;
-    flex: 1;
-    background: var(--borda);
-    margin: 4px auto;
-    min-height: 20px;
-  }
-
-  .funil-card {
-    flex: 1;
-    background: var(--branco);
-    border: 1px solid var(--borda);
-    border-radius: 10px;
-    padding: 20px 24px;
-    margin-bottom: 12px;
-    margin-left: 12px;
-  }
-
-  .funil-card h4 {
-    font-family: 'Syne', sans-serif;
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--cinza-escuro);
-    margin-bottom: 6px;
-  }
-
-  .funil-card p {
-    font-size: 13px;
-    color: var(--cinza);
-    line-height: 1.6;
-  }
-
-  .funil-card .canal-tag {
-    display: inline-block;
-    font-size: 11px;
-    font-weight: 600;
-    padding: 2px 10px;
-    border-radius: 20px;
-    margin-top: 8px;
-    background: var(--amarelo-lt);
-    color: var(--amarelo-md);
-  }
-
-  .funil-card.destaque-final {
-    border-color: var(--amarelo-md);
-    background: var(--amarelo-lt);
-  }
-
-  .funil-card.destaque-final .canal-tag {
-    background: var(--amarelo);
-    color: var(--preto);
-    font-weight: 700;
-  }
-
-  /* ─── SITE / PÁGINAS ────────────────────────────── */
-  .paginas-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-  }
-
-  .pagina-card {
-    border: 1px solid var(--borda);
-    border-radius: 10px;
-    padding: 20px;
-    background: var(--branco);
-  }
-
-  .pagina-card.destaque {
-    border-color: var(--amarelo-md);
-    background: var(--amarelo-lt);
-  }
-
-  .pagina-tipo {
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--cinza-md);
-    margin-bottom: 6px;
-  }
-
-  .pagina-card.destaque .pagina-tipo {
-    color: var(--amarelo-md);
-  }
-
-  .pagina-card h4 {
-    font-family: 'Syne', sans-serif;
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--cinza-escuro);
-    margin-bottom: 8px;
-  }
-
-  .pagina-card ul { list-style: none; padding: 0; }
-
-  .pagina-card ul li {
-    font-size: 12px;
-    color: var(--cinza);
-    padding: 3px 0;
-    padding-left: 12px;
-    position: relative;
-  }
-
-  .pagina-card ul li::before {
-    content: '—';
-    position: absolute;
-    left: 0;
-    color: var(--borda);
-    font-size: 10px;
-  }
-
-  .pagina-card.destaque ul li::before {
-    color: var(--amarelo-md);
-  }
-
-  /* ─── DIVULGAÇÃO / CANAIS ───────────────────────── */
-  .canais-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-  }
-
-  .canal-card {
-    border-radius: 12px;
-    padding: 28px;
-    border: 1px solid var(--borda);
-    background: var(--branco);
-  }
-
-  .canal-fase {
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-bottom: 6px;
-  }
-
-  .canal-card h4 {
-    font-family: 'Syne', sans-serif;
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--cinza-escuro);
-    margin-bottom: 10px;
-  }
-
-  .canal-card p {
-    font-size: 13px;
-    color: var(--cinza);
-    line-height: 1.65;
-  }
-
-  .canal-custo {
-    display: inline-block;
-    font-size: 11px;
-    font-weight: 600;
-    padding: 3px 10px;
-    border-radius: 20px;
-    margin-top: 12px;
-  }
-
-  /* card destaque — amarelo */
-  .canal-card.prioridade {
-    background: var(--preto);
-    border-color: var(--preto);
-  }
-
-  .canal-card.prioridade .canal-fase { color: var(--amarelo); }
-  .canal-card.prioridade h4         { color: #ffffff; }
-  .canal-card.prioridade p          { color: rgba(255,255,255,0.55); }
-
-  /* card investimento */
-  .canal-card.investimento {
-    background: var(--amarelo-lt);
-    border-color: var(--amarelo-md);
-  }
-
-  .canal-card.investimento .canal-fase { color: var(--amarelo-md); }
-
-  .c-amarelo { background: var(--amarelo); color: var(--preto); font-weight: 700; }
-  .c-amarelo-soft { background: var(--amarelo-lt); color: var(--amarelo-md); border: 1px solid var(--amarelo-md); }
-  .c-cinza { background: var(--cinza-lt); color: var(--cinza); border: 1px solid var(--borda); }
-
-  /* ─── CRIATIVO ──────────────────────────────────── */
-  .criativo-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 16px;
-    margin-bottom: 28px;
-  }
-
-  .criativo-card {
-    background: var(--branco);
-    border: 1px solid var(--borda);
-    border-radius: 10px;
-    padding: 20px;
-  }
-
-  .criativo-card h4 {
-    font-family: 'Syne', sans-serif;
-    font-size: 13px;
-    font-weight: 700;
-    color: var(--cinza-escuro);
-    margin-bottom: 10px;
-    padding-bottom: 8px;
-    border-bottom: 2px solid var(--amarelo);
-    display: inline-block;
-  }
-
-  .criativo-card ul { list-style: none; padding: 0; margin-top: 10px; }
-
-  .criativo-card ul li {
-    font-size: 12px;
-    color: var(--cinza);
-    padding: 5px 0;
-    padding-left: 16px;
-    position: relative;
-    border-bottom: 1px solid var(--cinza-lt);
-  }
-
-  .criativo-card ul li:last-child { border-bottom: none; }
-
-  .criativo-card ul li::before {
-    content: '↗';
-    position: absolute;
-    left: 0;
-    color: var(--amarelo-md);
-    font-size: 11px;
-    top: 5px;
-  }
-
-  .tom-box {
-    background: var(--preto);
-    border-radius: 12px;
-    padding: 36px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 20px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .tom-box::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    background: var(--amarelo);
-  }
-
-  .tom-item h5 {
-    font-family: 'Syne', sans-serif;
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--amarelo);
-    margin-bottom: 6px;
-  }
-
-  .tom-item p {
-    font-size: 12px;
-    color: rgba(255,255,255,0.55);
-    line-height: 1.55;
-  }
-
-  /* ─── CRONOGRAMA ────────────────────────────────── */
-  .crono {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0;
-    border: 1px solid var(--borda);
-    border-radius: 12px;
-    overflow: hidden;
-  }
-
-  .crono-col {
-    border-right: 1px solid var(--borda);
-  }
-  .crono-col:last-child { border-right: none; }
-
-  .crono-header {
-    padding: 18px 20px;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-  }
-
-  /* Escala de saturação: preto puro → amarelo progressivo */
-  .crono-header.c0 { background: var(--preto); }
-  .crono-header.c1 { background: #1F1500; }
-  .crono-header.c2 { background: #3B2800; }
-  .crono-header.c3 { background: var(--amarelo); }
-
-  .crono-header.c3 h4   { color: var(--preto); }
-  .crono-header.c3 span { color: rgba(0,0,0,0.55); }
-
-  .crono-header h4 {
-    font-family: 'Syne', sans-serif;
-    font-size: 12px;
-    font-weight: 700;
-    color: #ffffff;
-    margin-bottom: 2px;
-  }
-
-  .crono-header span {
-    font-size: 11px;
-    color: rgba(255,255,255,0.5);
-  }
-
-  .crono-body { padding: 16px 20px; }
-
-  .crono-item {
-    font-size: 12px;
-    color: var(--cinza);
-    padding: 5px 0;
-    padding-left: 12px;
-    position: relative;
-    border-bottom: 1px solid var(--cinza-lt);
-  }
-
-  .crono-item:last-child { border-bottom: none; }
-
-  .crono-item::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 4px; height: 4px;
-    border-radius: 50%;
-    background: var(--amarelo-md);
-  }
-
-  /* ─── PENDÊNCIAS ────────────────────────────────── */
-  .pendencias {
-    background: var(--preto);
-    border-radius: 12px;
-    padding: 32px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .pendencias::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    background: var(--amarelo);
-  }
-
-  .pendencias h4 {
-    font-family: 'Syne', sans-serif;
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--amarelo);
-    margin-bottom: 20px;
-  }
-
-  .pendencias ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .pendencias ul li {
-    font-size: 13px;
-    color: rgba(255,255,255,0.65);
-    padding-left: 28px;
-    position: relative;
-    line-height: 1.55;
-  }
-
-  .pendencias ul li strong {
-    color: #ffffff;
-    font-weight: 600;
-  }
-
-  .pendencias ul li::before {
-    content: '!';
-    position: absolute;
-    left: 0;
-    width: 18px; height: 18px;
-    background: var(--amarelo);
-    color: var(--preto);
-    border-radius: 50%;
-    font-size: 10px;
-    font-weight: 800;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    top: 1px;
-  }
-
-  /* ─── RODAPÉ ────────────────────────────────────── */
-  .rodape {
-    background: var(--preto);
-    padding: 40px 60px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-top: 3px solid var(--amarelo);
-  }
-
-  .rodape-logo {
-    font-family: 'Syne', sans-serif;
-    font-size: 18px;
-    font-weight: 800;
-    color: var(--amarelo);
-    letter-spacing: 0.04em;
-  }
-
-  .rodape-info {
-    font-size: 12px;
-    color: rgba(255,255,255,0.35);
-    text-align: right;
-    line-height: 1.75;
-  }
-
-  @media print {
-    .capa { min-height: 100vh; }
-    .secao { page-break-inside: avoid; }
-  }
+/* ─── RESET & ROOT ─── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --y:#F5C500;
+  --y2:#e6b800;
+  --k:#080808;
+  --k2:#111010;
+  --k3:#1a1918;
+  --g:#F2F0EC;
+  --g2:#E8E5DF;
+  --muted:#8e8982;
+  --line:rgba(255,255,255,0.08);
+  --line-light:rgba(0,0,0,0.09);
+  --r:2px;
+  --trans:.25s ease;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--k);color:#fff;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+img{max-width:100%;display:block}
+::selection{background:var(--y);color:var(--k)}
+
+/* ─── SCROLLBAR ─── */
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:var(--k)}
+::-webkit-scrollbar-thumb{background:var(--y)}
+
+/* ─── SHARED ─── */
+.wrap{max-width:1160px;margin:0 auto;padding:0 2rem}
+.section-num{font-size:11px;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--y);margin-bottom:.75rem;display:block}
+.section-title{font-family:'Fraunces',serif;font-size:clamp(28px,4vw,48px);font-weight:300;line-height:1.1;margin-bottom:1rem}
+.section-sub{font-size:15px;color:var(--muted);max-width:550px;line-height:1.7}
+.divider{width:40px;height:1.5px;background:var(--y);margin:1.25rem 0}
+
+/* ─── ICONS ─── */
+.tech-icon{width:24px;height:24px;stroke:var(--y);stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
+
+/* ─── HEADER ─── */
+header{
+  position:fixed;top:0;left:0;width:100%;z-index:900;
+  padding:1.25rem 2rem;
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(8,8,8,0.85);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+  transition:all .3s;
+}
+.header-logo{display:flex;align-items:center;gap:12px}
+.logo-img {
+  height: 100px;
+  width: auto;
+  object-fit: contain;
+  transition: height 0.4s ease; /* Adicione esta linha */
+}
+header.scrolled {
+  padding: 0.4rem 2rem !important; /* Reduz o padding drasticamente */
+  background: rgba(8, 8, 8, 0.98); /* Fundo mais sólido */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5); /* Sombra para dar profundidade */
+}
+
+/* O "pulo do gato": diminui a logo quando o header estiver encolhido */
+header.scrolled .logo-img {
+  height: 45px; /* Diminui a logo de 100px para 45px */
+}
+nav{display:flex;gap:2.5rem;align-items:center}
+nav a{font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.6);transition:color var(--trans)}
+nav a:hover{color:#fff}
+.nav-cta{
+  background:var(--y);color:var(--k);
+  padding:.6rem 1.4rem;border-radius:var(--r);
+  font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  transition:all var(--trans);white-space:nowrap;
+}
+.nav-cta:hover{background:var(--y2);transform:translateY(-1px)}
+.menu-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.menu-toggle span{width:24px;height:1.5px;background:#fff;transition:all .3s}
+@media(max-width:768px){
+  nav.links{display:none;position:fixed;inset:0;background:var(--k);flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;z-index:800}
+  nav.links.open{display:flex}
+  nav.links a{font-size:20px}
+  .menu-toggle{display:flex;z-index:900;position:relative}
+}
+
+/* ─── HERO ─── */
+.hero{
+  min-height:100vh;display:flex;align-items:center;
+  padding:8rem 2rem 5rem;position:relative;overflow:hidden;
+}
+.hero-bg{position:absolute;inset:0;background:var(--k)}
+.hero-grid{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(245,197,0,.03) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(245,197,0,.03) 1px,transparent 1px);
+  background-size:50px 50px;
+}
+.hero-glow{
+  position:absolute;top:-20%;right:-10%;
+  width:600px;height:600px;
+  background:radial-gradient(circle,rgba(245,197,0,.06) 0%,transparent 70%);
+  pointer-events:none;
+}
+.hero-content{position:relative;z-index:1;max-width:1160px;margin:0 auto;width:100%}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--y);margin-bottom:2rem;
+}
+.hero-eyebrow::before{content:'';width:32px;height:1px;background:var(--y)}
+.hero h1{
+  font-family:'Fraunces',serif;
+  font-size:clamp(42px,6.5vw,84px);
+  font-weight:300;line-height:.95;
+  letter-spacing:-.02em;
+  margin-bottom:2rem;
+  max-width:900px;
+}
+.hero h1 em{font-style:italic;color:var(--y)}
+.hero-sub{
+  font-size:clamp(14px,1.5vw,16px);
+  color:rgba(255,255,255,.6);
+  max-width:540px;
+  line-height:1.75;
+  margin-bottom:2.5rem;
+}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:4rem}
+.btn-primary{
+  background:var(--y);color:var(--k);
+  padding:.875rem 2rem;border-radius:var(--r);
+  font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  transition:all var(--trans);
+}
+.btn-primary:hover{background:var(--y2);transform:translateY(-2px)}
+.btn-ghost{
+  border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.8);
+  padding:.875rem 2rem;border-radius:var(--r);
+  font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+  transition:all var(--trans);
+}
+.btn-ghost:hover{border-color:var(--y);color:var(--y)}
+.hero-badges{display:flex;gap:2rem;flex-wrap:wrap}
+.badge-item{
+  display:flex;align-items:center;gap:8px;
+  font-size:12px;color:rgba(255,255,255,.5);letter-spacing:.05em;
+}
+.badge-item::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--y);flex-shrink:0}
+
+/* hero photo placeholder */
+.hero-photo-slot{
+  position:absolute;right:0;top:0;bottom:0;width:38%;
+  background:var(--k3);
+  border-left:1px solid var(--line);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;
+}
+.hero-photo-slot .ph-icon{font-size:24px;opacity:.2}
+.hero-photo-slot .ph-label{font-size:11px;color:rgba(255,255,255,.2);text-align:center;max-width:180px;line-height:1.5;letter-spacing:.05em}
+.hero-photo-slot .ph-dim{font-size:10px;color:rgba(245,197,0,.3);margin-top:4px}
+@media(max-width:900px){.hero-photo-slot{display:none}.hero h1{font-size:clamp(38px,9vw,62px)}}
+
+/* ─── NUMBERS BAR ─── */
+.numbers{background:var(--y);color:var(--k);padding:2rem 2rem}
+.numbers-inner{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.num-item{padding:1rem 2rem;border-right:1px solid rgba(0,0,0,.1);display:flex;flex-direction:column;align-items:flex-start}
+.num-item:last-child{border-right:none}
+.num-val{font-family:'Fraunces',serif;font-size:clamp(28px,3vw,40px);font-weight:700;line-height:1;margin-bottom:4px}
+.num-label{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.7}
+@media(max-width:640px){.numbers-inner{grid-template-columns:repeat(2,1fr)}.num-item:nth-child(2){border-right:none}.num-item:nth-child(3){border-right:1px solid rgba(0,0,0,.1)}}
+
+/* ─── SERVICES ─── */
+.services{padding:7rem 2rem;background:var(--k)}
+.services-header{margin-bottom:4rem}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:4px;overflow:hidden}
+.srv-card{
+  padding:2.5rem 2rem;
+  border-right:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  transition:background var(--trans);
+  position:relative;
+  display:flex;flex-direction:column;gap:1.25rem;
+}
+.srv-card:nth-child(3n){border-right:none}
+.srv-card:nth-child(n+4){border-bottom:none}
+.srv-card:hover{background:var(--k3)}
+.srv-num{font-size:11px;font-weight:600;letter-spacing:.1em;color:rgba(255,255,255,.3)}
+.srv-title{font-family:'Fraunces',serif;font-size:22px;font-weight:300;line-height:1.2;color:#fff}
+.srv-desc{font-size:13px;color:var(--muted);line-height:1.7;flex-grow:1}
+.srv-urgency{
+  display:inline-block;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  color:#e85c3a;background:rgba(232,92,58,.08);
+  padding:4px 8px;border-radius:2px;align-self:flex-start;
+}
+.srv-cta{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--y);margin-top:auto;
+  transition:gap var(--trans);
+}
+.srv-cta:hover{gap:10px}
+@media(max-width:900px){.services-grid{grid-template-columns:repeat(2,1fr)}.srv-card:nth-child(3n){border-right:1px solid var(--line)}.srv-card:nth-child(2n){border-right:none}}
+@media(max-width:580px){.services-grid{grid-template-columns:1fr}.srv-card{border-right:none}.srv-card:nth-child(n+4){border-bottom:1px solid var(--line)}.srv-card:last-child{border-bottom:none}}
+
+/* ─── WHY SECTION ─── */
+.why{padding:7rem 2rem;background:var(--k2);position:relative;overflow:hidden}
+.why-inner{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
+.why-points{margin-top:2rem;display:flex;flex-direction:column;gap:0}
+.why-item{padding:1.75rem 0;border-bottom:1px solid var(--line);display:flex;gap:1.5rem;align-items:flex-start}
+.why-item:last-child{border-bottom:none}
+.why-marker{
+  width:36px;height:36px;border-radius:2px;
+  background:var(--k3);border:1px solid var(--line);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+}
+.why-marker .tech-icon{width:18px;height:18px}
+.why-item-title{font-size:16px;font-weight:600;margin-bottom:6px;color:#fff}
+.why-item-desc{font-size:13px;color:var(--muted);line-height:1.7}
+.why-photo{
+  background:var(--k3);border:1px solid var(--line);border-radius:4px;
+  aspect-ratio:4/5;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;
+  position:relative;overflow:hidden;
+}
+.why-photo::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--y)}
+.ph-icon-lg{font-size:32px;opacity:.15}
+.ph-text{font-size:11px;color:rgba(255,255,255,.2);text-align:center;max-width:180px;line-height:1.6;letter-spacing:.05em}
+.ph-dim{font-size:10px;color:rgba(245,197,0,.2);margin-top:4px}
+@media(max-width:768px){.why-inner{grid-template-columns:1fr;gap:3rem}.why-photo{aspect-ratio:16/9}}
+
+/* ─── CLIENTS ─── */
+.clients{padding:7rem 2rem;background:var(--k)}
+.clients-inner{max-width:1160px;margin:0 auto}
+.clients-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+  background:var(--line);border:1px solid var(--line);border-radius:4px;overflow:hidden;
+  margin-top:3rem;
+}
+.client-card{
+  background:var(--k);padding:2.5rem 2rem;
+  display:flex;flex-direction:column;gap:1rem;
+  transition:background var(--trans);
+}
+.client-card:hover{background:var(--k3)}
+.client-name{font-size:15px;font-weight:600;color:#fff}
+.client-desc{font-size:12px;color:var(--muted);line-height:1.6}
+.coverage{
+  margin-top:3rem;padding:1.5rem 2rem;
+  background:rgba(245,197,0,.04);
+  border:1px solid rgba(245,197,0,.1);
+  border-radius:4px;text-align:center;
+  font-size:13px;color:rgba(255,255,255,.6);letter-spacing:.05em;
+}
+.coverage strong{color:var(--y);font-weight:600}
+@media(max-width:768px){.clients-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.clients-grid{grid-template-columns:1fr}}
+
+/* ─── CONTACT ─── */
+.contact{padding:7rem 2rem;background:var(--k2)}
+.contact-inner{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+.contact-left .section-sub{margin-bottom:2.5rem}
+.contact-direct{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2rem}
+.contact-item{
+  display:flex;flex-direction:column;gap:4px;
+  padding:1.25rem;background:var(--k3);
+  border:1px solid var(--line);border-radius:4px;
+}
+.contact-item-label{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.contact-item-val{font-size:13px;color:#fff;font-weight:500}
+.btn-wa{
+  display:flex;align-items:center;justify-content:center;gap:.75rem;
+  background:var(--y);color:var(--k);
+  padding:1.25rem 2rem;border-radius:var(--r);
+  font-size:14px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+  transition:all var(--trans);margin-top:1.5rem;
+}
+.btn-wa:hover{background:var(--y2);transform:translateY(-2px)}
+.btn-wa svg{width:20px;height:20px;flex-shrink:0}
+
+/* form */
+.contact-form{background:var(--k3);border:1px solid var(--line);border-radius:4px;padding:2.5rem}
+.form-title{font-family:'Fraunces',serif;font-size:24px;font-weight:300;margin-bottom:1.75rem;color:#fff}
+.form-row{margin-bottom:1.25rem}
+.form-row label{display:block;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem}
+.form-row input,.form-row select,.form-row textarea{
+  width:100%;background:var(--k2);
+  border:1px solid var(--line);
+  color:#fff;padding:.875rem 1rem;
+  font-family:'Inter',sans-serif;font-size:14px;
+  border-radius:var(--r);transition:border-color var(--trans);
+  appearance:none;
+}
+.form-row select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23F5C500' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center}
+.form-row textarea{min-height:110px;resize:vertical}
+.form-row input:focus,.form-row select:focus,.form-row textarea:focus{outline:none;border-color:var(--y)}
+.form-row input::placeholder,.form-row textarea::placeholder{color:rgba(255,255,255,.2)}
+.btn-submit{
+  width:100%;background:var(--y);color:var(--k);
+  padding:1rem;border:none;border-radius:var(--r);cursor:pointer;
+  font-family:'Inter',sans-serif;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  transition:all var(--trans);
+}
+.btn-submit:hover{background:var(--y2);transform:translateY(-1px)}
+@media(max-width:768px){.contact-inner{grid-template-columns:1fr;gap:3rem}.contact-direct{grid-template-columns:1fr}}
+
+/* ─── FOOTER ─── */
+footer{background:var(--k);border-top:1px solid var(--line);padding:4rem 2rem 2rem}
+.footer-inner{max-width:1160px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:2rem}
+.footer-brand p{font-size:12px;color:var(--muted);margin-top:.75rem;max-width:280px;line-height:1.6}
+.footer-links-col h4{font-size:11px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:1.25rem}
+.footer-links-col a{display:block;font-size:13px;color:rgba(255,255,255,.5);margin-bottom:.6rem;transition:color var(--trans)}
+.footer-links-col a:hover{color:#fff}
+.footer-bottom{max-width:1160px;margin:3rem auto 0;padding-top:1.5rem;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.footer-bottom p{font-size:11px;color:rgba(255,255,255,.3);letter-spacing:.05em}
+.footer-tags{display:flex;gap:1rem;flex-wrap:wrap}
+.footer-tags span{font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.2)}
+
+/* ─── FLOATING WA ─── */
+.wa-float{
+  position:fixed;bottom:2rem;right:2rem;z-index:800;
+  background:var(--y);color:var(--k);
+  width:56px;height:56px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 24px rgba(245,197,0,.25);
+  transition:all var(--trans);
+}
+.wa-float:hover{transform:scale(1.05);box-shadow:0 6px 32px rgba(245,197,0,.4)}
+.wa-float svg{width:24px;height:24px}
+@keyframes pulse-ring{0%{transform:scale(1);opacity:.4}100%{transform:scale(1.4);opacity:0}}
+.wa-float::before{
+  content:'';position:absolute;inset:0;border-radius:50%;background:var(--y);
+  animation:pulse-ring 2.5s ease-out infinite;
+}
+
+/* ─── FADE IN ON SCROLL ─── */
+.fade-in{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+.fade-in.visible{opacity:1;transform:none}
+
+/* ─── REVEAL BAR ─── */
+#progress{position:fixed;top:0;left:0;height:2px;background:var(--y);z-index:999;width:0%;transition:width .1s}
 </style>
 </head>
 <body>
 
-<!-- CAPA -->
-<div class="capa">
-  <div class="capa-topbar"></div>
-  <div class="capa-tag">Documento Confidencial — SADL Soluções de Engenharia</div>
+<div id="progress"></div>
 
-  <div class="capa-body">
-    <div class="capa-label">Discovery Digital · Filial Feira de Santana</div>
-    <h1>Estrutura<br><span>Digital</span><br>SADL</h1>
-    <p class="capa-sub">Como o site, a divulgação e o fluxo de leads vão funcionar juntos para posicionar a SADL como referência em engenharia ambiental e geomensura na região de Feira de Santana e entorno.</p>
-    <div class="capa-chips">
-      <span class="chip">Site Institucional</span>
-      <span class="chip">Google Meu Negócio</span>
-      <span class="chip">SEO Regional</span>
-      <span class="chip">Instagram</span>
-      <span class="chip">LinkedIn</span>
-      <span class="chip">Google Ads</span>
-    </div>
+<header id="hdr">
+  <a href="#" class="header-logo">
+    <img src="logo.png" alt="SADL Engenharia" class="logo-img">
+  </a>
+
+  <nav class="links" id="nav-links">
+    <a href="#servicos">Serviços</a>
+    <a href="#sobre">Sobre</a>
+    <a href="#contato">Contato</a>
+    <a href="https://wa.me/55[NUMERO_WHATSAPP]?text=Olá%2C+vim+pelo+site+da+SADL+e+gostaria+de+um+orçamento." class="nav-cta" target="_blank" rel="noopener">WhatsApp →</a>
+  </nav>
+
+  <div class="menu-toggle" id="menu-btn" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </div>
+</header>
+
+<section class="hero" id="inicio">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+
+  <div class="hero-photo-slot" aria-hidden="true">
+    <img src="foto1.png">
+    <div class="ph-icon">📷</div>
+    <div class="ph-label">FOTO_HERO<br>Equipe com Receptor GNSS RTK ou Drone em campo</div>
+    <div class="ph-dim">1200 × 800 px</div>
   </div>
 
-  <div class="capa-footer">
-    <div class="capa-footer-info">
-      Preparado por Custódio — ADM + Code<br>
-      Maio de 2026
+  <div class="hero-content">
+    <span class="hero-eyebrow">SADL Soluções de Engenharia · Feira de Santana, BA</span>
+    <h1>
+      Regularize.<br>
+      Licencie.<br>
+      <em>Resolva.</em>
+    </h1>
+    <p class="hero-sub">
+      Georreferenciamento de alta precisão (RTK), ortofotos com drone, titulação fundiária e licenciamento ambiental com rigor técnico desde 2011.
+    </p>
+    <div class="hero-actions">
+      <a href="https://wa.me/55[NUMERO_WHATSAPP]?text=Olá%2C+vim+pelo+site+e+quero+solicitar+um+orçamento+técnico." class="btn-primary" target="_blank" rel="noopener">Solicitar orçamento</a>
+      <a href="#servicos" class="btn-ghost">Ver serviços técnicos</a>
     </div>
-    <div class="capa-footer-logo">SADL</div>
-  </div>
-</div>
-
-<!-- 1. CONTEXTO -->
-<div class="secao">
-  <div class="secao-numero">01 — Contexto</div>
-  <h2>Quem é a SADL e<br>onde quer chegar</h2>
-  <p class="secao-intro">Com 15 anos no mercado de topografia, a SADL tem operação consolidada em Simões Filho atendendo o CIA. Agora no mercado de Feira de Santana, a empresa abre um novo frente no interior da Bahia — e exige uma presença digital construída do zero para essa região.</p>
-
-  <div class="contexto-grid">
-    <div class="contexto-card">
-      <div class="contexto-card-icon">🏭</div>
-      <h4>Matriz — Nova Fátima / Simões Filho</h4>
-      <p>Base histórica da empresa. Atende principalmente indústrias do Centro Industrial de Aratu (CIA). Operação madura, clientes consolidados, foco em licenciamento ambiental industrial.</p>
-    </div>
-    <div class="contexto-card">
-      <div class="contexto-card-icon">📍</div>
-      <h4>Agora no mercado de Feira de Santana</h4>
-      <p>Expansão em andamento. Parte burocrática e contábil sendo tratada. Espaço físico em estruturação. A presença digital precisa acompanhar essa expansão e posicionar a SADL antes mesmo da inauguração formal.</p>
+    <div class="hero-badges">
+      <span class="badge-item">Registrada no CREA-BA</span>
+      <span class="badge-item">Credenciada no INEMA e IBAMA</span>
+      <span class="badge-item">Precisão Geodésica e Centimétrica</span>
     </div>
   </div>
+</section>
 
-  <div class="raio-box">
-    <div class="raio-numero" style="font-size: 38px; white-space: nowrap;">Toda a Bahia</div>
-    <div class="raio-texto">
-      <h4>Sem limitador geográfico</h4>
-      <p>A SADL não tem limite de atuação dentro do estado. Projetos de geomensura e titulação são executados onde o cliente precisar — do litoral ao sertão, do recôncavo ao extremo sul.</p>
+<div class="numbers fade-in">
+  <div class="numbers-inner">
+    <div class="num-item">
+      <span class="num-val">15</span>
+      <span class="num-label">Anos de experiência</span>
     </div>
-  </div>
-</div>
-
-<!-- 2. COMO O LEAD CHEGA -->
-<div class="secao secao-alt">
-  <div class="secao-numero">02 — Fluxo do Lead</div>
-  <h2>Como um cliente vai<br>encontrar a SADL</h2>
-  <p class="secao-intro">Antes de falar sobre o site ou as redes sociais, é importante entender o caminho completo que um cliente percorre — desde o momento em que ele tem um problema até o dia que assina o contrato.</p>
-
-  <div class="funil">
-    <div class="funil-etapa">
-      <div class="funil-left">
-        <div class="funil-num">1</div>
-        <div class="funil-line"></div>
-      </div>
-      <div class="funil-card">
-        <h4>O cliente tem um problema</h4>
-        <p>Ele precisa georreferenciar uma propriedade rural, regularizar um imóvel urbano ou titular uma terra via SDA. Ele não sabe necessariamente quem contratar — ele vai pesquisar.</p>
-        <span class="canal-tag">Gatilho: necessidade real ou obrigação legal</span>
-      </div>
+    <div class="num-item">
+      <span class="num-val">Bahia</span>
+      <span class="num-label">Inteira atendida</span>
     </div>
-    <div class="funil-etapa">
-      <div class="funil-left">
-        <div class="funil-num">2</div>
-        <div class="funil-line"></div>
-      </div>
-      <div class="funil-card">
-        <h4>Ele pesquisa no Google</h4>
-        <p>Digita "georreferenciamento Feira de Santana", "titulação de imóvel rural Bahia" ou "regularização de imóvel rural". O Google Meu Negócio aparece primeiro. Depois o site orgânico. Depois os anúncios.</p>
-        <span class="canal-tag">Canal: Google Meu Negócio + SEO + Google Ads</span>
-      </div>
+    <div class="num-item">
+      <span class="num-val">GNSS RTK</span>
+      <span class="num-label">Tecnologia de ponta</span>
     </div>
-    <div class="funil-etapa">
-      <div class="funil-left">
-        <div class="funil-num">3</div>
-        <div class="funil-line"></div>
-      </div>
-      <div class="funil-card">
-        <h4>Ele verifica a credibilidade da empresa</h4>
-        <p>Antes de ligar, ele olha o Instagram, o LinkedIn, as avaliações do Google. Quer ver se a empresa é real, se tem histórico, se tem fotos do trabalho. É aqui que a presença digital convence — ou espanta.</p>
-        <span class="canal-tag">Canal: Instagram + LinkedIn + Avaliações Google</span>
-      </div>
-    </div>
-    <div class="funil-etapa">
-      <div class="funil-left">
-        <div class="funil-num">4</div>
-        <div class="funil-line"></div>
-      </div>
-      <div class="funil-card">
-        <h4>Ele entra em contato</h4>
-        <p>Clica no botão do WhatsApp no site ou manda mensagem direto pelo Google. Não preenche formulário — quer resposta rápida. O atendimento aqui define se ele vai pedir proposta ou sumir.</p>
-        <span class="canal-tag">Canal: WhatsApp Business + Google Meu Negócio</span>
-      </div>
-    </div>
-    <div class="funil-etapa">
-      <div class="funil-left">
-        <div class="funil-num">5</div>
-      </div>
-      <div class="funil-card destaque-final">
-        <h4>Ele recebe a proposta e fecha</h4>
-        <p>Proposta profissional, com escopo claro, prazo e valor. Essa etapa é 100% offline — mas a profissionalidade da proposta reforça a credibilidade construída online.</p>
-        <span class="canal-tag">Conversão: proposta comercial padronizada</span>
-      </div>
+    <div class="num-item">
+      <span class="num-val">INEMA</span>
+      <span class="num-label">+ IBAMA credenciada</span>
     </div>
   </div>
 </div>
 
-<!-- 3. O SITE -->
-<div class="secao">
-  <div class="secao-numero">03 — O Site</div>
-  <h2>O hub de credibilidade<br>da SADL</h2>
-  <p class="secao-intro">O site não é a primeira coisa que o cliente vê — mas é onde ele vai confirmar se a empresa é séria o suficiente para contratar. Cada página tem uma função específica nesse processo.</p>
+<section class="services" id="servicos">
+  <div class="wrap">
+    <div class="services-header fade-in">
+      <span class="section-num">01 — Serviços</span>
+      <h2 class="section-title">Soluções de Engenharia<br>e Alta Precisão</h2>
+      <div class="divider"></div>
+      <p class="section-sub">Geomensura, regularização fundiária e estudos ambientais complexos — do processamento de dados geodésicos à entrega documental.</p>
+    </div>
 
-  <div class="paginas-grid" style="grid-template-columns: 1fr 1fr;">
-    <div class="pagina-card destaque">
-      <div class="pagina-tipo">★ Página principal</div>
-      <h4>Home</h4>
-      <ul>
-        <li>Apresentação em uma frase</li>
-        <li>Serviços principais em destaque</li>
-        <li>Registros INCRA · CREA</li>
-        <li>Botão WhatsApp com CTA direto</li>
-        <li>15 anos no mercado de topografia</li>
-      </ul>
-    </div>
-    <div class="pagina-card">
-      <div class="pagina-tipo">Serviços</div>
-      <h4>Geomensura</h4>
-      <ul>
-        <li>Levantamento planialtimétrico</li>
-        <li>Georreferenciamento rural/urbano</li>
-        <li>Mapeamento por drone</li>
-        <li>Mapeamento GNSS – RTK</li>
-        <li>Projetos geométricos</li>
-        <li>Medição de volumes · CEFIR</li>
-      </ul>
-    </div>
-    <div class="pagina-card">
-      <div class="pagina-tipo">Serviços</div>
-      <h4>Titulação de Imóveis</h4>
-      <ul>
-        <li>Titulação via SDA</li>
-      </ul>
-    </div>
-    <div class="pagina-card destaque">
-      <div class="pagina-tipo">★ Conversão</div>
-      <h4>Contato</h4>
-      <ul>
-        <li>Botão WhatsApp principal</li>
-        <li>Endereços Feira + Simões Filho</li>
-        <li>Mapa integrado Google</li>
-        <li>Horário de atendimento</li>
-      </ul>
+    <div class="services-grid fade-in">
+
+      <div class="srv-card">
+        <span class="srv-num">01</span>
+        <svg class="tech-icon" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 11 2 2 4-4"/></svg>
+        <h3 class="srv-title">Titulação e Regularização de Terras</h3>
+        <p class="srv-desc">Georreferenciamento de imóveis rurais certificado pelo INCRA utilizando receptores GNSS RTK de dupla frequência. Emissão de CCIR, CAR ativo e suporte ao programa SDA.</p>
+        <span class="srv-urgency">Prazo INCRA: outubro de 2029</span>
+        <a href="https://wa.me/55[NUMERO_WHATSAPP]?text=Olá%2C+quero+saber+sobre+titulação+e+regularização+de+terras." class="srv-cta" target="_blank" rel="noopener">Regularizar terra →</a>
+      </div>
+
+      <div class="srv-card">
+        <span class="srv-num">02</span>
+        <svg class="tech-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16.2 7.8-8.4 8.4M12 2v20M2 12h20"/></svg>
+        <h3 class="srv-title">Levantamentos Topográficos</h3>
+        <p class="srv-desc">Levantamentos planialtimétricos cadastrais, locação de obras estruturais, cálculo de volumes e mapeamento aéreo com Drones para geração de ortofotos e modelos digitais de terreno (MDT).</p>
+        <a href="https://wa.me/55[NUMERO_WHATSAPP]?text=Olá%2C+preciso+de+um+levantamento+topográfico." class="srv-cta" target="_blank" rel="noopener">Solicitar levantamento →</a>
+      </div>
+
+      <div class="srv-card">
+        <span class="srv-num">03</span>
+        <svg class="tech-icon" viewBox="0 0 24 24"><path d="M2 22h20M12 2v20M12 2a15 15 0 0 1 4.5 10.5c0 3.3-1.5 6.2-4.5 7.5M12 2A15 15 0 0 0 7.5 12.5c0 3.3 1.5 6.2 4.5 7.5"/></svg>
+        <h3 class="srv-title">Licenciamento Ambiental</h3>
+        <p class="srv-desc">Estudos e licenças ambientais (LAS, LAP, LAO, RCE, PEA). Projetos estruturados de gerenciamento de resíduos (PGRS, PGRCC) e recuperação de áreas degradadas (PRAD) junto ao INEMA e IBAMA.</p>
+        <a href="https://wa.me/55[NUMERO_WHATSAPP]?text=Olá%2C+preciso+de+licenciamento+ambiental." class="srv-cta" target="_blank" rel="noopener">Solicitar licença →</a>
+      </div>
+
+      <div class="srv-card">
+        <span class="srv-num">04</span>
+        <svg class="tech-icon" viewBox="0 0 24 24"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M12 6v6l4 2"/></svg>
+        <h3 class="srv-title">CEFIR e CAR</h3>
+        <p class="srv-desc">Inscrição e retificação no Cadastro Ambiental Rural e CEFIR. Processo obrigatório para garantir a conformidade da propriedade, segurança jurídica, transferências e acesso ao crédito agrícola.</p>
+        <a href="https://wa.me/55[NUMERO_WHATSAPP]?text=Olá%2C+preciso+fazer+o+CEFIR+e+CAR." class="srv-cta" target="_blank" rel="noopener">Regularizar CEFIR →</a>
+      </div>
+
+      <div class="srv-card">
+        <span class="srv-num">05</span>
+        <svg class="tech-icon" viewBox="0 0 24 24"><path d="M3 3h18v18H3zM21 3 3 21M3 12h18M12 3v18"/></svg>
+        <h3 class="srv-title">Projetos Agrários e Geométricos</h3>
+        <p class="srv-desc">Desenho e modelagem de projetos geométricos, divisões de condomínios rurais, partilhas amigáveis ou judiciais, desmembramentos e projetos de Regularização Fundiária Urbana (REURB).</p>
+        <a href="https://wa.me/55[NUMERO_WHATSAPP]?text=Olá%2C+preciso+de+um+projeto+agrário+ou+geométrico." class="srv-cta" target="_blank" rel="noopener">Consultar projeto →</a>
+      </div>
+
+      <div class="srv-card">
+        <span class="srv-num">06</span>
+        <svg class="tech-icon" viewBox="0 0 24 24"><path d="M21.21 15.89A10 10 0 1 1 8 2.83M22 12A10 10 0 0 0 12 2v10z"/></svg>
+        <h3 class="srv-title">Estudos e Relatórios Ambientais</h3>
+        <p class="srv-desc">Laudos de cobertura vegetal, relatórios de impacto e consultoria técnica especializada. Defesas e acompanhamento de processos junto a secretarias municipais e estaduais.</p>
+        <a href="https://wa.me/55[NUMERO_WHATSAPP]?text=Olá%2C+preciso+de+um+estudo+ou+relatório+ambiental." class="srv-cta" target="_blank" rel="noopener">Solicitar estudo →</a>
+      </div>
+
     </div>
   </div>
-</div>
+</section>
 
-<!-- 4. DIVULGAÇÃO -->
-<div class="secao secao-alt">
-  <div class="secao-numero">04 — Divulgação</div>
-  <h2>Como vamos ser<br>encontrados</h2>
-  <p class="secao-intro">A divulgação segue uma lógica de fases. Não adianta investir em anúncios antes de ter a fundação pronta. Cada fase depende da anterior para funcionar.</p>
+<section class="why" id="sobre">
+  <div class="wrap">
+    <div class="why-inner">
+      <div>
+        <span class="section-num fade-in">02 — Infraestrutura e Rigor</span>
+        <h2 class="section-title fade-in">15 anos de<br>tecnologia aplicada<br>ao campo</h2>
+        <div class="divider fade-in"></div>
+        <p class="section-sub fade-in">Fundada em 2011, a SADL une o conhecimento jurídico-cartorial à tecnologia geodésica avançada para garantir aprovações rápidas e sem falhas.</p>
 
-  <div class="canais-grid">
-    <div class="canal-card prioridade">
-      <div class="canal-fase">Fase 0 — Semana 1 · Prioridade máxima</div>
-      <h4>Google Meu Negócio</h4>
-      <p>Perfil completo para a filial de Feira de Santana: fotos, serviços, horário, WhatsApp, endereço. Quem busca "georreferenciamento Feira de Santana" vê a SADL antes de qualquer site. É gratuito e gera resultado imediato.</p>
-      <span class="canal-custo c-amarelo">Custo: gratuito</span>
-    </div>
-    <div class="canal-card">
-      <div class="canal-fase" style="color: var(--cinza);">Fase 1 — Semana 2 a 4</div>
-      <h4>SEO no Site</h4>
-      <p>Textos das páginas escritos com os termos que o cliente usa no Google: "georreferenciamento rural Feira de Santana", "titulação de imóvel rural Bahia", "regularização de imóvel INCRA BA". Resultado aparece em 60 a 90 dias.</p>
-      <span class="canal-custo c-cinza">Custo: tempo de execução</span>
-    </div>
-    <div class="canal-card">
-      <div class="canal-fase" style="color: var(--cinza);">Fase 1 — Semana 2 a 4</div>
-      <h4>Instagram</h4>
-      <p>Conteúdo de campo: fotos com drone, equipe em levantamento, documentação pronta. 3 posts por semana. Geotag de Feira de Santana em tudo. O objetivo é credibilidade — não viralizar.</p>
-      <span class="canal-custo c-cinza">Custo: tempo de produção</span>
-    </div>
-    <div class="canal-card">
-      <div class="canal-fase" style="color: var(--cinza);">Fase 1 — Semana 2 a 4</div>
-      <h4>LinkedIn</h4>
-      <p>Página da empresa ativa. Porta-voz técnico-comercial postando sobre projetos, legislação fundiária, boas práticas ambientais. O cliente industrial do CIA e as construtoras da região estão aqui.</p>
-      <span class="canal-custo c-cinza">Custo: gratuito</span>
-    </div>
-    <div class="canal-card investimento">
-      <div class="canal-fase">Fase 2 — Mês 2 · Após fundação pronta</div>
-      <h4>Google Ads (Search)</h4>
-      <p>Anúncios de pesquisa para termos com alta intenção: "georreferenciamento INCRA Feira de Santana", "titulação de imóvel rural Bahia". Budget inicial R$300–500/mês. Só faz sentido depois que o site e o GMB estiverem prontos.</p>
-      <span class="canal-custo c-amarelo-soft">Custo: R$300–500/mês</span>
-    </div>
-    <div class="canal-card">
-      <div class="canal-fase" style="color: var(--cinza);">Fase 3 — Mês 3+</div>
-      <h4>Parcerias de indicação</h4>
-      <p>Contadores, cartórios da região (georreferenciamento rural) e imobiliárias (regularização fundiária). Canal de indicação com comissão simples — sem custo fixo.</p>
-      <span class="canal-custo c-cinza">Custo: comissão por fechamento</span>
-    </div>
-  </div>
-</div>
+        <div class="why-points">
+          <div class="why-item fade-in">
+            <div class="why-marker">
+              <svg class="tech-icon" viewBox="0 0 24 24"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m9 12 2 2 4-4"/></svg>
+            </div>
+            <div>
+              <div class="why-item-title">Equipamentos Geodésicos GNSS RTK</div>
+              <div class="why-item-desc">Rastreamento via satélite GPS de dupla frequência para medições georreferenciadas com precisão milimétrica. Dados puros e homologados sem margem para sobreposição de áreas.</div>
+            </div>
+          </div>
+          <div class="why-item fade-in">
+            <div class="why-marker">
+              <svg class="tech-icon" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l-7 4a2 2 0 0 0 2 0l-7-4A2 2 0 0 0 21 16z"/></svg>
+            </div>
+            <div>
+              <div class="why-item-title">Mapeamento com Drones e Ortofotos</div>
+              <div class="why-item-desc">Aerofotogrametria moderna. Geramos ortomosaicos de alta resolução, curvas de nível e modelos tridimensionais que agilizam vistorias de grandes extensões rurais.</div>
+            </div>
+          </div>
+          <div class="why-item fade-in">
+            <div class="why-marker">
+              <svg class="tech-icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>
+            </div>
+            <div>
+              <div class="why-item-title">Conhecimento Cartorial Local</div>
+              <div class="why-item-desc">Atuação ativa em Feira de Santana e comarcas do interior da Bahia. Entendemos as exigências específicas dos cartórios de registro de imóveis da região, reduzindo prazos de tramitação.</div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-<!-- 5. O CRIATIVO -->
-<div class="secao">
-  <div class="secao-numero">05 — O Criativo</div>
-  <h2>Como a SADL vai<br>se comunicar</h2>
-  <p class="secao-intro">O criativo de uma empresa de engenharia ambiental não é motivacional nem genérico — é técnico com clareza. O cliente precisa sentir que está falando com quem entende do assunto.</p>
-
-  <div class="criativo-grid">
-    <div class="criativo-card">
-      <h4>Conteúdo de campo</h4>
-      <ul>
-        <li>Fotos e vídeos de drone em levantamento</li>
-        <li>Equipe operando equipamentos RTK</li>
-        <li>Antes e depois de regularização</li>
-        <li>Projetos entregues (com autorização)</li>
-      </ul>
-    </div>
-    <div class="criativo-card">
-      <h4>Conteúdo educativo</h4>
-      <ul>
-        <li>"O que é georreferenciamento SIGEF?"</li>
-        <li>"Como funciona a titulação pelo SDA?"</li>
-        <li>"Regularização fundiária: por onde começar?"</li>
-      </ul>
-    </div>
-    <div class="criativo-card">
-      <h4>Conteúdo institucional</h4>
-      <ul>
-        <li>15 anos no mercado de topografia</li>
-        <li>Registros INCRA, CREA</li>
-        <li>Agora no mercado de Feira de Santana</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="tom-box">
-    <div class="tom-item">
-      <h5>Técnico</h5>
-      <p>Fala com precisão sobre os serviços. Usa os termos corretos. Demonstra domínio.</p>
-    </div>
-    <div class="tom-item">
-      <h5>Acessível</h5>
-      <p>Explica o que o cliente não sabe. Não usa jargão sem explicar o que significa.</p>
-    </div>
-    <div class="tom-item">
-      <h5>Regional</h5>
-      <p>Cita cidades do interior da Bahia. Fala do contexto local. Geotag em tudo.</p>
-    </div>
-    <div class="tom-item">
-      <h5>Confiável</h5>
-      <p>Mostra certificações, histórico, casos reais. Credibilidade se constrói com evidências.</p>
-    </div>
-  </div>
-</div>
-
-<!-- 6. CRONOGRAMA -->
-<div class="secao secao-alt">
-  <div class="secao-numero">06 — Cronograma</div>
-  <h2>O que fazemos<br>e quando</h2>
-  <p class="secao-intro">O plano é sequencial por design. Cada fase prepara o terreno para a próxima. Começar pelo Google Ads sem ter o site pronto é desperdiçar dinheiro.</p>
-
-  <div class="crono" style="margin-bottom: 32px;">
-    <div class="crono-col">
-      <div class="crono-header c0">
-        <h4>Fase 0</h4>
-        <span>Semana 1–2</span>
-      </div>
-      <div class="crono-body">
-        <div class="crono-item">Google Meu Negócio (Feira)</div>
-        <div class="crono-item">Resolver hospedagem / DNS</div>
-        <div class="crono-item">Identidade visual padronizada</div>
-        <div class="crono-item">Template de proposta comercial</div>
-        <div class="crono-item">WhatsApp Business configurado</div>
-      </div>
-    </div>
-    <div class="crono-col">
-      <div class="crono-header c1">
-        <h4>Fase 1</h4>
-        <span>Semana 2</span>
-      </div>
-      <div class="crono-body">
-        <div class="crono-item">Site construído e publicado</div>
-        <div class="crono-item">SEO on-page por serviço</div>
-        <div class="crono-item">Instagram ativo (2x/semana)</div>
-        <div class="crono-item">LinkedIn da empresa</div>
-      </div>
-    </div>
-    <div class="crono-col">
-      <div class="crono-header c2">
-        <h4>Fase 2</h4>
-        <span>Semana 3-4</span>
-      </div>
-      <div class="crono-body">
-        <div class="crono-item">Google Ads (Search)</div>
-        <div class="crono-item">Primeiras avaliações no Google</div>
-        <div class="crono-item">Conteúdo educativo no Instagram</div>
-        <div class="crono-item">Primeiros casos de sucesso</div>
-        <div class="crono-item">Fotos do espaço físico Feira</div>
-      </div>
-    </div>
-    <div class="crono-col">
-      <div class="crono-header c3">
-        <h4>Fase 3</h4>
-        <span>Mês 3+</span>
-      </div>
-      <div class="crono-body">
-        <div class="crono-item">Parcerias com contadores</div>
-        <div class="crono-item">Parcerias com cartórios</div>
-        <div class="crono-item">CRM de leads estruturado</div>
-        <div class="crono-item">Revisão do Google Ads</div>
-        <div class="crono-item">Expansão de conteúdo</div>
+      <div class="why-photo fade-in" aria-hidden="true">
+        <img src="FOTO_CAMPO.png">
+        <div class="ph-icon-lg">📷</div>
+        <div class="ph-text">FOTO_EQUIPE<br>Foto técnica (Ortofotopeças, nuvem de pontos ou equipe operando Base/Rover RTK)</div>
+        <div class="ph-dim">900 × 1100 px recomendado</div>
       </div>
     </div>
   </div>
+</section>
 
-  <div class="pendencias">
-    <h4>⚠ Pendências que precisam ser resolvidas primeiro</h4>
-    <ul>
-      <li><strong>Acesso ao domínio sadl.com.br:</strong> quem controla o painel de DNS precisa transferir o acesso. Sem isso, o site novo não entra no ar no endereço certo.</li>
-      <li><strong>Logo em alta resolução:</strong> arquivo vetorial (.ai, .svg ou .eps) para uso em todos os materiais digitais e físicos da filial.</li>
-      <li><strong>Fotos reais de campo:</strong> equipamentos, equipe, projetos executados. O criativo sem foto real parece falso. Tirar nas próximas saídas de campo.</li>
-      <li><strong>Número de WhatsApp da filial Feira:</strong> número dedicado para a unidade, configurado no WhatsApp Business com catálogo de serviços e saudação automática.</li>
-    </ul>
+<section class="clients" id="clientes">
+  <div class="clients-inner">
+    <span class="section-num fade-in">03 — Setores</span>
+    <h2 class="section-title fade-in">Segmentos de<br>Atuação</h2>
+    <div class="divider fade-in"></div>
+
+    <div class="clients-grid fade-in">
+      <div class="client-card">
+        <svg class="tech-icon" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        <div class="client-name">Produtores Rurais</div>
+        <div class="client-desc">Certificação INCRA, retificação de áreas rurais complexas e blindagem jurídica ambiental da propriedade.</div>
+      </div>
+      <div class="client-card">
+        <svg class="tech-icon" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <div class="client-name">Incorporadoras e Construtoras</div>
+        <div class="client-desc">Demarcações precisas de divisas, modelagem de curvas de nível e conformidade em licenciamento imobiliário.</div>
+      </div>
+      <div class="client-card">
+        <svg class="tech-icon" viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+        <div class="client-name">Indústrias e Logística</div>
+        <div class="client-desc">Laudos de efluentes, resíduos industriais e planos ambientais para operação legal perante órgãos fiscalizadores.</div>
+      </div>
+      <div class="client-card">
+        <svg class="tech-icon" viewBox="0 0 24 24"><path d="M12 22V2M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        <div class="client-name">Investidores e Advogados</div>
+        <div class="client-desc">Perícias técnicas para disputas territoriais, inventários fundiários e due diligence imobiliária.</div>
+      </div>
+    </div>
+
+    <div class="coverage fade-in">
+      Base Operacional: <strong>Feira de Santana</strong> · Logística Integrada para todo o <strong>Interior da Bahia</strong> e Recôncavo.
+    </div>
   </div>
-</div>
+</section>
 
-<!-- RODAPÉ -->
-<div class="rodape">
-  <div class="rodape-logo">SADL — Discovery Digital</div>
-  <div class="rodape-info">
-    Preparado por Custódio — ADM + Code<br>
-    custodior-cc.github.io/portfolio · Maio 2026
+<section class="contact" id="contato">
+  <div class="wrap">
+    <div class="contact-inner">
+      <div class="contact-left fade-in">
+        <span class="section-num">04 — Engenharia Diagnóstica</span>
+        <h2 class="section-title">Inicie sua<br>Análise Técnica</h2>
+        <div class="divider"></div>
+        <p class="section-sub">Atendimento direto por engenheiros habilitados. Retorno corporativo ágil e encaminhamento de propostas técnicas estruturadas.</p>
+
+        <div class="contact-direct">
+          <div class="contact-item">
+            <span class="contact-item-label">Sede Técnica</span>
+            <span class="contact-item-val">Feira de Santana, Bahia</span>
+          </div>
+          <div class="contact-item">
+            <span class="contact-item-label">Comunicação</span>
+            <span class="contact-item-val">@sadl_engenharia</span>
+          </div>
+          <div class="contact-item">
+            <span class="contact-item-label">Corporativo</span>
+            <span class="contact-item-val">[EMAIL_SADL]</span>
+          </div>
+          <div class="contact-item">
+            <span class="contact-item-label">Credenciamento</span>
+            <span class="contact-item-val">CREA-BA · INEMA · IBAMA</span>
+          </div>
+        </div>
+
+        <a href="https://wa.me/55[NUMERO_WHATSAPP]?text=Olá%2C+gostaria+de+enviar+uma+demanda+técnica+para+a+SADL." class="btn-wa" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Conectar via WhatsApp Técnico
+        </a>
+      </div>
+
+      <div class="contact-form fade-in">
+        <div class="form-title">Painel de Atendimento</div>
+        <div class="form-row">
+          <label for="nome">Nome completo / Razão Social</label>
+          <input type="text" id="nome" placeholder="Nome ou Empresa">
+        </div>
+        <div class="form-row">
+          <label for="tel">Telefone institucional</label>
+          <input type="tel" id="tel" placeholder="(75) 9 0000-0000">
+        </div>
+        <div class="form-row">
+          <label for="srv">Demanda de interesse</label>
+          <select id="srv">
+            <option value="">Selecione a área técnica</option>
+            <option value="titulação">Titulação e Georreferenciamento INCRA</option>
+            <option value="topografia">Levantamentos Planialtimétricos / Drone</option>
+            <option value="licenciamento">Licenciamento Ambiental / PGRS</option>
+            <option value="cefir">CEFIR e CAR Rural</option>
+            <option value="projetos">Projetos Agrários e Loteamentos</option>
+            <option value="estudos">Perícias e Relatórios Ambientais</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label for="msg">Memorial descritivo da demanda (opcional)</label>
+          <textarea id="msg" placeholder="Informe a localização da área ou resumo do problema fundiário/ambiental..."></textarea>
+        </div>
+        <button class="btn-submit" id="form-submit">Enviar Demanda via WhatsApp →</button>
+      </div>
+    </div>
   </div>
-</div>
+</section>
 
+<footer>
+  <div class="footer-inner wrap">
+    <div class="footer-brand">
+      <img src="logo.png" alt="SADL Engenharia" class="logo-img">
+      <p>SADL Soluções de Engenharia. Alta tecnologia em posicionamento geodésico, topografia computadorizada e regularização legal corporativa e ambiental na Bahia.</p>
+    </div>
+    <div class="footer-links-col">
+      <h4>Serviços</h4>
+      <a href="#servicos">Mapeamento Geodésico</a>
+      <a href="#servicos">Topografia Engenharia</a>
+      <a href="#servicos">Licenças Ambientais</a>
+      <a href="#servicos">CEFIR / CAR</a>
+      <a href="#servicos">Divisões Agrárias</a>
+    </div>
+    <div class="footer-links-col">
+      <h4>Institucional</h4>
+      <a href="#sobre">Infraestrutura</a>
+      <a href="#clientes">Quem atendemos</a>
+      <a href="#contato">Contato Direto</a>
+      <a href="https://www.instagram.com/sadl_engenharia" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </div>
+  <div class="footer-bottom wrap">
+    <p>© 2026 SADL Soluções de Engenharia — CREA-BA — Feira de Santana, Bahia</p>
+    <div class="footer-tags">
+      <span>GNSS RTK</span>
+      <span>Topografia Computacional</span>
+      <span>Licenciamento Inema</span>
+      <span>Regularização INCRA</span>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/55[NUMERO_WHATSAPP]?text=Olá%2C+vim+pelo+site+da+SADL." class="wa-float" target="_blank" rel="noopener" aria-label="WhatsApp SADL">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+// progress bar
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement,b=document.body;
+  const st=h.scrollTop||b.scrollTop;
+  const sh=(h.scrollHeight||b.scrollHeight)-h.clientHeight;
+  document.getElementById('progress').style.width=(st/sh*100)+'%';
+});
+
+// fade-in on scroll
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible')}});
+},{threshold:.12});
+document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+
+// mobile menu
+const btn=document.getElementById('menu-btn');
+const nav=document.getElementById('nav-links');
+btn.addEventListener('click',()=>{nav.classList.toggle('open')});
+nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
+
+// header scroll
+window.addEventListener('scroll', () => {
+  const header = document.getElementById('hdr');
+  
+  // Se rolar mais de 80px, ativa o modo encolhido
+  if (window.scrollY > 80) {
+    header.classList.add('scrolled');
+  } else {
+    header.classList.remove('scrolled');
+  }
+});
+// form → whatsapp
+document.getElementById('form-submit').addEventListener('click',()=>{
+  const n=document.getElementById('nome').value.trim();
+  const t=document.getElementById('tel').value.trim();
+  const s=document.getElementById('srv').value;
+  const m=document.getElementById('msg').value.trim();
+  if(!n||!t){alert('Por favor, preencha o nome e o telefone.');return;}
+  const srv=s||'não especificado';
+  const txt=`Olá, meu nome é ${n} (${t}). Gostaria de uma análise técnica sobre: ${srv}.${m?' Mensagem descritiva: '+m:''}`;
+  window.open('https://wa.me/55[NUMERO_WHATSAPP]?text='+encodeURIComponent(txt),'_blank');
+});
+</script>
 </body>
 </html>
